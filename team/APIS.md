@@ -9,3 +9,4 @@
 * data.ca.gov
 * water: https://www.usgs.gov/centers/ca-water/data-tools
 * Compare air quality: https://aqs.epa.gov/aqsweb/documents/data_api.html
+* More on water: https://www.waterqualitydata.us/
