@@ -7,3 +7,4 @@
 * Free images for cities: https://unsplash.com/documentation
 * data.gov
 * data.ca.gov
+* water: https://www.usgs.gov/centers/ca-water/data-tools
