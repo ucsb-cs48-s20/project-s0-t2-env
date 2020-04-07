@@ -10,9 +10,9 @@ A dashboard of info about your city's environmental impact. When possible, the a
 
 
 ## Roles
-Admin - ability to remove users and upload large amounts of data
-Guest - has the ability to view the general information
-User - can input their personal data and compare their personal impacts to the impact of their city (also has the access to view the general information as the guest). Can also post comments or start a discussion based on their lifestyle.
+* Admin - ability to remove users and upload large amounts of data
+* Guest - has the ability to view the general information
+* User - can input their personal data and compare their personal impacts to the impact of their city (also has the access to view the general information as the guest). Can also post comments or start a discussion based on their lifestyle.
 
 ## Tech Stack
 NextJS
