@@ -1,0 +1,26 @@
+{
+  "name": "project-s0-t2-env",
+  "version": "1.0.0",
+  "description": "## Environmental Impacts Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ucsb-cs48-s20/project-s0-t2-env.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ucsb-cs48-s20/project-s0-t2-env/issues"
+  },
+  "homepage": "https://github.com/ucsb-cs48-s20/project-s0-t2-env#readme",
+  "dependencies": {
+    "next": "^9.3.5",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
