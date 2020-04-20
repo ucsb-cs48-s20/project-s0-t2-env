@@ -54,8 +54,6 @@ export default function Index() {
                 .subhead3 {
                     color: #3269a8
                 }
-
-
             `}
             </style>
         </div>
