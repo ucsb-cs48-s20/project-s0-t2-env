@@ -7,8 +7,8 @@ export default (req, res) => {
   const state = "CA";
   const population = 49970;
   const co2 = 679561;
-  const latitude = 34.4358295;
-  const longitude = -119.8276389;
+  const latitude = 34.4358;
+  const longitude = -119.8276;
 
   // TODO: get air quality
   const aqi = 0;
