@@ -82,24 +82,57 @@ function HomePage() {
       <div>
         <title>Environmental Impacts Dashboard</title>
 
-        <h1 className="header">
+        <h1
+          className="header"
+          style={{
+            color: "DodgerBlue",
+            //backgroundColor: "skyblue",
+            padding: "10px",
+            fontFamily: "Impact,Charcoal,sans-serif",
+            fontSize: "40px",
+            textAlign: "center",
+          }}
+        >
           Welcome to the Environmental Impacts Dashboard
         </h1>
 
-        <h2 className="subhead2">Next.js</h2>
-        <p>
+        <h2
+          className="subhead2"
+          style={{
+            color: "Gray",
+            fontFamily: "Futura",
+            fontSize: "30px",
+            textAlign: "center",
+            fontStyle: "oblique",
+          }}
+        >
+          Next.js
+        </h2>
+
+        <p
+          style={{
+            fontFamily: "Avenir",
+            fontSize: "20px",
+          }}
+        >
           This application provides a dashboard of information about your city's
           environmental impact. When possible, the app shows you things like:
           amount of car traffic, public transportation options, news about
           policies enacted. The user can tweak numbers and see how that would
           impact emissions. Specifically, the app:
-          <ul>
-            <li>
+          <ul
+            style={{
+              listStyleType: "circle",
+            }}
+          >
+            <li style={{ fontSize: "16px" }}>
               Gives people suggestions (lifestyle changes) on how they can lower
               their emissions.
             </li>
-            <li>Tracks air quality, CO2 emissions, water usage</li>
-            <li>
+            <li style={{ fontSize: "16px" }}>
+              Tracks air quality, CO2 emissions, water usage
+            </li>
+            <li style={{ fontSize: "16px" }}>
               Allows users to track their own impact on the specific data sets
             </li>
           </ul>
