@@ -1,9 +1,9 @@
 import Layout from "../components/Layout";
 import Carousel from "react-bootstrap/Carousel";
 
-//import { optionalAuth } from "../utils/ssr";
+import { optionalAuth } from "../utils/ssr";
 
-//export const getServerSideProps = optionalAuth;
+export const getServerSideProps = optionalAuth;
 
 // function HomePage(props) {
 //   const user = props.user;
@@ -20,11 +20,12 @@ import Carousel from "react-bootstrap/Carousel";
 //       )}
 //     </Layout>
 //   );
-//export const getServerSideProps = optionalAuth;
 
-function HomePage() {
+function HomePage(props) {
+  const user = props.user;
+
   return (
-    <Layout>
+    <Layout user={user}>
       <style jsx>
         {`
           img {
