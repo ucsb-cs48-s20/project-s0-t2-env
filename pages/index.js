@@ -96,19 +96,6 @@ function HomePage() {
           Welcome to the Environmental Impacts Dashboard
         </h1>
 
-        <h2
-          className="subhead2"
-          style={{
-            color: "Gray",
-            fontFamily: "Futura",
-            fontSize: "30px",
-            textAlign: "center",
-            fontStyle: "oblique",
-          }}
-        >
-          Next.js
-        </h2>
-
         <p
           style={{
             fontFamily: "Avenir",
