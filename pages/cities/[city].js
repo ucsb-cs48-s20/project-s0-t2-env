@@ -37,6 +37,17 @@ function City() {
           <ListGroup variant="flush">
             <ListGroup.Item>Population: {data.population}</ListGroup.Item>
             <ListGroup.Item>CO2 Emissions Per Year: {data.co2}</ListGroup.Item>
+            <ListGroup.Item>
+              Water Quality: {data.waterQuality}
+              <br />
+              Learn more about this calculation:{" "}
+              <a
+                target="blank"
+                href="https://www.mae.gov.nl.ca/waterres/reports/hydrogeology_westernnl/appendix_v.pdf"
+              >
+                https://www.mae.gov.nl.ca/waterres/reports/hydrogeology_westernnl/appendix_v.pdf
+              </a>
+            </ListGroup.Item>
           </ListGroup>
         </Card.Body>
       </Card>
