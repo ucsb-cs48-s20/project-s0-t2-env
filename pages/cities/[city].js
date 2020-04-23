@@ -37,6 +37,14 @@ function City() {
           <ListGroup variant="flush">
             <ListGroup.Item>Population: {data.population}</ListGroup.Item>
             <ListGroup.Item>CO2 Emissions Per Year: {data.co2}</ListGroup.Item>
+            <ListGroup.Item>
+              {" "}
+              Today's{" "}
+              <a href="https://www.airnow.gov/aqi/aqi-basics/">
+                Air Quality Index:
+              </a>{" "}
+              {data.aqi}{" "}
+            </ListGroup.Item>
           </ListGroup>
         </Card.Body>
       </Card>
