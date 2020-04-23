@@ -21,11 +21,6 @@ function AppNavbar(props) {
             <Link href="/cities/goleta" passHref={true}>
               <Nav.Link>Goleta</Nav.Link>
             </Link>
-            {user && (
-              <Link href="/woof-private" passHref={true}>
-                <Nav.Link>Random Dog with Auth</Nav.Link>
-              </Link>
-            )}
           </Nav>
           <Nav>
             {user ? (
