@@ -46,7 +46,10 @@ function City() {
                 href="https://www.mae.gov.nl.ca/waterres/reports/hydrogeology_westernnl/appendix_v.pdf"
               >
                 https://www.mae.gov.nl.ca/waterres/reports/hydrogeology_westernnl/appendix_v.pdf
-              </a>{" "}
+              </a>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              {" "}
               Today's{" "}
               <a href="https://www.airnow.gov/aqi/aqi-basics/">
                 Air Quality Index:
