@@ -11,7 +11,7 @@ export default (req, res) => {
   const longitude = -119.8276;
 
   // TODO: get air quality
-  const aqi = 0;
+  const aqi = 31;
   // const response = await fetch("AIR-API");
   // do something with it
 
