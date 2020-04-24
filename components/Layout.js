@@ -7,8 +7,19 @@ function Layout(props) {
 
   return (
     <>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@400&display=swap"
+        rel="stylesheet"
+      ></link>
+      <style global jsx>{`
+        body {
+          font-family: Lato;
+          letter-spacing: 1px;
+          word-spacing: 2px;
+        }
+      `}</style>
       <AppNavbar user={user} />
-      <Container>{props.children}</Container>
+      {props.children}
       <AppFooter />
     </>
   );
