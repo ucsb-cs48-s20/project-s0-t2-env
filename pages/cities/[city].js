@@ -11,6 +11,7 @@ import Layout from "../../components/Layout";
 import { optionalAuth } from "../../utils/ssr";
 import { useRouter } from "next/router";
 import { FaMapPin, FaExternalLinkAlt } from "react-icons/fa";
+import Container from "react-bootstrap/Container";
 
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -32,7 +33,7 @@ function City() {
   }
 
   return (
-    <div>
+    <Container>
       <Card>
         <Card.Body>
           <Card.Title>
@@ -111,7 +112,7 @@ function City() {
           </ListGroup>
         </Card.Body>
       </Card>
-    </div>
+    </Container>
   );
 }
 
