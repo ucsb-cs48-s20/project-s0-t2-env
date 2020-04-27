@@ -10,10 +10,12 @@ function AppNavbar(props) {
   const user = props.user;
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
+    <Navbar variant="dark" style={{ backgroundColor: "#325d79" }} expand="lg">
+      <Container style={{ padding: "0px" }}>
         <Link href="/" passHref={true}>
-          <Navbar.Brand>Environmental Impacts App</Navbar.Brand>
+          <Navbar.Brand style={{ fontSize: "25px" }}>
+            Environmental Impacts App
+          </Navbar.Brand>
         </Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
