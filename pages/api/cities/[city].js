@@ -1,4 +1,4 @@
-export default (req, res) => {
+export default async (req, res) => {
   const {
     query: { city },
   } = req;
@@ -16,7 +16,7 @@ export default (req, res) => {
   // do something with it
 
   // TODO: get water quality
-  const waterQuality = 0;
+  const waterQuality = 100;
   // const response = await fetch("WATER-API");
   // do something with it
 

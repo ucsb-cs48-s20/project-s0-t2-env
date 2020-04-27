@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
 import { MdTrendingUp, MdCompareArrows, MdFlag } from "react-icons/md";
 
+
 // function HomePage(props) {
 //   const user = props.user;
 
@@ -21,9 +22,11 @@ import { MdTrendingUp, MdCompareArrows, MdFlag } from "react-icons/md";
 //     </Layout>
 //   );
 
-function HomePage() {
+function HomePage(props) {
+  const user = props.user;
+
   return (
-    <Layout>
+    <Layout user={user}>
       <title>Environmental Impacts Dashboard</title>
       <style jsx>
         {`
