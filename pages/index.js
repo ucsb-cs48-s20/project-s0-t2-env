@@ -5,6 +5,8 @@ import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
 import { MdTrendingUp, MdCompareArrows, MdFlag } from "react-icons/md";
 
+import { optionalAuth } from "../utils/ssr";
+export const getServerSideProps = optionalAuth;
 
 // function HomePage(props) {
 //   const user = props.user;

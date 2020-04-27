@@ -1,14 +1,21 @@
 import useSWR from "swr";
 import Spinner from "react-bootstrap/Spinner";
 import Image from "react-bootstrap/Image";
+import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { fetch } from "../../utils/fetch";
 import Layout from "../../components/Layout";
 import { optionalAuth } from "../../utils/ssr";
 import { useRouter } from "next/router";
-import { FaMapPin } from "react-icons/fa";
+import { FaMapPin, FaExternalLinkAlt } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 function City() {
   const router = useRouter();
@@ -36,26 +43,71 @@ function City() {
             <FaMapPin /> {data.latitude}, {data.longitude}
           </Card.Subtitle>
           <ListGroup variant="flush">
-            <ListGroup.Item>Population: {data.population}</ListGroup.Item>
-            <ListGroup.Item>CO2 Emissions Per Year: {data.co2}</ListGroup.Item>
             <ListGroup.Item>
-              Water Quality: {data.waterQuality}
-              <br />
-              Learn more about this calculation:{" "}
-              <a
-                target="blank"
-                href="https://www.mae.gov.nl.ca/waterres/reports/hydrogeology_westernnl/appendix_v.pdf"
-              >
-                https://www.mae.gov.nl.ca/waterres/reports/hydrogeology_westernnl/appendix_v.pdf
-              </a>
+              Population: {numberWithCommas(data.population)}
             </ListGroup.Item>
             <ListGroup.Item>
-              {" "}
-              Today's{" "}
-              <a href="https://www.airnow.gov/aqi/aqi-basics/">
-                Air Quality Index:
-              </a>{" "}
-              {data.aqi}{" "}
+              <span>
+                Carbon Emissions:
+                <OverlayTrigger
+                  key="CO2"
+                  placement="right"
+                  overlay={
+                    <Tooltip id={`tooltip-CO2`}>
+                      Click to learn more about this calculation.
+                    </Tooltip>
+                  }
+                >
+                  <a
+                    style={{ margin: "5px" }}
+                    href="https://coolclimate.org/maps"
+                  >
+                    {numberWithCommas(data.CO2)} tons of CO2 per year
+                  </a>
+                </OverlayTrigger>
+              </span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span>
+                Drinking Water Quality Index:
+                <OverlayTrigger
+                  key="water"
+                  placement="right"
+                  overlay={
+                    <Tooltip id={`tooltip-water`}>
+                      Click to learn more about this calculation.
+                    </Tooltip>
+                  }
+                >
+                  <a
+                    style={{ margin: "5px" }}
+                    href="https://www.mae.gov.nl.ca/waterres/reports/hydrogeology_westernnl/appendix_v.pdf"
+                  >
+                    {data.waterQuality}
+                  </a>
+                </OverlayTrigger>
+              </span>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <span>
+                Today's Air Quality Index:
+                <OverlayTrigger
+                  key="air"
+                  placement="right"
+                  overlay={
+                    <Tooltip id={`tooltip-air`}>
+                      Click to learn more about this calculation.
+                    </Tooltip>
+                  }
+                >
+                  <a
+                    style={{ margin: "5px" }}
+                    href="https://www.airnow.gov/aqi/aqi-basics/"
+                  >
+                    {data.aqi}
+                  </a>
+                </OverlayTrigger>
+              </span>
             </ListGroup.Item>
           </ListGroup>
         </Card.Body>
