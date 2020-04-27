@@ -26,7 +26,7 @@ function HomePage(props) {
   const user = props.user;
 
   return (
-    <Layout user={user}>
+    <Layout>
       <title>Environmental Impacts Dashboard</title>
       <style jsx>
         {`
