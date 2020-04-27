@@ -24,7 +24,7 @@ export default async (req, res) => {
     name,
     state,
     population,
-    co2,
+    CO2,
     latitude,
     longitude,
     aqi,
