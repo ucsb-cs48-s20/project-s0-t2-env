@@ -6,7 +6,7 @@ export default async (req, res) => {
   const name = "Goleta";
   const state = "CA";
   const population = 49970;
-  const co2 = 679561;
+  const CO2 = 679561;
   const latitude = 34.4358;
   const longitude = -119.8276;
 
