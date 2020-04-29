@@ -2,6 +2,8 @@ import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
@@ -24,6 +26,22 @@ function AppNavbar(props) {
               <Nav.Link>Goleta</Nav.Link>
             </Link>
           </Nav>
+          <DropdownButton
+            id="dropdown-basic-button"
+            title="Cities"
+            className="mr-2"
+          >
+            <Dropdown.Item href="#/action-1">Goleta</Dropdown.Item>
+            <Dropdown.Item href="#/action-2">Santa Barbara</Dropdown.Item>
+            <Dropdown.Item href="#/action-3">Los Angeles</Dropdown.Item>
+            <Dropdown.Item href="#/action-4">San Francisco</Dropdown.Item>
+            <Dropdown.Item href="#/action-5">San Diego</Dropdown.Item>
+            <Dropdown.Item href="#/action-6">San Jose</Dropdown.Item>
+            <Dropdown.Item href="#/action-7">Sacramento</Dropdown.Item>
+            <Dropdown.Item href="#/action-8">Oakland</Dropdown.Item>
+            <Dropdown.Item href="#/action-9">Anaheim</Dropdown.Item>
+            <Dropdown.Item href="#/action-10">Fresno</Dropdown.Item>
+          </DropdownButton>
           <Nav>
             {user ? (
               <NavDropdown
