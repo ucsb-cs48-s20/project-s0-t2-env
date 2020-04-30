@@ -8,7 +8,7 @@ import Container from "react-bootstrap/Container";
 
 export const getServerSideProps = optionalAuth;
 
-export function Aqi() {
+export default function Aqi() {
   const { data } = useSWR("/api/airApi", fetch, {
     // By default, useSWR will call the endpoint we specified (in this case, /api/airApi) every time we click away from
     // the page. This can be really useful if we want to make sure the web app is always showing the latest data,

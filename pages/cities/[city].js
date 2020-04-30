@@ -12,7 +12,7 @@ import { optionalAuth } from "../../utils/ssr";
 import { useRouter } from "next/router";
 import { FaMapPin, FaExternalLinkAlt } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
-import { Aqi } from "../aqi.js";
+import Aqi from "../aqi.js";
 
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
