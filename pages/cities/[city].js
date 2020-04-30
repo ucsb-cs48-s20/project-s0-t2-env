@@ -70,7 +70,7 @@ function City() {
             </ListGroup.Item>
             <ListGroup.Item>
               <span>
-                Drinking Water Quality Index:
+                Water pH Level:
                 <OverlayTrigger
                   key="water"
                   placement="right"
@@ -82,9 +82,45 @@ function City() {
                 >
                   <a
                     style={{ margin: "5px" }}
-                    href="https://www.mae.gov.nl.ca/waterres/reports/hydrogeology_westernnl/appendix_v.pdf"
+                    href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
                   >
-                    {data.waterQuality}
+                    {data.waterpH}
+                  </a>
+                </OverlayTrigger>
+                <br />
+                Total Dissolved Solids:
+                <OverlayTrigger
+                  key="water"
+                  placement="right"
+                  overlay={
+                    <Tooltip id={`tooltip-water`}>
+                      Click to learn more about this calculation.
+                    </Tooltip>
+                  }
+                >
+                  <a
+                    style={{ margin: "5px" }}
+                    href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+                  >
+                    {data.totalDissolvedSolids} mg/L
+                  </a>
+                </OverlayTrigger>
+                <br />
+                Specific Conductance:
+                <OverlayTrigger
+                  key="water"
+                  placement="right"
+                  overlay={
+                    <Tooltip id={`tooltip-water`}>
+                      Click to learn more about this calculation.
+                    </Tooltip>
+                  }
+                >
+                  <a
+                    style={{ margin: "5px" }}
+                    href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+                  >
+                    {data.specificConductance} μS/cm
                   </a>
                 </OverlayTrigger>
               </span>
