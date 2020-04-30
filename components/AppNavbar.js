@@ -32,25 +32,21 @@ function AppNavbar(props) {
             className="mr-2"
           >
             <Dropdown.Item href="/cities/goleta">Goleta</Dropdown.Item>
-            <Dropdown.Item href="/api/cities/santa-barbara">
+            <Dropdown.Item href="/cities/santa-barbara">
               Santa Barbara
             </Dropdown.Item>
-            <Dropdown.Item href="/api/cities/los-angeles">
+            <Dropdown.Item href="/cities/los-angeles">
               Los Angeles
             </Dropdown.Item>
-            <Dropdown.Item href="/api/cities/san-francisco">
+            <Dropdown.Item href="/cities/san-francisco">
               San Francisco
             </Dropdown.Item>
-            <Dropdown.Item href="/api/cities/san-diego">
-              San Diego
-            </Dropdown.Item>
-            <Dropdown.Item href="/api/cities/san-jose">San Jose</Dropdown.Item>
-            <Dropdown.Item href="/api/cities/sacramento">
-              Sacramento
-            </Dropdown.Item>
-            <Dropdown.Item href="/api/cities/oakland">Oakland</Dropdown.Item>
-            <Dropdown.Item href="/api/cities/anaheim">Anaheim</Dropdown.Item>
-            <Dropdown.Item href="/api/cities/fresno">Fresno</Dropdown.Item>
+            <Dropdown.Item href="/cities/san-diego">San Diego</Dropdown.Item>
+            <Dropdown.Item href="/cities/san-jose">San Jose</Dropdown.Item>
+            <Dropdown.Item href="/cities/sacramento">Sacramento</Dropdown.Item>
+            <Dropdown.Item href="/cities/oakland">Oakland</Dropdown.Item>
+            <Dropdown.Item href="/cities/anaheim">Anaheim</Dropdown.Item>
+            <Dropdown.Item href="/cities/fresno">Fresno</Dropdown.Item>
           </DropdownButton>
           <Nav>
             {user ? (
