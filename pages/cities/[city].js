@@ -12,6 +12,7 @@ import { optionalAuth } from "../../utils/ssr";
 import { useRouter } from "next/router";
 import { FaMapPin, FaExternalLinkAlt } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
+import { Aqi } from "../aqi.js";
 
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -90,7 +91,7 @@ function City() {
             </ListGroup.Item>
             <ListGroup.Item>
               <span>
-                Today's Air Quality Index:
+                Today's Air Quality Index (AQI):&nbsp;
                 <OverlayTrigger
                   key="air"
                   placement="right"
@@ -101,10 +102,10 @@ function City() {
                   }
                 >
                   <a
-                    style={{ margin: "5px" }}
-                    href="https://www.airnow.gov/aqi/aqi-basics/"
+                    style={{ margin: "1px" }}
+                    href="https://aqicn.org/city/california/santa-barbara/goleta-fairview/"
                   >
-                    {data.aqi}
+                    <Aqi />
                   </a>
                 </OverlayTrigger>
               </span>
