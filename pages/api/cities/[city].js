@@ -1,5 +1,6 @@
 import nextConnect from "next-connect";
 import middleware from "../../../middleware/database";
+import { fetch } from "../../../utils/fetch";
 
 const handler = nextConnect();
 
@@ -23,7 +24,9 @@ handler.get(async (req, res) => {
   const { name, state, population, CO2, latitude, longitude } = doc;
 
   // TODO: get air quality
-  const aqi = 31;
+  const response = await fetch(
+    "https://api.waqi.info/feed/goleta/?token=" + process.env.AQI_KEY
+  );
   // const response = await fetch("AIR-API");
   // do something with it
 
@@ -31,6 +34,7 @@ handler.get(async (req, res) => {
   const waterQuality = 100;
   // const response = await fetch("WATER-API");
   // do something with it
+  console.log(response);
 
   res.json({
     name,
@@ -39,7 +43,7 @@ handler.get(async (req, res) => {
     CO2,
     latitude,
     longitude,
-    aqi,
+    aqi: response.data.aqi,
     waterQuality,
   });
 });
