@@ -6,6 +6,9 @@
 * Zach Friedland - @zacharyfriedland
 * Stuart Wayland - @stuartwayland
 
+# 4/30/2020
+   
+Team decided to make repo public (open source under MIT license).
 
 # Agreements
 

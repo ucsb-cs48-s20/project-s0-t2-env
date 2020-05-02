@@ -21,7 +21,17 @@ handler.get(async (req, res) => {
   // MongoDB returns a document for us
   console.log(doc);
   // We can read in these values from the doc
-  const { name, state, population, CO2, latitude, longitude } = doc;
+  const {
+    name,
+    state,
+    population,
+    CO2,
+    latitude,
+    longitude,
+    waterpH,
+    totalDissolvedSolids,
+    specificConductance,
+  } = doc;
 
   // TODO: get air quality
   const response = await fetch(
@@ -50,6 +60,9 @@ handler.get(async (req, res) => {
     longitude,
     aqi: response.data[0].aqi,
     waterQuality,
+    waterpH,
+    totalDissolvedSolids,
+    specificConductance,
   });
 });
 
