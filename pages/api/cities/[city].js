@@ -25,7 +25,12 @@ handler.get(async (req, res) => {
 
   // TODO: get air quality
   const response = await fetch(
-    "https://api.waqi.info/feed/goleta/?token=" + process.env.AQI_KEY
+    "https://api.weatherbit.io/v2.0/current/airquality?lat=" +
+      latitude +
+      "&lon=" +
+      longitude +
+      "&key=" +
+      process.env.AQI_KEY2
   );
   // const response = await fetch("AIR-API");
   // do something with it
@@ -43,7 +48,7 @@ handler.get(async (req, res) => {
     CO2,
     latitude,
     longitude,
-    aqi: response.data.aqi,
+    aqi: response.data[0].aqi,
     waterQuality,
   });
 });

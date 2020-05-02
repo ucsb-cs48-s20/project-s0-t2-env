@@ -102,7 +102,7 @@ function City() {
                 >
                   <a
                     style={{ margin: "1px" }}
-                    href="https://aqicn.org/city/california/santa-barbara/goleta-fairview/"
+                    href="https://www.airnow.gov/aqi/aqi-basics/"
                   >
                     {data.aqi}
                   </a>
