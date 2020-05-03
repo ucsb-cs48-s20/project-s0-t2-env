@@ -1,5 +1,6 @@
 import nextConnect from "next-connect";
 import middleware from "../../../middleware/database";
+import { fetch } from "../../../utils/fetch";
 
 const handler = nextConnect();
 
@@ -33,7 +34,14 @@ handler.get(async (req, res) => {
   } = doc;
 
   // TODO: get air quality
-  const aqi = 31;
+  const response = await fetch(
+    "https://api.weatherbit.io/v2.0/current/airquality?lat=" +
+      latitude +
+      "&lon=" +
+      longitude +
+      "&key=" +
+      process.env.AQI_KEY2
+  );
   // const response = await fetch("AIR-API");
   // do something with it
 
@@ -41,6 +49,7 @@ handler.get(async (req, res) => {
   const waterQuality = 100;
   // const response = await fetch("WATER-API");
   // do something with it
+  console.log(response);
 
   res.json({
     name,
@@ -49,7 +58,7 @@ handler.get(async (req, res) => {
     CO2,
     latitude,
     longitude,
-    aqi,
+    aqi: response.data[0].aqi,
     waterQuality,
     waterpH,
     totalDissolvedSolids,

@@ -12,7 +12,6 @@ import { optionalAuth } from "../../utils/ssr";
 import { useRouter } from "next/router";
 import { FaMapPin, FaExternalLinkAlt } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
-import Aqi from "../aqi.js";
 
 function numberWithCommas(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -139,9 +138,9 @@ function City() {
                 >
                   <a
                     style={{ margin: "1px" }}
-                    href="https://aqicn.org/city/california/santa-barbara/goleta-fairview/"
+                    href="https://www.airnow.gov/aqi/aqi-basics/"
                   >
-                    <Aqi />
+                    {data.aqi}
                   </a>
                 </OverlayTrigger>
               </span>
