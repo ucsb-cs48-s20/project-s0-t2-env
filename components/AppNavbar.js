@@ -21,11 +21,7 @@ function AppNavbar(props) {
         </Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Nav className="mr-auto">
-            <Link href="/cities/goleta" passHref={true}>
-              <Nav.Link>Goleta</Nav.Link>
-            </Link>
-          </Nav>
+          <Nav className="mr-auto"></Nav>
           <DropdownButton
             id="dropdown-basic-button"
             title="Cities"
