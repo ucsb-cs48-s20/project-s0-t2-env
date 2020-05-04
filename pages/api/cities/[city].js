@@ -26,15 +26,33 @@ handler.get(async (req, res) => {
     state,
     population,
     CO2,
-    latitude,
-    longitude,
     waterpH,
     totalDissolvedSolids,
     specificConductance,
   } = doc;
 
-  // TODO: get air quality
   const response = await fetch(
+    "https://api.opencagedata.com/geocode/v1/json?q=" +
+      name +
+      "," +
+      state +
+      ",United%20States" +
+      "&key=" +
+      process.env.LONGLAT_KEY
+  );
+
+  console.log(response);
+
+  const latitude =
+    (response.results[0].bounds.northeast.lat +
+      response.results[0].bounds.southwest.lat) /
+    2.0;
+  const longitude =
+    (response.results[0].bounds.northeast.lng +
+      response.results[0].bounds.southwest.lng) /
+    2.0;
+
+  const resp = await fetch(
     "https://api.weatherbit.io/v2.0/current/airquality?lat=" +
       latitude +
       "&lon=" +
@@ -42,14 +60,8 @@ handler.get(async (req, res) => {
       "&key=" +
       process.env.AQI_KEY2
   );
-  // const response = await fetch("AIR-API");
-  // do something with it
 
-  // TODO: get water quality
-  const waterQuality = 100;
-  // const response = await fetch("WATER-API");
-  // do something with it
-  console.log(response);
+  console.log(resp);
 
   res.json({
     name,
@@ -58,8 +70,7 @@ handler.get(async (req, res) => {
     CO2,
     latitude,
     longitude,
-    aqi: response.data[0].aqi,
-    waterQuality,
+    aqi: resp.data[0].aqi,
     waterpH,
     totalDissolvedSolids,
     specificConductance,
