@@ -43,35 +43,34 @@ handler.get(async (req, res) => {
 
   console.log(response);
 
-  // TODO: get air quality
+  const latitude =
+    (response.results[0].bounds.northeast.lat +
+      response.results[0].bounds.southwest.lat) /
+    2.0;
+  const longitude =
+    (response.results[0].bounds.northeast.lng +
+      response.results[0].bounds.southwest.lng) /
+    2.0;
+
   const resp = await fetch(
     "https://api.weatherbit.io/v2.0/current/airquality?lat=" +
-      response.results[0].bounds.northeast.lat +
+      latitude +
       "&lon=" +
-      response.results[0].bounds.northeast.lng +
+      longitude +
       "&key=" +
       process.env.AQI_KEY2
   );
 
   console.log(resp);
 
-  // const response = await fetch("AIR-API");
-  // do something with it
-
-  // TODO: get water quality
-  //const waterQuality = 100;
-  // const response = await fetch("WATER-API");
-  // do something with it
-
   res.json({
     name,
     state,
     population,
     CO2,
-    latitude: response.results[0].bounds.northeast.lat,
-    longitude: response.results[0].bounds.northeast.lng,
+    latitude,
+    longitude,
     aqi: resp.data[0].aqi,
-    // waterQuality,
     waterpH,
     totalDissolvedSolids,
     specificConductance,
