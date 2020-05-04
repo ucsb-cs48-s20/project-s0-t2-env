@@ -136,10 +136,7 @@ function City() {
                     </Tooltip>
                   }
                 >
-                  <a
-                    style={{ margin: "1px" }}
-                    href="https://www.airnow.gov/aqi/aqi-basics/"
-                  >
+                  <a style={{ margin: "1px" }} href={data.url}>
                     {data.aqi}
                   </a>
                 </OverlayTrigger>

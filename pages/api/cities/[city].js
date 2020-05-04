@@ -62,6 +62,14 @@ handler.get(async (req, res) => {
   );
 
   console.log(resp);
+  console.log(
+    "https://api.waqi.info/feed/geo:" +
+      latitude +
+      ";" +
+      longitude +
+      "/?token=" +
+      process.env.AQI_KEY
+  );
 
   res.json({
     name,
@@ -71,6 +79,7 @@ handler.get(async (req, res) => {
     latitude,
     longitude,
     aqi: resp.data.aqi,
+    url: resp.data.city.url,
     waterpH,
     totalDissolvedSolids,
     specificConductance,
