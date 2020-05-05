@@ -46,6 +46,11 @@ function AppNavbar(props) {
               <Dropdown.Item href="/cities/anaheim">Anaheim</Dropdown.Item>
               <Dropdown.Item href="/cities/fresno">Fresno</Dropdown.Item>
             </DropdownButton>
+            {user && (
+              <Link href="/login" passHref={true}>
+                <Nav.Link>Personal Input</Nav.Link>
+              </Link>
+            )}
           </Nav>
           <Nav>
             {user ? (
