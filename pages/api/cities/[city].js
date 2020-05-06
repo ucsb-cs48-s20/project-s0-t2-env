@@ -63,10 +63,17 @@ handler.get(async (req, res) => {
 
   console.log(resp);
 
+  const response1 = await fetch(
+    "https://public.opendatasoft.com/api/records/1.0/search/?dataset=worldcitiespop&lang=us&rows=1&sort=population&refine.accentcity=" +
+      name
+  );
+
+  console.log(response1);
+
   res.json({
     name,
     state,
-    population,
+    population: response1.records[0].fields.population,
     CO2,
     latitude,
     longitude,
