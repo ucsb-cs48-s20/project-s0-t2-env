@@ -53,12 +53,12 @@ handler.get(async (req, res) => {
     2.0;
 
   const resp = await fetch(
-    "https://api.weatherbit.io/v2.0/current/airquality?lat=" +
+    "https://api.waqi.info/feed/geo:" +
       latitude +
-      "&lon=" +
+      ";" +
       longitude +
-      "&key=" +
-      process.env.AQI_KEY2
+      "/?token=" +
+      process.env.AQI_KEY
   );
 
   console.log(resp);
@@ -70,7 +70,7 @@ handler.get(async (req, res) => {
     CO2,
     latitude,
     longitude,
-    aqi: resp.data[0].aqi,
+    aqi: resp.data.aqi,
     waterpH,
     totalDissolvedSolids,
     specificConductance,
