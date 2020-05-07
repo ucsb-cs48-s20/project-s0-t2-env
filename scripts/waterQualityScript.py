@@ -55,18 +55,36 @@ def download_wait(directory, timeout, nfiles=None):
 
         seconds += 1
 
-# input state id for specific date or "all" for all the states
+
+def openBrowser():
+  # opening headless chrome
+    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
+    options = webdriver.ChromeOptions()
+    directory = os.getcwd() + "/downloads"
+    preferences = {"download.default_directory": directory}
+    options.add_experimental_option("prefs", preferences)
+    options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+    options.add_argument("window-size=800x841")
+    #options.add_argument("headless")
+    options.add_argument(f'user-agent={user_agent}')
+    driver = webdriver.Chrome(
+        os.getcwd() + "/chromedriver", options=options)
+    return driver
+
+# input state id for specific state or "all" for all the states
 def getCities(file, state):
     df = pd.read_csv(file, usecols=[
-                                 'city_ascii', 'state_id', 'county_name', 'lat', 'lng'])
+        'city_ascii', 'state_id', 'county_name', 'lat', 'lng'])
     cities = []
     if(not state == "all"):
         df = df.loc[df['state_id'] == state]
     df = df.to_records()
     for dfCity in df:
-        cityObject = city(dfCity.lat, dfCity.lng, dfCity.city_ascii, dfCity.county_name, dfCity.state_id)
+        cityObject = city(dfCity.lat, dfCity.lng, dfCity.city_ascii,
+                          dfCity.county_name, dfCity.state_id)
         cities.append(cityObject)
     return cities
+
 
 def uploadToMongoDB(city):
     if(citiesCollection.count_documents(
@@ -93,10 +111,10 @@ def uploadToMongoDB(city):
             "specificConductance": city.specificConductance
         }
         citiesCollection.insert_one(data)
-    print("Uploaded" + " " + city.name)
+    print("Uploaded " + city.name)
 
 
-def readFile(city, directory, within, startDate, endDate):
+def readFile(city, directory, within, startDate, endDate, driver):
     # unzipping files and deleting .zip files
     files = os.listdir(directory)
     extension = ".zip"
@@ -132,26 +150,14 @@ def readFile(city, directory, within, startDate, endDate):
                     os.remove(directory + "/" + file)
             cities = [city]
             downloadFiles(cities, within + 5, startDate -
-                        timedelta(days=365), endDate, True)
+                          timedelta(days=365), endDate, True, driver)
         else:
             return
 
 
-def downloadFiles(cities, within, startDate, endDate, replace):
-    # opening headless chrome
-    user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36'
-    options = webdriver.ChromeOptions()
-    directory = os.getcwd() + "/downloads"
-    preferences = {"download.default_directory": directory}
-    options.add_experimental_option("prefs", preferences)
-    options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-    options.add_argument("window-size=800x841")
-    options.add_argument("headless")
-    options.add_argument(f'user-agent={user_agent}')
-    driver = webdriver.Chrome(
-        os.getcwd(), options=options)
-
+def downloadFiles(cities, within, startDate, endDate, replace, driver):
     # downloading file and giving commands to read and upload it
+    directory = os.getcwd() + "/downloads"
     for city in cities:
         startTime = datetime.now()
         count = citiesCollection.count_documents(
@@ -160,10 +166,9 @@ def downloadFiles(cities, within, startDate, endDate, replace):
             driver.get("https://www.waterqualitydata.us/data/Result/search?within=" + str(within) + "&lat=" + str(city.latitude) + "&long=" + str(city.longitude) +
                        "&sampleMedia=water&sampleMedia=Water&characteristicName=pH&characteristicName=Total%20dissolved%20solids&characteristicName=Specific%20conductance&startDateLo=" + startDate.strftime("%m-%d-%Y") + "&startDateHi=" + endDate.strftime("%m-%d-%Y") + "&mimeType=csv&zip=yes&sorted=yes&dataProfile=narrowResult")
             download_wait(directory, 10, 1)
-            readFile(city, directory, within, startDate, endDate)
+            readFile(city, directory, within, startDate, endDate, driver)
             uploadToMongoDB(city)
         print(datetime.now() - startTime)
-    driver.quit()
 
 
 startTime = datetime.now()
@@ -183,7 +188,10 @@ client = MongoClient(
 envDataBase = client.environment
 citiesCollection = envDataBase.cities
 
+driver = openBrowser()
+
 # run
-downloadFiles(cities, 20, startDate, endDate, replace)
+downloadFiles(cities, 15, startDate, endDate, replace, driver)
 print(datetime.now() - startTime)
 client.close()
+driver.quit()
