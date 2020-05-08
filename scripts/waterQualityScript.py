@@ -143,6 +143,7 @@ def readFile(city, directory, within, startDate, endDate, driver):
                 city.pH = df[(df.CharacteristicName == 'pH') & (
                     df.MeasureUnitCode.str.contains("std units"))].iloc[0].ResultMeasureValue
                 os.remove(directory + "/" + file)
+        return True
     except:
         if(not (within + 5 > 20)):
             for file in files:
@@ -151,8 +152,9 @@ def readFile(city, directory, within, startDate, endDate, driver):
             cities = [city]
             downloadFiles(cities, within + 5, startDate -
                           timedelta(days=365), endDate, True, driver)
+            return False
         else:
-            return
+            return True
 
 
 def downloadFiles(cities, within, startDate, endDate, replace, driver):
@@ -166,8 +168,10 @@ def downloadFiles(cities, within, startDate, endDate, replace, driver):
             driver.get("https://www.waterqualitydata.us/data/Result/search?within=" + str(within) + "&lat=" + str(city.latitude) + "&long=" + str(city.longitude) +
                        "&sampleMedia=water&sampleMedia=Water&characteristicName=pH&characteristicName=Total%20dissolved%20solids&characteristicName=Specific%20conductance&startDateLo=" + startDate.strftime("%m-%d-%Y") + "&startDateHi=" + endDate.strftime("%m-%d-%Y") + "&mimeType=csv&zip=yes&sorted=yes&dataProfile=narrowResult")
             download_wait(directory, 10, 1)
-            readFile(city, directory, within, startDate, endDate, driver)
-            uploadToMongoDB(city)
+            upload = True
+            upload = readFile(city, directory, within, startDate, endDate, driver)
+            if(upload):
+                uploadToMongoDB(city)
         print(datetime.now() - startTime)
 
 
