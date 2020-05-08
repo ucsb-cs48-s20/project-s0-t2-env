@@ -87,6 +87,7 @@ def getCities(file, state):
 
 
 def uploadToMongoDB(city):
+    # if the city is already in the database, then update the info
     if(citiesCollection.count_documents(
             {'name': city.name, 'county': city.county, 'state': city.state})):
         citiesCollection.update_many(
@@ -99,6 +100,7 @@ def uploadToMongoDB(city):
                 }
             }
         )
+    # else add the city to the database
     else:
         data = {
             "name": city.name,
@@ -144,6 +146,7 @@ def readFile(city, directory, within, startDate, endDate, driver):
                     df.MeasureUnitCode.str.contains("std units"))].iloc[0].ResultMeasureValue
                 os.remove(directory + "/" + file)
         return True
+    # if missing any or all data, expand the radius and time scale allowed for data
     except:
         if(not (within + 5 > 20)):
             for file in files:
@@ -174,10 +177,10 @@ def downloadFiles(cities, within, startDate, endDate, replace, driver):
         print(datetime.now() - startTime)
 
 
+# get lists of cities and set parameters for running the code
 startTime = datetime.now()
 citiesFile = os.getcwd() + "/simplemaps_uscities_basicv1/uscities.csv"
 cities = getCities(citiesFile, "CA")
-print(len(cities))
 #city1 = city(34.4358295, -119.82763890000001, 'Goleta', 'Santa Barbara', 'CA')
 #city2 = city(33.9984235, -118.41173615, 'Los Angeles', 'Los Angeles', 'CA')
 #cities = [city1, city2]
@@ -191,6 +194,7 @@ client = MongoClient(
 envDataBase = client.environment
 citiesCollection = envDataBase.cities
 
+# open chrome browser
 driver = openBrowser()
 
 # run
