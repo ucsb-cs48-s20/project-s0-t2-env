@@ -168,7 +168,6 @@ def downloadFiles(cities, within, startDate, endDate, replace, driver):
             driver.get("https://www.waterqualitydata.us/data/Result/search?within=" + str(within) + "&lat=" + str(city.latitude) + "&long=" + str(city.longitude) +
                        "&sampleMedia=water&sampleMedia=Water&characteristicName=pH&characteristicName=Total%20dissolved%20solids&characteristicName=Specific%20conductance&startDateLo=" + startDate.strftime("%m-%d-%Y") + "&startDateHi=" + endDate.strftime("%m-%d-%Y") + "&mimeType=csv&zip=yes&sorted=yes&dataProfile=narrowResult")
             download_wait(directory, 10, 1)
-            upload = True
             upload = readFile(city, directory, within, startDate, endDate, driver)
             if(upload):
                 uploadToMongoDB(city)
