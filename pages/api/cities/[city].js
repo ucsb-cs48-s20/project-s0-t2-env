@@ -62,6 +62,14 @@ handler.get(async (req, res) => {
   );
 
   console.log(resp);
+  console.log(
+    "https://api.waqi.info/feed/geo:" +
+      latitude +
+      ";" +
+      longitude +
+      "/?token=" +
+      process.env.AQI_KEY
+  );
 
   const response1 = await fetch(
     "https://public.opendatasoft.com/api/records/1.0/search/?dataset=worldcitiespop&lang=us&rows=1&sort=population&refine.accentcity=" +
@@ -78,6 +86,7 @@ handler.get(async (req, res) => {
     latitude,
     longitude,
     aqi: resp.data.aqi,
+    url: resp.data.city.url,
     waterpH,
     totalDissolvedSolids,
     specificConductance,
