@@ -52,7 +52,7 @@ handler.get(async (req, res) => {
       response.results[0].bounds.southwest.lng) /
     2.0;
 
-  const resp = await fetch(
+  const aqiAPI = await fetch(
     "https://api.waqi.info/feed/geo:" +
       latitude +
       ";" +
@@ -61,7 +61,7 @@ handler.get(async (req, res) => {
       process.env.AQI_KEY
   );
 
-  console.log(resp);
+  console.log(aqiAPI);
   console.log(
     "https://api.waqi.info/feed/geo:" +
       latitude +
@@ -71,22 +71,22 @@ handler.get(async (req, res) => {
       process.env.AQI_KEY
   );
 
-  const response1 = await fetch(
+  const popAPI = await fetch(
     "https://public.opendatasoft.com/api/records/1.0/search/?dataset=worldcitiespop&lang=us&rows=1&sort=population&refine.accentcity=" +
       name
   );
 
-  console.log(response1);
+  console.log(popAPI);
 
   res.json({
     name,
     state,
-    population: response1.records[0].fields.population,
+    population: popAPI.records[0].fields.population,
     CO2,
     latitude,
     longitude,
-    aqi: resp.data.aqi,
-    url: resp.data.city.url,
+    aqi: aqiAPI.data.aqi,
+    url: aqiAPI.data.city.url,
     waterpH,
     totalDissolvedSolids,
     specificConductance,
