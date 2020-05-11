@@ -7,9 +7,19 @@ import Dropdown from "react-bootstrap/Dropdown";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
+import useSWR from "swr";
+import { fetch } from "../utils/fetch";
+import CitiesDropdown from "./CitiesDropdown";
 
 function AppNavbar(props) {
   const user = props.user;
+  const { names } = useSWR("/api/cities/all", fetch, {
+    // By default, useSWR will call the endpoint we specified (in this case, /api/dog) every time we click away from
+    // the page. This can be really useful if we want to make sure the web app is always showing the latest data,
+    // but in this case, we don't need that behavior. See what happens if you set these options to true or remove them!
+    revalidateOnFocus: true,
+    revalidateOnReconnect: true,
+  });
 
   return (
     <Navbar variant="dark" style={{ backgroundColor: "#325d79" }} expand="lg">
@@ -22,30 +32,7 @@ function AppNavbar(props) {
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav className="mr-auto">
-            <DropdownButton
-              id="dropdown-basic-button"
-              title="Cities"
-              className="ml-2"
-            >
-              <Dropdown.Item href="/cities/goleta">Goleta</Dropdown.Item>
-              <Dropdown.Item href="/cities/santa-barbara">
-                Santa Barbara
-              </Dropdown.Item>
-              <Dropdown.Item href="/cities/los-angeles">
-                Los Angeles
-              </Dropdown.Item>
-              <Dropdown.Item href="/cities/san-francisco">
-                San Francisco
-              </Dropdown.Item>
-              <Dropdown.Item href="/cities/san-diego">San Diego</Dropdown.Item>
-              <Dropdown.Item href="/cities/san-jose">San Jose</Dropdown.Item>
-              <Dropdown.Item href="/cities/sacramento">
-                Sacramento
-              </Dropdown.Item>
-              <Dropdown.Item href="/cities/oakland">Oakland</Dropdown.Item>
-              <Dropdown.Item href="/cities/anaheim">Anaheim</Dropdown.Item>
-              <Dropdown.Item href="/cities/fresno">Fresno</Dropdown.Item>
-            </DropdownButton>
+            <CitiesDropdown />
           </Nav>
           <Nav>
             {user ? (
