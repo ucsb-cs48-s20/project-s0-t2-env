@@ -8,7 +8,7 @@ print(df.iloc[0, 0]) # prints first cell in file
 
 
 try: 
-	conn = MongoClient('''mongodb url''') 
+	conn = MongoClient('mongodb+srv://guestuser:RktBAzVKMFoI1N7c@cluster0-qbnoy.mongodb.net/test?retryWrites=true&w=majority') 
 	print("Connected successfully!!!") 
 except: 
 	print("Could not connect to MongoDB") 
@@ -54,3 +54,4 @@ for record in cursor:
 
 # https://www.joe0.com/2019/04/20/python-tutorial-reading-writing-excel-files-data-gathering-by-web-scraping-google/
 # https://www.geeksforgeeks.org/mongodb-python-insert-update-data/
+# https://api.mongodb.com/python/current/tutorial.html
