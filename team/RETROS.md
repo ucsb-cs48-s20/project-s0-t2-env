@@ -25,7 +25,7 @@ I used Start, Stop, Continue for leading the retro. I felt that it was a pretty 
 # Retro 05/11/2020
 
 * Led by: Stuart Wayland
-* Darragh, Noah, Zachary, Stuart, Katelyn, Sara
+* Present: Darragh, Noah, Zachary, Stuart, Katelyn, Sara
 * Absent: 
 
 ## Action item
