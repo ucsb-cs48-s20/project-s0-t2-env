@@ -32,4 +32,8 @@ I used Start, Stop, Continue for leading the retro. I felt that it was a pretty 
 
 * Goal: Develop a more specific vision of where we want our application to go
 * Change: Create user stories from the beginning of each iteration that fully encompasses the vision we have set out to achieve
-* Measurement: after conferencing about each of our specific ideas regarding our respective visions, we will produce an artifact (descriptive or visual) and place into our team repo that we can compare our production app to
+* Measurement: after conferencing about each of our specific ideas regarding our respective visions, we will produce an artifact (descriptive or visual) and place into our team repo that we can compare with our production app
+
+## Retro Assesment 
+
+Once again, we used the start, stop, continue method. This retro was successful in highlighting the biggest issue that our team is currently facing; namely, an absence of a unified vision of the product we are attempting to deliver. While this is no simple task and near impossible to accomplish in the span of an hour, we were able to establish an approach that will allow more effective sharing of each of ideas, resulting in a production app that will hopefully satisfy each of our visions. In the future, however, it may be more efficient to have a structured plan of sharing, rather than the dynamic of "speak when an idea comes to you". 
