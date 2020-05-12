@@ -1,56 +1,52 @@
 import pandas as pd
 from pymongo import MongoClient 
-
-df = pd.read_excel("nameOfCarbonEmissionsFile.xlsx", "Data")
-print(df.iloc[0, 0]) # prints first cell in file
-
-
-
+from openpyxl import load_workbook
+import json
 
 try: 
-	conn = MongoClient('mongodb+srv://guestuser:RktBAzVKMFoI1N7c@cluster0-qbnoy.mongodb.net/test?retryWrites=true&w=majority') 
-	print("Connected successfully!!!") 
+	client = MongoClient('mongodb+srv://guestuser:RktBAzVKMFoI1N7c@cluster0-qbnoy.mongodb.net/test?retryWrites=true&w=majority') 
+	envDb = client.environment
+	collection = envDb.citiesTest
+	print("Connected successfully!") 
 except: 
 	print("Could not connect to MongoDB") 
 
-# database 
-db = conn.database 
+for document in collection.find():
+    print (document)
 
-# Created or Switched to collection names: my_gfg_collection 
-collection = db.my_gfg_collection 
+workbook = load_workbook(filename="Jones-Kammen-2014-Zip-City-County-Results.xlsx")
+workbook.active = 2
+sheet = workbook.active
+idNum = 1
 
-# update all the employee data whose eid is 24 
-result = collection.update_many( 
-		{"eid":24}, 
-		{ 
-				"$set":{ 
-						"name":"Mr.Geeksforgeeks"
-						}, 
-				"$currentDate":{"lastModified":True} 
-				
-				} 
-		) 
+for row in sheet.iter_rows(min_row=2, min_col=1, values_only=True):
+	state = row[0]
+	county = row[1]
+	city = row[2]
+	co2 = row[16]
+
+	location = {
+		"_id":idNum, 
+        "state":state, 
+        "county":county,
+		"city":city,
+		"CO2 Emissions":co2
+    }
+	collection.insert_one(location)
+	
+	idNum+=1
+
+print("Complete")
+
+	
 
 
 
-print("Data updated with id",result) 
-
-# Print the new record 
-cursor = collection.find() 
-for record in cursor: 
-	print(record) 
 
 
 
 
-# Output:
-# Connected successfully!!!
-# Data updated with id 
-# {'_id': ObjectId('5a02227b37b8552becf5ed2a'), 
-# 'name': 'Mr.Geeksforgeeks', 'eid': 24, 'location': 
-# 'delhi', 'lastModified': datetime.datetime(2017, 11, 7, 21, 19, 9, 698000)}
-# {'_id': ObjectId('5a02227c37b8552becf5ed2b'), 'name': 
-# 'Mr.Shaurya', 'eid': 14, 'location': 'delhi'}
+
 
 # https://www.joe0.com/2019/04/20/python-tutorial-reading-writing-excel-files-data-gathering-by-web-scraping-google/
 # https://www.geeksforgeeks.org/mongodb-python-insert-update-data/
