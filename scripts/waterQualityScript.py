@@ -88,8 +88,20 @@ def getCities(file, state):
 
 def uploadToMongoDB(city):
     # if the city is already in the database, then update the info
-    if(citiesCollection.count_documents(
-            {'name': city.name, 'county': city.county, 'state': city.state})):
+    query = {
+        "name": {
+            "$regex": city.name, 
+            "$options": 'i'
+        },
+        "county": {
+            "$regex": city.county, 
+            "$options": 'i'
+        },
+        'state': 
+        {"$regex": city.state, 
+        "$options": 'i'}
+    }
+    if(citiesCollection.count_documents(query)):
         citiesCollection.update_many(
             {"name": city.name, "county": city.county, "state": city.state},
             {
@@ -165,8 +177,20 @@ def downloadFiles(cities, within, startDate, endDate, replace, driver):
     directory = os.getcwd() + "/downloads"
     for city in cities:
         startTime = datetime.now()
-        count = citiesCollection.count_documents(
-            {'name': city.name, 'county': city.county, 'state': city.state})
+        query = {
+            "name": {
+                "$regex": city.name, 
+                "$options": 'i'
+            },
+            "county": {
+                "$regex": city.county, 
+                "$options": 'i'
+            },
+            'state': 
+            {"$regex": city.state, 
+            "$options": 'i'}
+        }
+        count = citiesCollection.count_documents(query)
         if(replace or (not count)):
             driver.get("https://www.waterqualitydata.us/data/Result/search?within=" + str(within) + "&lat=" + str(city.latitude) + "&long=" + str(city.longitude) +
                        "&sampleMedia=water&sampleMedia=Water&characteristicName=pH&characteristicName=Total%20dissolved%20solids&characteristicName=Specific%20conductance&startDateLo=" + startDate.strftime("%m-%d-%Y") + "&startDateHi=" + endDate.strftime("%m-%d-%Y") + "&mimeType=csv&zip=yes&sorted=yes&dataProfile=narrowResult")
