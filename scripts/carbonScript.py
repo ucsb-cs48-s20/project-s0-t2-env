@@ -1,7 +1,6 @@
 import pandas as pd
 from pymongo import MongoClient 
 from openpyxl import load_workbook
-import json
 
 try: 
 	client = MongoClient('mongodb+srv://guestuser:RktBAzVKMFoI1N7c@cluster0-qbnoy.mongodb.net/test?retryWrites=true&w=majority') 
@@ -10,16 +9,14 @@ try:
 	print("Connected successfully!") 
 except: 
 	print("Could not connect to MongoDB") 
-
-for document in collection.find():
-    print (document)
+	
 
 workbook = load_workbook(filename="Jones-Kammen-2014-Zip-City-County-Results.xlsx")
 workbook.active = 2
 sheet = workbook.active
 idNum = 1
 
-for row in sheet.iter_rows(min_row=2, min_col=1, values_only=True):
+for row in sheet.iter_rows(min_row=2, max_row=26785, min_col=1, values_only=True):
 	state = row[0]
 	county = row[1]
 	city = row[2]
