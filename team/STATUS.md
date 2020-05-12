@@ -19,3 +19,32 @@ This application provides a dashboard of information about your city's environme
 ## MVP Status
 
 * Team has completed all stories for MVP
+
+# Status, Tuesday 05/12/2020
+* Present: all
+* Absent: none
+* Leader: Noah Pang
+## Sprint Goal
+
+* Add testing to our application
+* Adding an individual page 
+* Changing the city drop-down with search bar
+* Providing context and visuals to the current data being displayed
+
+## Power Question
+
+If we didn't have another sprint after this one, what would be the one thing we would have to deliver in order to return some value?
+
+## Description 
+
+We decided that these were the most useful to improving the value of our application with limited time
+
+## Discussion of Previous Sprint Goal
+
+* the sprint goal was achieved
+* may have been slightly modest 
+* sprint goal did not encompass the entirety of work done during the sprint 
+
+
+
+
