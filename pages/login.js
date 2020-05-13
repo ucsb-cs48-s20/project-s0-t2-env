@@ -2,7 +2,6 @@ import Layout from "../components/Layout";
 import { requiredAuth } from "../utils/ssr";
 import useSWR from "swr";
 import { fetch } from "../utils/fetch";
-
 import { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
 import React, { Component, useState } from "react";
@@ -34,7 +33,7 @@ function PersonalInputPage(props) {
         }}
       >
         See how you compare to the average person in your city! If you do not
-        know a certain field leave it empty.
+        know a certain field type 0.
       </p>
       <label htmlFor="electricity">
         <b>Enter your monthly electricity bill</b>
