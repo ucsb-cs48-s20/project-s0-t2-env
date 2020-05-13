@@ -17,19 +17,23 @@ sheet = workbook.active
 idNum = 1
 
 for row in sheet.iter_rows(min_row=2, max_row=26785, min_col=1, values_only=True):
-	state = row[0]
-	county = row[1]
-	city = row[2]
-	co2 = row[16]
+	# state = row[0]
+	# county = row[1]
+	# city = row[2]
+	# co2 = row[16]
+	co2_household = row[14]
 
-	location = {
-		"_id":idNum, 
-        "state":state, 
-        "county":county,
-		"city":city,
-		"CO2 Emissions":co2
-    }
-	collection.insert_one(location)
+	# location = {
+	# 	"_id":idNum, 
+    #     "state":state, 
+    #     "county":county,
+	# 	"city":city,
+	# 	"CO2_Emissions":co2,
+	#	"CO2_Emissions_Per_Household": co2_household
+    # }
+	# collection.insert_one(location)
+	collection.find_one_and_update({"_id": idNum}, 
+                                 {"$set": {"CO2_Emissions_Per_Household": co2_household}})
 	
 	idNum+=1
 
