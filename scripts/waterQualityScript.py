@@ -89,7 +89,7 @@ def getCities(file, state):
 def uploadToMongoDB(city):
     # if the city is already in the database, then update the info
     query = {
-        "name": {
+        "city": {
             "$regex": city.name, 
             "$options": 'i'
         },
@@ -103,7 +103,7 @@ def uploadToMongoDB(city):
     }
     if(citiesCollection.count_documents(query)):
         citiesCollection.update_many(
-            {"name": city.name, "county": city.county, "state": city.state},
+            query,
             {
                 "$set": {
                     "waterpH": city.pH,
@@ -115,7 +115,7 @@ def uploadToMongoDB(city):
     # else add the city to the database
     else:
         data = {
-            "name": city.name,
+            "city": city.name,
             "latitude": city.latitude,
             "longitude": city.longitude,
             "county": city.county,
@@ -178,7 +178,7 @@ def downloadFiles(cities, within, startDate, endDate, replace, driver):
     for city in cities:
         startTime = datetime.now()
         query = {
-            "name": {
+            "city": {
                 "$regex": city.name, 
                 "$options": 'i'
             },
@@ -191,6 +191,7 @@ def downloadFiles(cities, within, startDate, endDate, replace, driver):
             "$options": 'i'}
         }
         count = citiesCollection.count_documents(query)
+        print(count)
         if(replace or (not count)):
             driver.get("https://www.waterqualitydata.us/data/Result/search?within=" + str(within) + "&lat=" + str(city.latitude) + "&long=" + str(city.longitude) +
                        "&sampleMedia=water&sampleMedia=Water&characteristicName=pH&characteristicName=Total%20dissolved%20solids&characteristicName=Specific%20conductance&startDateLo=" + startDate.strftime("%m-%d-%Y") + "&startDateHi=" + endDate.strftime("%m-%d-%Y") + "&mimeType=csv&zip=yes&sorted=yes&dataProfile=narrowResult")
@@ -206,7 +207,7 @@ startTime = datetime.now()
 citiesFile = os.getcwd() + "/simplemaps_uscities_basicv1/uscities.csv"
 cities = getCities(citiesFile, "CA")
 #city1 = city(34.4358295, -119.82763890000001, 'Goleta', 'Santa Barbara', 'CA')
-#city2 = city(33.9984235, -118.41173615, 'Los Angeles', 'Los Angeles', 'CA')
+#city2 = city(33.9984235, -118.41173615, 'LOS ANGELES', 'LOS ANGELES', 'CA')
 #cities = [city1, city2]
 startDate = datetime.now() - timedelta(days=365)
 endDate = datetime.now()
@@ -216,7 +217,7 @@ replace = True
 client = MongoClient(
     'mongodb+srv://guestuser:RktBAzVKMFoI1N7c@cluster0-qbnoy.mongodb.net/test?retryWrites=true&w=majority')
 envDataBase = client.environment
-citiesCollection = envDataBase.cities
+citiesCollection = envDataBase.citiesTest
 
 # open chrome browser
 driver = openBrowser()
