@@ -6,22 +6,6 @@ import { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import Link from "next/link";
-//function CitiesDropdown(props) {
-//const { data: names } = useSWR("/api/cities/all", fetch, {});
-//return (
-/*<DropdownButton id="dropdown-basic-button" title="Cities" className="ml-2">
-      {names ? (
-        names.map((name) => (
-          <Dropdown.Item href={"/cities/" + name}>{name}</Dropdown.Item>
-        ))
-      ) : (
-        <Dropdown.Item>Cities loading...</Dropdown.Item>
-      )}
-    </DropdownButton>
-  );
-}*/
-
-//export default CitiesDropdown;
 
 export default function CitiesSearch() {
   const { data: names } = useSWR("/api/cities/all", fetch, {});
@@ -43,7 +27,6 @@ export default function CitiesSearch() {
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
-          //window.location.href="/cities/" + newValue
         }}
         id="clear-on-escape"
         clearOnEscape
