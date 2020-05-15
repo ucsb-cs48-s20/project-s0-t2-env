@@ -31,13 +31,15 @@
     "next-connect": "^0.6.5",
     "react": "16.13.1",
     "react-bootstrap": "^1.0.0",
+    "react-date-picker": "^8.0.1",
+    "react-datepicker": "^2.16.0",
     "react-dom": "16.13.1",
     "react-icons": "^3.10.0",
     "swr": "^0.1.18"
   },
   "devDependencies": {
     "@rckeller/cypress-unfetch": "^1.0.1",
-    "cypress": "^4.2.0",
+    "cypress": "^4.5.0",
     "danger": "^10.0.0",
     "heroku-dotenv": "^0.4.1",
     "husky": "^4.2.3",
