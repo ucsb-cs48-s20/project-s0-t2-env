@@ -34,13 +34,6 @@ function PersonalInputPage(props) {
 
   return (
     <Layout user={user}>
-      <DatePicker
-        selected={date}
-        onChange={handleChange}
-        minDate={pastWeek}
-        maxDate={today}
-        dateFormat="MMMM d, yyyy"
-      />
       <p
         style={{
           fontSize: "20px",
@@ -54,6 +47,13 @@ function PersonalInputPage(props) {
         <b>Enter your monthly electricity bill</b>
       </label>
       <br></br>
+      <DatePicker
+        selected={date}
+        onChange={handleChange}
+        minDate={pastWeek}
+        maxDate={today}
+        dateFormat="MMMM d, yyyy"
+      />
       <input
         value={electricity}
         onChange={(event) => setElectricity(event.target.value)}
@@ -67,6 +67,13 @@ function PersonalInputPage(props) {
         <b>Enter your monthly gas mileage</b>
       </label>
       <br></br>
+      <DatePicker
+        selected={date}
+        onChange={handleChange}
+        minDate={pastWeek}
+        maxDate={today}
+        dateFormat="MMMM d, yyyy"
+      />
       <input
         value={gas}
         onChange={(event) => setGas(event.target.value)}
@@ -80,6 +87,13 @@ function PersonalInputPage(props) {
         <b>Enter your monthly water bill</b>
       </label>
       <br></br>
+      <DatePicker
+        selected={date}
+        onChange={handleChange}
+        minDate={pastWeek}
+        maxDate={today}
+        dateFormat="MMMM d, yyyy"
+      />
       <input
         value={water}
         onChange={(event) => setWater(event.target.value)}
