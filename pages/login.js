@@ -39,7 +39,6 @@ function PersonalInputPage(props) {
         onChange={handleChange}
         minDate={pastWeek}
         maxDate={today}
-        showTimeSelect
         dateFormat="MMMM d, yyyy"
       />
       <p
