@@ -22,6 +22,16 @@ function AppNavbar(props) {
         <Navbar.Collapse className="justify-content-end">
           <Nav className="mr-auto">
             <CitiesSearch />
+            {user && (
+              <Link href="/login" passHref={true}>
+                <Nav.Link
+                  style={{ fontSize: "15px", color: "#325d79" }}
+                  className="mt-4"
+                >
+                  Personal Input
+                </Nav.Link>
+              </Link>
+            )}
           </Nav>
           <Nav>
             {user ? (
