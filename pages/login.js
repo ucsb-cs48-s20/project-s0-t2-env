@@ -29,18 +29,18 @@ function PersonalInputPage(props) {
   const handleChange = (date) => setDate(date);
 
   const today = new Date();
-  let in3Days = new Date();
-  in3Days.setDate(in3Days.getDate() + 3);
+  let pastWeek = new Date();
+  pastWeek.setDate(pastWeek.getDate() - 6);
 
   return (
     <Layout user={user}>
       <DatePicker
         selected={date}
         onChange={handleChange}
-        minDate={today}
-        maxDate={in3Days}
+        minDate={pastWeek}
+        maxDate={today}
         showTimeSelect
-        dateFormat="MMMM d, yyyy h:mm aa"
+        dateFormat="MMMM d, yyyy"
       />
       <p
         style={{
