@@ -5,6 +5,7 @@ import { fetch } from "../utils/fetch";
 import { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
 import React, { Component, useState } from "react";
+import DatePicker from "react-datepicker";
 
 export const getServerSideProps = requiredAuth;
 
@@ -24,8 +25,23 @@ function PersonalInputPage(props) {
     setWater(0);
   };
 
+  const [date, setDate] = useState(new Date());
+  const handleChange = (date) => setDate(date);
+
+  const today = new Date();
+  let in3Days = new Date();
+  in3Days.setDate(in3Days.getDate() + 3);
+
   return (
     <Layout user={user}>
+      <DatePicker
+        selected={date}
+        onChange={handleChange}
+        minDate={today}
+        maxDate={in3Days}
+        showTimeSelect
+        dateFormat="MMMM d, yyyy h:mm aa"
+      />
       <p
         style={{
           fontSize: "20px",
