@@ -1,7 +1,5 @@
 import useSWR from "swr";
 import Spinner from "react-bootstrap/Spinner";
-import Image from "react-bootstrap/Image";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -10,7 +8,7 @@ import { fetch } from "../../utils/fetch";
 import Layout from "../../components/Layout";
 import { optionalAuth } from "../../utils/ssr";
 import { useRouter } from "next/router";
-import { FaMapPin, FaExternalLinkAlt } from "react-icons/fa";
+import { FaMapPin } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
 
 function numberWithCommas(x) {
