@@ -37,24 +37,27 @@ function PersonalInputPage(props) {
       <p
         style={{
           fontSize: "20px",
-          margin: "10px",
+          margin: "25px",
         }}
       >
         See how you compare to the average person in your city! If you do not
         know a certain field type 0.
       </p>
-      <label htmlFor="electricity">
+      <label
+        htmlFor="electricity"
+        style={{
+          marginLeft: "25px",
+        }}
+      >
         <b>Enter your monthly electricity bill</b>
       </label>
       <br></br>
-      <DatePicker
-        selected={date}
-        onChange={handleChange}
-        minDate={pastWeek}
-        maxDate={today}
-        dateFormat="MMMM d, yyyy"
-      />
       <input
+        style={{
+          marginLeft: "25px",
+          marginRight: "25px",
+          marginBottom: "25px",
+        }}
         value={electricity}
         onChange={(event) => setElectricity(event.target.value)}
         type="number"
@@ -62,11 +65,6 @@ function PersonalInputPage(props) {
         name="electricity"
         required
       ></input>
-      <br></br>
-      <label htmlFor="gas">
-        <b>Enter your monthly gas mileage</b>
-      </label>
-      <br></br>
       <DatePicker
         selected={date}
         onChange={handleChange}
@@ -74,7 +72,22 @@ function PersonalInputPage(props) {
         maxDate={today}
         dateFormat="MMMM d, yyyy"
       />
+      <br></br>
+      <label
+        htmlFor="gas"
+        style={{
+          marginLeft: "25px",
+        }}
+      >
+        <b>Enter your monthly gas mileage</b>
+      </label>
+      <br></br>
       <input
+        style={{
+          marginLeft: "25px",
+          marginRight: "25px",
+          marginBottom: "25px",
+        }}
         value={gas}
         onChange={(event) => setGas(event.target.value)}
         type="number"
@@ -82,11 +95,6 @@ function PersonalInputPage(props) {
         name="gas"
         required
       ></input>
-      <br></br>
-      <label htmlFor="water">
-        <b>Enter your monthly water bill</b>
-      </label>
-      <br></br>
       <DatePicker
         selected={date}
         onChange={handleChange}
@@ -94,7 +102,21 @@ function PersonalInputPage(props) {
         maxDate={today}
         dateFormat="MMMM d, yyyy"
       />
+      <br></br>
+      <label
+        htmlFor="water"
+        style={{
+          marginLeft: "25px",
+        }}
+      >
+        <b>Enter your monthly water bill</b>
+      </label>
+      <br></br>
       <input
+        style={{
+          marginLeft: "25px",
+          marginRight: "25px",
+        }}
         value={water}
         onChange={(event) => setWater(event.target.value)}
         type="number"
@@ -102,13 +124,40 @@ function PersonalInputPage(props) {
         name="water"
         required
       ></input>
+      <DatePicker
+        selected={date}
+        onChange={handleChange}
+        minDate={pastWeek}
+        maxDate={today}
+        dateFormat="MMMM d, yyyy"
+      />
       <br></br>
       <br></br>
-      <button onClick={calculateTotal}>Calculate my Total</button>
+      <button
+        style={{
+          marginLeft: "25px",
+        }}
+        onClick={calculateTotal}
+      >
+        Calculate my Total
+      </button>
       <br></br>
       <br></br>
-      <p>You're total is {total}</p>
-      <button onClick={resetTotal}>Reset my Total</button>
+      <p
+        style={{
+          marginLeft: "25px",
+        }}
+      >
+        Your total is {total}
+      </p>
+      <button
+        style={{
+          marginLeft: "25px",
+        }}
+        onClick={resetTotal}
+      >
+        Reset my Total
+      </button>
     </Layout>
   );
 }
