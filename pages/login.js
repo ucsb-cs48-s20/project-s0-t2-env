@@ -25,8 +25,14 @@ function PersonalInputPage(props) {
     setWater(0);
   };
 
-  const [date, setDate] = useState(new Date());
-  const handleChange = (date) => setDate(date);
+  const [date1, setDate1] = useState(new Date());
+  const handleChange1 = (date1) => setDate1(date1);
+
+  const [date2, setDate2] = useState(new Date());
+  const handleChange2 = (date2) => setDate2(date2);
+
+  const [date3, setDate3] = useState(new Date());
+  const handleChange3 = (date3) => setDate3(date3);
 
   const today = new Date();
   let pastWeek = new Date();
@@ -66,8 +72,8 @@ function PersonalInputPage(props) {
         required
       ></input>
       <DatePicker
-        selected={date}
-        onChange={handleChange}
+        selected={date1}
+        onChange={handleChange1}
         minDate={pastWeek}
         maxDate={today}
         dateFormat="MMMM d, yyyy"
@@ -96,8 +102,8 @@ function PersonalInputPage(props) {
         required
       ></input>
       <DatePicker
-        selected={date}
-        onChange={handleChange}
+        selected={date2}
+        onChange={handleChange2}
         minDate={pastWeek}
         maxDate={today}
         dateFormat="MMMM d, yyyy"
@@ -125,8 +131,8 @@ function PersonalInputPage(props) {
         required
       ></input>
       <DatePicker
-        selected={date}
-        onChange={handleChange}
+        selected={date3}
+        onChange={handleChange3}
         minDate={pastWeek}
         maxDate={today}
         dateFormat="MMMM d, yyyy"
