@@ -6,9 +6,9 @@
 The reason we are creating an empty repo is that we will be pulling in starter code form another repo in a later step
 
 # Step 2: Clone your repo
- cd in the directory where you plan to do your work (ex. ~/cs48)
+cd in the directory where you plan to do your work (ex. ~/cs48)
  
- copy the URL for the new repo you created. That will for example be: git@github.com:ucsb-cs48/s-20/cgaucho_deployment.git but with cgaucho replaced with your GitHub id and deploymet replaced with what you decided to call the repository. 
+copy the URL for the new repo you created. That will for example be https://github.com/ucsb-cs48-s20/cgaucho_deployment.git  but with cgaucho replaced with your GitHub id and deploymet replaced with what you decided to call the repository. 
  
 * `git clone repo-url-goes-here` 
  cd into that directory 
@@ -83,16 +83,53 @@ npm WARN bootstrap@4.4.1 requires a peer of popper.js@^1.16.0 but none is instal
 
 Despite the note that `you must install` these peer dependencies, in fact, you do not need to install `jquery` and `popper`. The reason is that we're installing bootstrap is only for its stylesheets, not for the javascript-based component implementations that it has. We already have `react-bootstrap` as a dependency, which reimplements those javascript-based components in react, completely removing the need for the bootstrap implementations.
 
-# Step 8a: Configuration/Set up of OAuth for Localhost (If you did not do so in lab00)  
+# Step 8: Configuration/Set up of OAuth for Localhost (If you did not do so in lab00)  
 
 Our repo uses Google OAuth for logins/logouts.  Before we can run the application on localhost, we need to do some configuration.
 
 The instructions for doing this configuration are linked to in the README.md file of the starter repo of lab00_nj, which you can read here: <https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/auth0-localhost.md> 
 
 **If you have not done this at all start from the beginning**
-**If you have done this before you can start from "Setting up Auth0 for localhost" *register a new application* **
+**If you have done this before you can start from "Setting up Auth0 for localhost" *register a new application***
 
-* when creating a name make it more applicable rather than lab00, and after the All done! come back to these instructions
+When creating a name make it more applicable rather than lab00, and after the All done! come back to these instructions
+
+# Step 9: Adding more to our .env file
+
+As you may have noticed now our AUTH0_DOMAIN, AUTH0_CLIENT_ID, and AUTH0_CLIENT_SECRET are filled however there are a lot more fields that we need to complete in order for our repo to work properly 
+
+# Step 9a: Adding the Longitude/Latitude API key 
+
+Visit this website: <https://opencagedata.com/api#quickstart>
+* Click on sign up for your free API Key 
+* Fill out the information prompted 
+* Check your email and you should have received an API Key sent to you 
+* In your .env with the API key you just received fill in LONGLAT_KEY=       
+
+# Step 9b: Adding the Air Quality API key 
+
+Visit the website: <https://aqicn.org/data-platform/token/#/>
+* Fill out the form 
+* Check your email and click confirm 
+* In your .env with the API key you just received fill in AQI_KEY=   
+
+# Step 9c: Adding the login secret
+
+Copy and paste this directly into your .env 
+`POST_LOGOUT_REDIRECT_URI="http://localhost:3000"
+REDIRECT_URI="http://localhost:3000/api/callback"`
+
+This refers to the redirect url for when you logout of your oAuth. It will take you automatically back to the homepage which on localhost is just localhost:3000
+
+When we deploy this to heroku we will change these to correlate to Heroku 
+
+
+
+
+ 
+ 
+
+
 
 
 
