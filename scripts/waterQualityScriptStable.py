@@ -64,7 +64,7 @@ def getStateCodes(file):
 def uploadToMongoDB(city):
     # if the city is already in the database, then update the info
     query = {
-        "city": {
+        "name": {
             "$regex": city.name,
             "$options": 'i'
         },
@@ -91,7 +91,7 @@ def uploadToMongoDB(city):
     # else add the city to the database
     else:
         data = {
-            "city": city.name,
+            "name": city.name,
             "latitude": city.latitude,
             "longitude": city.longitude,
             "county": city.county,
@@ -139,7 +139,7 @@ def run(cities, stations, stateCodes, within, replace):
                   'ResultMeasureValue', 'MeasureUnitCode']
     for city in cities:
         query = {
-            "city": {
+            "name": {
                 "$regex": city.name,
                 "$options": 'i'
             },
