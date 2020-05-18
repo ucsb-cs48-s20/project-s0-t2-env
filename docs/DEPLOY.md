@@ -130,9 +130,6 @@ When we deploy this to heroku we will change these to correlate to Heroku
 * Set your cluster name to be environment and create the cluster 
  * It takes a couple of minutes to set up so just smile and wait 
 * Click on Collections 
-
-![mongo db](MongoDB.png)
-
 * Click on Add My Own Data 
 * Set the database name to be environment and the collection to be called cities inside the databases
 * After you are done click Connect 
