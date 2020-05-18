@@ -60,8 +60,8 @@ When you have finished with those instructions, you should be able to do each of
 
 # Step 7: Type `npm install`
 
-> The first time you clone this repo, as well as any time you pull/switch branches, you should update the project's 
-> dependencies by running `npm install`
+ The first time you clone this repo, as well as any time you pull/switch branches, you should update the project's 
+ dependencies by running `npm install`
 
 So, first make sure that you have done a `cd` into your proper repo, and then type:
 
@@ -122,6 +122,26 @@ REDIRECT_URI="http://localhost:3000/api/callback"`
 This refers to the redirect url for when you logout of your oAuth. It will take you automatically back to the homepage which on localhost is just localhost:3000
 
 When we deploy this to heroku we will change these to correlate to Heroku 
+
+# Step 9d: Adding the mongodb connection 
+
+* Go to mongodb.com, click sign in and create an account
+* Under Shared Clusters "create a cluster". 
+* Set your cluster name to be environment and create the cluster 
+ * It takes a couple of minutes to set up so just smile and wait 
+* Click on Collections 
+
+![mongo db](MongoDB.png)
+
+* Click on Add My Own Data 
+* Set the database name to be environment and the collection to be called cities inside the databases
+* After you are done click Connect 
+ * click add your current IP address
+ * click on create a MongoDB user (this can have any username and password) 
+ * click on connect your application
+  * copy the connection string and put it in .env under MONGO_CONNECTION_STRING
+
+
 
 
 
