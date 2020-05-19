@@ -5,23 +5,33 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
-import CitiesDropdown from "./CitiesDropdown";
+import CitiesSearch from "./CitiesSearch";
 
 function AppNavbar(props) {
   const user = props.user;
 
   return (
-    <Navbar variant="dark" style={{ backgroundColor: "#325d79" }} expand="lg">
+    <Navbar variant="dark" style={{ backgroundColor: "#edf4f8" }} expand="lg">
       <Container style={{ padding: "0px" }}>
         <Link href="/" passHref={true}>
-          <Navbar.Brand style={{ fontSize: "25px" }}>
+          <Navbar.Brand style={{ fontSize: "25px", color: "#325d79" }}>
             Environmental Impacts App
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav className="mr-auto">
-            <CitiesDropdown />
+            <CitiesSearch />
+            {user && (
+              <Link href="/login" passHref={true}>
+                <Nav.Link
+                  style={{ fontSize: "15px", color: "#325d79" }}
+                  className="mt-4"
+                >
+                  Personal Input
+                </Nav.Link>
+              </Link>
+            )}
           </Nav>
           <Nav>
             {user ? (
