@@ -5,34 +5,23 @@ from decouple import config
 try: 
 	client = MongoClient(config('MONGO_CONNECTION_STRING_FOR_TESTING')) 
 	envDb = client.environment
-	collection = envDb.cities
+	collection = envDb.citiesCarbonData
 	print("Connected successfully!") 
 except: 
 	print("Could not connect to MongoDB") 
 	
 
 workbook = load_workbook(filename="Jones-Kammen-2014-Zip-City-County-Results.xlsx")
+print("Spreadsheet sucessfully loaded!")
 workbook.active = 2
 sheet = workbook.active
 idNum = 1
-# skip 1140 for {city: "CA"}, line 26672 is the last CA
 
-# if number_of_cities is 0, the script will run for all cities
-# if number_of_cities is given a number other than 0, the script will run for the number of cities designated
 
-number_of_cities = 0
-
-if(number_of_cities == 0):
-	number_of_cities = 26784
-
-number_of_cities+=1
-
-#26785 total rows
-
-for row in sheet.iter_rows(min_row=2, max_row=number_of_cities, min_col=1, values_only=True):
+for row in sheet.iter_rows(min_row=2, max_row=4, min_col=1, values_only=True):
 	state = row[0]
-	county = row[1]
-	city = row[2]
+	county = row[1].title()
+	city = row[2].title()
 	co2 = row[16]
 	co2_household = row[14]
 	transport = row[9]
