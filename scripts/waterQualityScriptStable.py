@@ -28,14 +28,16 @@ class station:
         self.stateCode = stateCode
 
 # input state id for specific state or "all" for all the states
-def getCities(file, state):
+def getCities(file, state, number_of_cities):
     df = pd.read_csv(file, usecols=[
         'city_ascii', 'state_id', 'county_name', 'lat', 'lng'])
     cities = []
     if(not state == "all"):
         df = df.loc[df['state_id'] == state]
     df = df.to_records()
-    for dfCity in df:
+    for i, dfCity in enumerate(df):
+        if(i >= number_of_cities and number_of_cities):
+            break
         cityObject = city(dfCity.lat, dfCity.lng, dfCity.city_ascii,
                           dfCity.county_name, dfCity.state_id)
         cities.append(cityObject)
@@ -130,9 +132,8 @@ def readFile(city, stations, stateCodes, df, within):
        return
 
 
-def run(cities, stations, stateCodes, within, replace):
+def run(cities, stations, stateCodes, within, replace, file):
     # read file and give commands to upload each city 
-    file = os.getcwd() + "/waterData/narrowresult.csv"
     df = pd.read_csv(file, usecols=[
         'MonitoringLocationIdentifier', 'CharacteristicName', 'ResultMeasureValue', 'ResultMeasure/MeasureUnitCode'])
     df.columns = ['MonitoringLocationIdentifier', 'CharacteristicName',
@@ -163,8 +164,14 @@ def run(cities, stations, stateCodes, within, replace):
 # get lists of cities, stations, and state codes and set parameters for running the code
 startTime = datetime.now()
 citiesFile = os.getcwd() + "/simplemaps_uscities_basicv1/uscities.csv"
-cities = getCities(citiesFile, "CA")
-stationsFile = os.getcwd() + "/waterData/station.csv"
+state = "CA"
+cities = getCities(citiesFile, state, 1)
+if(not(state == "all")):
+    stationsFile = os.getcwd() + "/waterData/" + state + "/station.csv"
+    file = os.getcwd() + "/waterData/" + state + "/narrowresult.csv"
+else:
+    stationsFile = os.getcwd() + "/waterData/station.csv"
+    file = os.getcwd() + "/waterData/narrowresult.csv"
 stations = getSiteData(stationsFile)
 stateCodesFile = os.getcwd() + "/waterData/us-state-ansi-fips.csv"
 stateCodes = getStateCodes(stateCodesFile)
@@ -180,6 +187,6 @@ envDataBase = client.environment
 citiesCollection = envDataBase.citiesTest
 
 # run
-run(cities, stations, stateCodes, 15, replace)
+run(cities, stations, stateCodes, 15, replace, file)
 print("Total time: "+ str(datetime.now() - startTime))
 client.close()
