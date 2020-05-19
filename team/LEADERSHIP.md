@@ -6,3 +6,4 @@
 | Mon 05/11   | Stuart Wayland    | Leading second Retro                                   |
 | Tues 05/12  | Noah Pang         | Leading sprint goal discussion                         |
 | Thurs 05/07 | Katelyn Zhang     | Do demo of MVP                                         |
+| Thurs 05/21 | Zachary Friedland | Do demo of iteration 2                                 |
