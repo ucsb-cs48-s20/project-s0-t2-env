@@ -36,7 +36,7 @@ function PersonalInputPage(props) {
   const handleChange3 = (date3) => setDate3(date3);
 
   const [date4, setDate4] = useState(new Date());
-  const handleChange4 = (date4) => setDate3(date4);
+  const handleChange4 = (date4) => setDate4(date4);
 
   const [date5, setDate5] = useState(new Date());
   const handleChange5 = (date5) => setDate5(date5);
