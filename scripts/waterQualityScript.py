@@ -190,7 +190,7 @@ replace = True
 
 # connect to MongoDB
 client = MongoClient(
-    'mongodb+srv://guestuser:RktBAzVKMFoI1N7c@cluster0-qbnoy.mongodb.net/test?retryWrites=true&w=majority')
+    'MONGO_CONNECTION_STRING_FOR_TESTING')
 envDataBase = client.environment
 citiesCollection = envDataBase.cities
 

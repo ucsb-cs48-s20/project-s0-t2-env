@@ -5,7 +5,7 @@ from decouple import config
 try: 
 	client = MongoClient(config('MONGO_CONNECTION_STRING_FOR_TESTING')) 
 	envDb = client.environment
-	collection = envDb.citiesCarbonData
+	collection = envDb.cities
 	print("Connected successfully!") 
 except: 
 	print("Could not connect to MongoDB") 
@@ -18,7 +18,7 @@ sheet = workbook.active
 idNum = 1
 
 
-for row in sheet.iter_rows(min_row=2, max_row=4, min_col=1, values_only=True):
+for row in sheet.iter_rows(min_row=2, max_row=26785, min_col=1, values_only=True):
 	state = row[0]
 	county = row[1].title()
 	city = row[2].title()
@@ -51,8 +51,10 @@ for row in sheet.iter_rows(min_row=2, max_row=4, min_col=1, values_only=True):
 		"Fuel_Oil": oil,
 		"Vehicle_Miles_Traveled": milesTraveled
     }
-	collection.insert_one(location)
-	idNum+=1
+	# only California cities are added and only update id if it is CA
+	if state == "CA":
+		collection.insert_one(location)
+		idNum+=1
 
 print("Complete")
 
