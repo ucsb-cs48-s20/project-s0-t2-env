@@ -24,3 +24,6 @@ NextJS
 * Katelyn Zhang - @katelynzzz
 * Zach Friedland - @zacharyfriedland
 * Stuart Wayland - @stuartwayland
+
+## Deployment Instructions: 
+* [Deployment Instructions](./docs/DEPLOY.md)
