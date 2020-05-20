@@ -149,21 +149,35 @@ The city's water information and carbon information is stored in a database, so 
 
 # Step 8a: Populating the database through the script
 
+Before you start running the scripts we need to install python3 and some python libraries. If you do not have python3 and are using a Mac type `brew install python3`. If not, visit http://python.org to install python 3.
+
+Then, we will need to install pandas, numpy, pymongo, geopy, decouple, and openpyxl.
+
+To do so type `pip install <name of module>` for each of the above.
+
+- ex: `pip install pandas` `pip install numpy` ... etc.
+
+If that does not work try `python3 -m pip install <name of module>` for each othe modules above.
+
+- ex: `python3 -m pip install pandas`
+
+After you have completed that we are ready to run the script.
+
 First we will want to run the Carbon script.
 
 To see the file, navigate to the folder scripts and the file carbonScript.py
 
 - scripts/carbonScript.py
 
-To run the script type `python3 scripts/carbonScript.py` in your terminal. If you do not have python3 and are using a Mac type `brew install python3` or try running just `python scripts/carbonScripts.py`. If neither works visit http://python.org.
+To run the script type `python3 scripts/carbonScript.py` in your terminal.
 
 This process will take about half an hour to an hour depending on your internet speed. Once that script is completed you want to run the Water script.
 
 Once again navigate to the folder scripts and the file waterQualityScript.py in order to see the file
 
-- scripts/waterQualityScript.py
+- scripts/waterQualityScriptStable.py
 
-To run the script type `python3 scripts/waterQualityScript.py` in your terminal. Once again, if you do not have python3 type `brew install python3` if you using a Mac or try running just `python scripts/waterQualityScripts.py`. If neither works visit http://python.org.
+To run the script type `python3 scripts/waterQualityScriptStable.py` in your terminal.
 
 This process once again will take about half an hour to an hour depending on your internet speed.
 
