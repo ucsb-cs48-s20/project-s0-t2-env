@@ -54,7 +54,8 @@ function PersonalInputPage(props) {
 
   const getInfo = () => {
     setInfo(
-      "On " +
+      info +
+        "On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
         user.name +
@@ -76,7 +77,7 @@ function PersonalInputPage(props) {
         user.name +
         " had the air-conditioning or heater on for " +
         parseFloat(tempApplianceUsage) +
-        " hours."
+        " hours.\n"
     );
   };
 
@@ -186,14 +187,27 @@ function PersonalInputPage(props) {
 
       <br></br>
       <br></br>
-      {milesDriven >= 0 && meatConsumption >= 0 && tempApplianceUsage >= 0 && (
+      {milesDriven >= 0 &&
+        meatConsumption >= 0 &&
+        tempApplianceUsage >= 0 &&
+        info.length <= 0 && (
+          <button
+            style={{
+              marginLeft: "25px",
+            }}
+            onClick={getInfo}
+          >
+            View My Information
+          </button>
+        )}
+      {info.length > 0 && (
         <button
           style={{
             marginLeft: "25px",
           }}
           onClick={getInfo}
         >
-          View My Information
+          Update My Information
         </button>
       )}
       <br></br>
@@ -218,6 +232,8 @@ function PersonalInputPage(props) {
           Clear My Information
         </button>
       )}
+      <br></br>
+      <br></br>
     </Layout>
   );
 }
