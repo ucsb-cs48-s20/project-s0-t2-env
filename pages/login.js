@@ -7,8 +7,6 @@ import Button from "react-bootstrap/Button";
 import React, { Component, useState } from "react";
 import DatePicker from "react-datepicker";
 import { Test, QuestionGroup, Question, Option } from "react-multiple-choice";
-import ReactTable from "react-table";
-//import "react-table/react-table.css";
 
 export const getServerSideProps = requiredAuth;
 
@@ -83,7 +81,7 @@ function PersonalInputPage(props) {
   };
 
   const resetInfo = () => {
-    setInfo("N/A");
+    setInfo("");
   };
 
   return (
@@ -205,14 +203,16 @@ function PersonalInputPage(props) {
       >
         {info}
       </p>
-      <button
-        style={{
-          marginLeft: "25px",
-        }}
-        onClick={resetTotal}
-      >
-        Reset my Total
-      </button>
+      {info.length > 0 && (
+        <button
+          style={{
+            marginLeft: "25px",
+          }}
+          onClick={resetInfo}
+        >
+          Clear My Information
+        </button>
+      )}
     </Layout>
   );
   /*
