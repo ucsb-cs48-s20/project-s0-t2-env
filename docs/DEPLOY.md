@@ -1,15 +1,15 @@
 # Step 1: Create a repo
 
 - Create a new github repo
-- The repo should be initially empty (mo README, no .gitignore, no LICENSE)
+- The repo should be initially empty (no README, no .gitignore, no LICENSE)
 
-The reason we are creating an empty repo is that we will be pulling in starter code form another repo in a later step
+The reason we are creating an empty repo is that we will be pulling in starter code form another repo in a later step.
 
 # Step 2: Clone your repo
 
 cd in the directory where you plan to do your work (ex. ~/cs48)
 
-copy the URL for the new repo you created. That will for example be https://github.com/ucsb-cs48-s20/cgaucho_deployment.git but with cgaucho replaced with your GitHub id and deploymet replaced with what you decided to call the repository.
+copy the URL for the new repo you created. That will for example be https://github.com/ucsb-cs48-s20/cgaucho_lab09.git but with cgaucho replaced with your GitHub id
 
 - `git clone repo-url-goes-here`
   cd into that directory
@@ -32,7 +32,8 @@ Now we are gong to pull from the starter code remote into the lcoal repo and the
 The example here shows what the app looks like when it is fully deployed on the web
 
 - https://cs48-s20-s0-t2-prod.herokuapp.com/
-  You should be able to search any city you want and click on said city and be taken to a page that provides information about the environmental data for that city
+
+You should be able to search any city you want and click on said city and be taken to a page that provides information about the environmental data for that city.
 
 You should be able to login and logout:
 
@@ -46,7 +47,7 @@ Once you've completed this lab you should be able to:
 
 # Step 6: Install node (if you didn't already do so for lab00)
 
-- If you are working on CSIL, you may skip this step, because as of this writing (April 12, 2020), a sufficient version of node is installed on CSIL:
+- If you are working on CSIL, you may skip this step, because as of this writing (May 19, 2020), a sufficient version of node is installed on CSIL:
 
 ```
 [pconrad@csil-05 ~]$ node --version
@@ -106,7 +107,7 @@ The instructions for doing this configuration are linked to in the README.md fil
 **If you have not done this at all start from the beginning**
 **If you have done this before you can start from "Setting up Auth0 for localhost" _register a new application_**
 
-When creating a name make it more applicable rather than lab00, and after the All done! come back to these instructions
+When creating a name make it more applicable (lab09) rather than lab00, and after the All done! come back to these instructions
 
 # Step 9: Adding more to our .env file
 
@@ -136,7 +137,7 @@ Copy and paste this directly into your .env
 
 This refers to the redirect url for when you logout of your oAuth. It will take you automatically back to the homepage which on localhost is just localhost:3000
 
-When we deploy this to heroku we will change these to correlate on Heroku
+When we deploy this to heroku we will change these to correlate on Heroku (Step 13)
 
 # Step 9d: Adding the mongodb connection
 
@@ -155,23 +156,23 @@ When we deploy this to heroku we will change these to correlate on Heroku
 
 # Step 10: Creating the database
 The city's water information and carbon information is stored in a database, so now that you have this MongoDB collection you want to populate it with data. Here you have two options 
-- Run our scripts and populate the data base with every city in California (this might take a bit under an hour but you will get a more accurate representation of the full potentail of the app). If you choose this option proceed to Step 10a. 
+- Run our scripts and populate the data base with every city in California (this might take a while but you will get a more accurate representation of the full potentail of the app). If you choose this option proceed to Step 10a. 
 - Or if you just want to manually copy and paste data for a couple of cities on MongoDB to see the general overview of the app proceed to Step 10b.
 
 # Step 10a: Populating the database through the script
-First you will want to run the Carbon script. 
+First we will want to run the Carbon script. 
 
 To see the file, navigate to the folder scripts and the file carbonScript.py 
   * scripts/carbonScript.py
 
-To run the script type `python3 scripts/carbonScript.py` in your terminal. If you do not have python3 type `brew install python3` or try running just `python scripts/carbonScripts.py`
+To run the script type `python3 scripts/carbonScript.py` in your terminal. If you do not have python3 type `brew install python3` or try running just `python scripts/carbonScripts.py`.
 
 This process will take about half an hour to an hour depending on your internet speed. Once that script is completed you want to run the Water script. 
 
 Once again navigate to the folder scripts and the file waterQualityScript.py in order to see the file
   * scripts/waterQualityScript.py
   
-To run the script type `python3 scripts/waterQualityScript.py` in your terminal. Once again, if you do not have python3 type `brew install python3` or try running just  `python scripts/waterQualityScripts.py`
+To run the script type `python3 scripts/waterQualityScript.py` in your terminal. Once again, if you do not have python3 type `brew install python3` or try running just  `python scripts/waterQualityScripts.py`.
 
 
 This process once again will take about half an hour to an hour depending on your internet speed. 
@@ -183,7 +184,7 @@ Once this is completed proceed to step 11.
 Below I have attached a JSON file containing the 10 cities. 
 On MongoDB under collections click on insert document. 
 Unselect the list view and click the {} 
-Copy paste this below and after you pasted it delete everything that they had given to you so your file should only have this. 
+Copy paste this below and after you pasted it delete everything that MongoDB had automatically provided so your file should only have this. 
 ```json
 [{
   "_id": {
@@ -335,6 +336,7 @@ After the Next Step, return here instead of the README linked.
 # Step 13: Configure the application to run on Heroku 
 
 The instructions are listed below: 
+
 * https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/heroku.md
 
 
