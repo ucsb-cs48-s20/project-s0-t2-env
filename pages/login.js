@@ -7,16 +7,20 @@ import Button from "react-bootstrap/Button";
 import React, { Component, useState } from "react";
 import DatePicker from "react-datepicker";
 import { Test, QuestionGroup, Question, Option } from "react-multiple-choice";
+import ReactTable from "react-table";
+//import "react-table/react-table.css";
 
 export const getServerSideProps = requiredAuth;
 
 function PersonalInputPage(props) {
   const user = props.user;
   // const [username, setUsername] = useState(props.user.nickname); for future storing of data per user?
-  const [milesDriven, setMilesDriven] = useState("");
-  const [meatConsumption, setMeatConsumption] = useState("");
-  const [tempApplianceUsage, setTempApplianceUsage] = useState("");
+  const [milesDriven, setMilesDriven] = useState("N/A");
+  const [meatConsumption, setMeatConsumption] = useState("N/A");
+  const [tempApplianceUsage, setTempApplianceUsage] = useState("N/A");
   const [total, setTotal] = useState(0);
+  const [info, setInfo] = useState("");
+
   const calculateTotal = () => {
     setTotal(
       parseFloat(milesDriven) +
@@ -49,6 +53,38 @@ function PersonalInputPage(props) {
   const today = new Date();
   let pastWeek = new Date();
   pastWeek.setDate(pastWeek.getDate() - 6);
+
+  const getInfo = () => {
+    setInfo(
+      "On " +
+        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
+        ", " +
+        user.name +
+        " drove " +
+        parseFloat(milesDriven) +
+        " miles." +
+        "\n" +
+        "On " +
+        date2.toUTCString().substring(0, date2.toUTCString().indexOf(":") - 3) +
+        ", " +
+        user.name +
+        " ate " +
+        parseFloat(meatConsumption) +
+        " meals containing meat." +
+        "\n" +
+        "On " +
+        date3.toUTCString().substring(0, date3.toUTCString().indexOf(":") - 3) +
+        ", " +
+        user.name +
+        " had the air-conditioning or heater on for " +
+        parseFloat(tempApplianceUsage) +
+        " hours."
+    );
+  };
+
+  const resetInfo = () => {
+    setInfo("N/A");
+  };
 
   return (
     <Layout user={user}>
@@ -155,19 +191,19 @@ function PersonalInputPage(props) {
         style={{
           marginLeft: "25px",
         }}
-        onClick={calculateTotal}
+        onClick={getInfo}
       >
-        Calculate my Total
+        View My Information
       </button>
       <br></br>
       <br></br>
       <p
         style={{
           marginLeft: "25px",
+          whiteSpace: "pre-line",
         }}
       >
-        Your total is {total}
-        Your date is {date1.getMonth()}/{date1.getDate()}/{date1.getFullYear()}.
+        {info}
       </p>
       <button
         style={{
