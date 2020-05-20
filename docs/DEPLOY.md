@@ -156,13 +156,13 @@ When we deploy this to heroku we will change these to correlate on Heroku
 # Step 10: Creating the database
 The city's water information and carbon information is stored in a database, so now that you have this MongoDB collection you want to populate it with data. Here you have two options 
 - Run our scripts and populate the data base with every city in California (this might take a bit under an hour but you will get a more accurate representation of the full potentail of the app). If you choose this option proceed to Step 10a. 
--Or if you just want to manually copy and paste data for a couple of cities to see the general overview of the app proceed to Step 10b.
+-Or if you just want to manually copy and paste data for a couple of cities on MongoDB to see the general overview of the app proceed to Step 10b.
 
 # Step 10a: Populating the database through the script
 First you will want to run the Carbon script. 
 
 To see the file, navigate to the folder scripts and the file carbonScript.py 
-  * scripts/carbonScript.py`
+  * scripts/carbonScript.py
 
 To run the script type `python3 scripts/carbonScript.py` in your terminal. 
 
@@ -179,8 +179,11 @@ Once this is completed proceed to step 11.
 
 # Step 10b: Populating the database manually
 
-Below I have attached 10 cities in JSON format that you should be able to copy and paste into your database. 
-`
+Below I have attached a JSON file containing the 10 cities. 
+On MongoDB under collections click on insert document. 
+Unselect the list view and click the {} 
+Copy paste this below and after you pasted it delete everything that they had given to you so your file should only have this. 
+```json
 [{
   "_id": {
     "$oid": "5e9904551c9d440000023b9f"
@@ -311,6 +314,6 @@ Below I have attached 10 cities in JSON format that you should be able to copy a
   "totalDissolvedSolids": 980,
   "specificConductance": 1420
 }]
-` 
-If you cannot copy and paste it you can type in the fields yourself and choose as many or as few of the cities that you want to see the jist of the webiste. 
+```
 
+ 
