@@ -222,7 +222,7 @@ function PersonalInputPage(props) {
               whiteSpace: "pre-line",
             }}
           >
-            Log:
+            Log (last updated {today.toLocaleString()}):
             <br></br>
             {info}
           </p>
