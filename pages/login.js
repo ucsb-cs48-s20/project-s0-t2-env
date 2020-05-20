@@ -212,16 +212,21 @@ function PersonalInputPage(props) {
       )}
       <br></br>
       <br></br>
-      {milesDriven >= 0 && meatConsumption >= 0 && tempApplianceUsage >= 0 && (
-        <p
-          style={{
-            marginLeft: "25px",
-            whiteSpace: "pre-line",
-          }}
-        >
-          {info}
-        </p>
-      )}
+      {milesDriven >= 0 &&
+        meatConsumption >= 0 &&
+        tempApplianceUsage >= 0 &&
+        info.length > 0 && (
+          <p
+            style={{
+              marginLeft: "25px",
+              whiteSpace: "pre-line",
+            }}
+          >
+            Log:
+            <br></br>
+            {info}
+          </p>
+        )}
       {info.length > 0 && (
         <button
           style={{
