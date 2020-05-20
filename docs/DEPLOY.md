@@ -136,7 +136,7 @@ Copy and paste this directly into your .env
 
 This refers to the redirect url for when you logout of your oAuth. It will take you automatically back to the homepage which on localhost is just localhost:3000
 
-When we deploy this to heroku we will change these to correlate to Heroku
+When we deploy this to heroku we will change these to correlate on Heroku
 
 # Step 9d: Adding the mongodb connection
 
@@ -152,3 +152,165 @@ When we deploy this to heroku we will change these to correlate to Heroku
 - click on create a MongoDB user (this can have any username and password)
 - click on connect your application
 - copy the connection string and put it in .env under MONGO_CONNECTION_STRING
+
+# Step 10: Creating the database
+The city's water information and carbon information is stored in a database, so now that you have this MongoDB collection you want to populate it with data. Here you have two options 
+- Run our scripts and populate the data base with every city in California (this might take a bit under an hour but you will get a more accurate representation of the full potentail of the app). If you choose this option proceed to Step 10a. 
+-Or if you just want to manually copy and paste data for a couple of cities to see the general overview of the app proceed to Step 10b.
+
+# Step 10a: Populating the database through the script
+First you will want to run the Carbon script. 
+
+To see the file, navigate to the folder scripts and the file carbonScript.py 
+  * scripts/carbonScript.py`
+
+To run the script type `python3 scripts/carbonScript.py` in your terminal. 
+
+This process will take about half an hour to an hour depending on your internet speed. Once that script is completed you want to run the Water script. 
+
+Once again navigate to the folder scripts and the file waterQualityScript.py in order to see the file
+  * scripts/waterQualityScript.py
+  
+To run the script type `python3 scripts/waterQualityScript.py` in your terminal. 
+
+This process once again will take about half an hour to an hour depending on your internet speed. 
+
+Once this is completed proceed to step 11. 
+
+# Step 10b: Populating the database manually
+
+Below I have attached 10 cities in JSON format that you should be able to copy and paste into your database. 
+`
+[{
+  "_id": {
+    "$oid": "5e9904551c9d440000023b9f"
+  },
+  "name": "Goleta",
+  "county": "Santa Barbara",
+  "state": "CA",
+  "CO2": 679561,
+  "vehicleMilesTravelled": 24254,
+  "electricity": 5996,
+  "waterpH": 7.9,
+  "totalDissolvedSolids": 519,
+  "specificConductance": 827
+},{
+  "_id": {
+    "$oid": "5ea8b57b2a0fb9acf19b2d37"
+  },
+  "name": "Los Angeles",
+  "county": "Los Angeles",
+  "state": "CA",
+  "vehicleMilesTravelled": 14832,
+  "electricity": 5593,
+  "waterpH": 7.8,
+  "totalDissolvedSolids": 659,
+  "specificConductance": 999
+},{
+  "_id": {
+    "$oid": "5ea8c07534891058165fd5a7"
+  },
+  "name": "San Francisco",
+  "county": "San Francisco",
+  "state": "CA",
+  "CO2": 13443701,
+  "vehicleMilesTravelled": 14754,
+  "electricity": 5217,
+  "waterpH": 7.51,
+  "totalDissolvedSolids": 331,
+  "specificConductance": 567
+},{
+  "_id": {
+    "$oid": "5ea8c23234891058165fd5a8"
+  },
+  "name": "Santa Barbara",
+  "county": "Santa Barbara",
+  "state": "CA",
+  "CO2": 2425803,
+  "vehicleMilesTravelled": 22700,
+  "electricity": 6574,
+  "waterpH": 7.9,
+  "totalDissolvedSolids": 519,
+  "specificConductance": 827
+},{
+  "_id": {
+    "$oid": "5ea8c29334891058165fd5a9"
+  },
+  "name": "San Diego",
+  "county": "San Diego",
+  "state": "CA",
+  "CO2": 18674513,
+  "vehicleMilesTravelled": 21496,
+  "electricity": 6569,
+  "waterpH": 7.2,
+  "totalDissolvedSolids": 13200,
+  "specificConductance": 63300
+},{
+  "_id": {
+    "$oid": "5ea8ccd6d7beb347a9090ee5"
+  },
+  "name": "San Jose",
+  "county": "Santa Clara",
+  "state": "CA",
+  "CO2": 15830739,
+  "vehicleMilesTravelled": 28858,
+  "electricity": 6976,
+  "waterpH": 7.5,
+  "totalDissolvedSolids": 360,
+  "specificConductance": 603
+},{
+  "_id": {
+    "$oid": "5ea8cd29d7beb347a9090ee6"
+  },
+  "name": "Sacramento",
+  "county": "Sacramento",
+  "state": "CA",
+  "CO2": 11039447,
+  "vehicleMilesTravelled": 19694,
+  "electricity": 6791,
+  "waterpH": 8,
+  "totalDissolvedSolids": 123,
+  "specificConductance": 195
+},{
+  "_id": {
+    "$oid": "5ea8cdb7d7beb347a9090ee7"
+  },
+  "name": "Oakland",
+  "county": "Alameda",
+  "state": "CA",
+  "CO2": 5975632,
+  "vehicleMilesTravelled": 17403,
+  "electricity": 5602,
+  "waterpH": 7.2,
+  "totalDissolvedSolids": 986,
+  "specificConductance": 1660
+},{
+  "_id": {
+    "$oid": "5ea8ce1bd7beb347a9090ee8"
+  },
+  "name": "Anaheim",
+  "county": "Orange",
+  "state": "CA",
+  "CO2": 4765640,
+  "vehicleMilesTravelled": 22915,
+  "electricity": 7251,
+  "waterpH": 7.5,
+  "totalDissolvedSolids": 453,
+  "specificConductance": 716
+},{
+  "_id": {
+    "$oid": "5ea8cef9d7beb347a9090ee9"
+  },
+  "name": "Fresno",
+  "county": "Fresno",
+  "state": "CA",
+  "CO2": 7142670,
+  "vehicleMilesTravelled": 19428,
+  "electricity": 7480,
+  "waterpH": 8.1,
+  "totalDissolvedSolids": 980,
+  "specificConductance": 1420
+}]
+` 
+If you cannot copy and paste it you can type in the fields yourself and choose as many or as few of the cities that you want to see the jist of the webiste. 
+
