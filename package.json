@@ -33,7 +33,8 @@
     "react-bootstrap": "^1.0.0",
     "react-dom": "16.13.1",
     "react-icons": "^3.10.0",
-    "swr": "^0.1.18"
+    "swr": "^0.1.18",
+    "victory": "^34.3.5"
   },
   "devDependencies": {
     "@rckeller/cypress-unfetch": "^1.0.1",
