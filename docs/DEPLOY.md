@@ -156,7 +156,7 @@ When we deploy this to heroku we will change these to correlate on Heroku
 # Step 10: Creating the database
 The city's water information and carbon information is stored in a database, so now that you have this MongoDB collection you want to populate it with data. Here you have two options 
 - Run our scripts and populate the data base with every city in California (this might take a bit under an hour but you will get a more accurate representation of the full potentail of the app). If you choose this option proceed to Step 10a. 
--Or if you just want to manually copy and paste data for a couple of cities on MongoDB to see the general overview of the app proceed to Step 10b.
+- Or if you just want to manually copy and paste data for a couple of cities on MongoDB to see the general overview of the app proceed to Step 10b.
 
 # Step 10a: Populating the database through the script
 First you will want to run the Carbon script. 
@@ -164,14 +164,15 @@ First you will want to run the Carbon script.
 To see the file, navigate to the folder scripts and the file carbonScript.py 
   * scripts/carbonScript.py
 
-To run the script type `python3 scripts/carbonScript.py` in your terminal. 
+To run the script type `python3 scripts/carbonScript.py` in your terminal. If you do not have python3 type `brew install python3` or try running just `python scripts/carbonScripts.py`
 
 This process will take about half an hour to an hour depending on your internet speed. Once that script is completed you want to run the Water script. 
 
 Once again navigate to the folder scripts and the file waterQualityScript.py in order to see the file
   * scripts/waterQualityScript.py
   
-To run the script type `python3 scripts/waterQualityScript.py` in your terminal. 
+To run the script type `python3 scripts/waterQualityScript.py` in your terminal. Once again, if you do not have python3 type `brew install python3` or try running just  `python scripts/waterQualityScripts.py`
+
 
 This process once again will take about half an hour to an hour depending on your internet speed. 
 
@@ -315,5 +316,29 @@ Copy paste this below and after you pasted it delete everything that they had gi
   "specificConductance": 1420
 }]
 ```
+# Step 11: Running on Localhost
+At this point you should be able to run the application on localhost. 
+
+In your terminal type `npm run dev` to see the application run. Go to localhost:3000 to see if the product is running. 
+
+If it works, proceed to the next step. 
+
+# Step 12: Configuring secrets for GitHub Actions
+At this point, if you look at your GitHub repo, you’ll probably see that there is an red X next to the commit hash on the main page. 
+
+The red x signifies that GitHub Action is trying to run test cases for this repo, but the test cases are failing. This is likely because the secrets necessary for GitHub Actions to succeed have not yet been configured.
+
+Here is a link on how to configure the secrets for GitHub Actions: https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/auth0-github-actions.md
+
+After the Next Step, return here instead of the README linked. 
+
+# Step 13: Configure the application to run on Heroku 
+
+The instructions are listed below: 
+* https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/heroku.md
+
+
+
+
 
  
