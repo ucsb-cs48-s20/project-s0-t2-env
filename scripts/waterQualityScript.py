@@ -12,6 +12,8 @@ import numpy
 from datetime import datetime
 from datetime import timedelta
 from pymongo import MongoClient
+from decouple import config
+
 
 
 class city:
@@ -189,8 +191,7 @@ endDate = datetime.now()
 replace = True
 
 # connect to MongoDB
-client = MongoClient(
-    'MONGO_CONNECTION_STRING_FOR_TESTING')
+client = MongoClient(config('MONGO_CONNECTION_STRING_FOR_TESTING'))
 envDataBase = client.environment
 citiesCollection = envDataBase.cities
 
