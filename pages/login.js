@@ -215,7 +215,10 @@ function PersonalInputPage(props) {
       )}
     </Layout>
   );
-  /*
+}
+export default PersonalInputPage;
+
+/*
 return (
     <Layout user={user}>
       <p
@@ -368,5 +371,3 @@ return (
 );
 }
 */
-}
-export default PersonalInputPage;
