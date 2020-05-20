@@ -2,50 +2,36 @@ import Link from "next/link";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
+import CitiesSearch from "./CitiesSearch";
 
 function AppNavbar(props) {
   const user = props.user;
 
   return (
-    <Navbar variant="dark" style={{ backgroundColor: "#325d79" }} expand="lg">
+    <Navbar variant="dark" style={{ backgroundColor: "#edf4f8" }} expand="lg">
       <Container style={{ padding: "0px" }}>
         <Link href="/" passHref={true}>
-          <Navbar.Brand style={{ fontSize: "25px" }}>
+          <Navbar.Brand style={{ fontSize: "25px", color: "#325d79" }}>
             Environmental Impacts App
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
           <Nav className="mr-auto">
-            <DropdownButton
-              id="dropdown-basic-button"
-              title="Cities"
-              className="ml-2"
-            >
-              <Dropdown.Item href="/cities/goleta">Goleta</Dropdown.Item>
-              <Dropdown.Item href="/cities/santa-barbara">
-                Santa Barbara
-              </Dropdown.Item>
-              <Dropdown.Item href="/cities/los-angeles">
-                Los Angeles
-              </Dropdown.Item>
-              <Dropdown.Item href="/cities/san-francisco">
-                San Francisco
-              </Dropdown.Item>
-              <Dropdown.Item href="/cities/san-diego">San Diego</Dropdown.Item>
-              <Dropdown.Item href="/cities/san-jose">San Jose</Dropdown.Item>
-              <Dropdown.Item href="/cities/sacramento">
-                Sacramento
-              </Dropdown.Item>
-              <Dropdown.Item href="/cities/oakland">Oakland</Dropdown.Item>
-              <Dropdown.Item href="/cities/anaheim">Anaheim</Dropdown.Item>
-              <Dropdown.Item href="/cities/fresno">Fresno</Dropdown.Item>
-            </DropdownButton>
+            <CitiesSearch />
+            {user && (
+              <Link href="/login" passHref={true}>
+                <Nav.Link
+                  style={{ fontSize: "15px", color: "#325d79" }}
+                  className="mt-4"
+                >
+                  Personal Input
+                </Nav.Link>
+              </Link>
+            )}
           </Nav>
           <Nav>
             {user ? (

@@ -1,7 +1,5 @@
 import useSWR from "swr";
 import Spinner from "react-bootstrap/Spinner";
-import Image from "react-bootstrap/Image";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ListGroup from "react-bootstrap/ListGroup";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -10,7 +8,7 @@ import { fetch } from "../../utils/fetch";
 import Layout from "../../components/Layout";
 import { optionalAuth } from "../../utils/ssr";
 import { useRouter } from "next/router";
-import { FaMapPin, FaExternalLinkAlt } from "react-icons/fa";
+import { FaMapPin } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
 
 function numberWithCommas(x) {
@@ -36,17 +34,17 @@ function City() {
     <Container>
       <Card>
         <Card.Body>
-          <Card.Title>
+          <Card.Title data-cy="location">
             {data.name}, {data.state}
           </Card.Title>
-          <Card.Subtitle className="mb-2 text-muted">
+          <Card.Subtitle className="mb-2 text-muted" data-cy="coordinates">
             <FaMapPin /> {data.latitude}, {data.longitude}
           </Card.Subtitle>
           <ListGroup variant="flush">
-            <ListGroup.Item>
+            <ListGroup.Item data-cy="population">
               Population: {numberWithCommas(data.population)}
             </ListGroup.Item>
-            <ListGroup.Item>
+            <ListGroup.Item data-cy="carbon">
               <span>
                 Carbon Emissions:
                 <OverlayTrigger
@@ -67,7 +65,7 @@ function City() {
                 </OverlayTrigger>
               </span>
             </ListGroup.Item>
-            <ListGroup.Item>
+            <ListGroup.Item data-cy="waterquality">
               <span>
                 Water pH Level:
                 <OverlayTrigger
@@ -124,7 +122,7 @@ function City() {
                 </OverlayTrigger>
               </span>
             </ListGroup.Item>
-            <ListGroup.Item>
+            <ListGroup.Item data-cy="airquality">
               <span>
                 Today's Air Quality Index (AQI):&nbsp;
                 <OverlayTrigger
