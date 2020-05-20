@@ -6,6 +6,7 @@ from datetime import datetime
 from datetime import timedelta
 from pymongo import MongoClient
 from geopy.distance import lonlat, distance
+from decouple import config
 
 
 class city:
@@ -28,16 +29,14 @@ class station:
         self.stateCode = stateCode
 
 # input state id for specific state or "all" for all the states
-def getCities(file, state, number_of_cities):
+def getCities(file, state):
     df = pd.read_csv(file, usecols=[
         'city_ascii', 'state_id', 'county_name', 'lat', 'lng'])
     cities = []
     if(not state == "all"):
         df = df.loc[df['state_id'] == state]
     df = df.to_records()
-    for i, dfCity in enumerate(df):
-        if(i >= number_of_cities and number_of_cities):
-            break
+    for dfCity in df:
         cityObject = city(dfCity.lat, dfCity.lng, dfCity.city_ascii,
                           dfCity.county_name, dfCity.state_id)
         cities.append(cityObject)
@@ -91,19 +90,19 @@ def uploadToMongoDB(city):
         )
         print("Updated " + city.name)
     # else add the city to the database
-    else:
-        data = {
-            "name": city.name,
-            "latitude": city.latitude,
-            "longitude": city.longitude,
-            "county": city.county,
-            "state": city.state,
-            "waterpH": city.pH,
-            "totalDissolvedSolids": city.totalDissolvedSolids,
-            "specificConductance": city.specificConductance
-        }
-        citiesCollection.insert_one(data)
-        print("Uploaded " + city.name)
+    # else:
+    #     data = {
+    #         "name": city.name,
+    #         "latitude": city.latitude,
+    #         "longitude": city.longitude,
+    #         "county": city.county,
+    #         "state": city.state,
+    #         "waterpH": city.pH,
+    #         "totalDissolvedSolids": city.totalDissolvedSolids,
+    #         "specificConductance": city.specificConductance
+    #     }
+    #     citiesCollection.insert_one(data)
+    #     print("Uploaded " + city.name)
 
 
 def readFile(city, stations, stateCodes, df, within):
@@ -165,7 +164,7 @@ def run(cities, stations, stateCodes, within, replace, file):
 startTime = datetime.now()
 citiesFile = os.getcwd() + "/simplemaps_uscities_basicv1/uscities.csv"
 state = "CA"
-cities = getCities(citiesFile, state, 1)
+cities = getCities(citiesFile, state)
 if(not(state == "all")):
     stationsFile = os.getcwd() + "/waterData/" + state + "/station.csv"
     file = os.getcwd() + "/waterData/" + state + "/narrowresult.csv"
@@ -181,10 +180,9 @@ stateCodes = getStateCodes(stateCodesFile)
 replace = True
 
 # connect to MongoDB
-client = MongoClient(
-    'mongodb+srv://guestuser:RktBAzVKMFoI1N7c@cluster0-qbnoy.mongodb.net/test?retryWrites=true&w=majority')
+client = MongoClient(config('MONGO_CONNECTION_STRING_FOR_TESTING'))
 envDataBase = client.environment
-citiesCollection = envDataBase.citiesTest
+citiesCollection = envDataBase.cities
 
 # run
 run(cities, stations, stateCodes, 15, replace, file)
