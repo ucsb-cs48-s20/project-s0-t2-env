@@ -24,7 +24,6 @@ handler.get(async (req, res) => {
   const {
     name,
     state,
-    population,
     CO2,
     waterpH,
     totalDissolvedSolids,
