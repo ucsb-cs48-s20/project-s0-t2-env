@@ -183,26 +183,31 @@ function PersonalInputPage(props) {
         maxDate={today}
         dateFormat="MMMM d, yyyy"
       />
+
       <br></br>
       <br></br>
-      <button
-        style={{
-          marginLeft: "25px",
-        }}
-        onClick={getInfo}
-      >
-        View My Information
-      </button>
+      {milesDriven >= 0 && meatConsumption >= 0 && tempApplianceUsage >= 0 && (
+        <button
+          style={{
+            marginLeft: "25px",
+          }}
+          onClick={getInfo}
+        >
+          View My Information
+        </button>
+      )}
       <br></br>
       <br></br>
-      <p
-        style={{
-          marginLeft: "25px",
-          whiteSpace: "pre-line",
-        }}
-      >
-        {info}
-      </p>
+      {milesDriven >= 0 && meatConsumption >= 0 && tempApplianceUsage >= 0 && (
+        <p
+          style={{
+            marginLeft: "25px",
+            whiteSpace: "pre-line",
+          }}
+        >
+          {info}
+        </p>
+      )}
       {info.length > 0 && (
         <button
           style={{
