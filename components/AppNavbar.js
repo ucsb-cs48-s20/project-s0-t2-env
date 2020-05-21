@@ -11,6 +11,7 @@ import {
 } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
 function AppNavbar(props) {
   const user = props.user;
@@ -36,6 +37,7 @@ function AppNavbar(props) {
         {user && (
           <Link href="/login" passHref={true}>
             <Nav.Link
+              href="/login"
               style={{
                 fontSize: "15px",
                 color: theme.palette.primary.contrastText,
