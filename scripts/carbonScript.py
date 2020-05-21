@@ -3,7 +3,7 @@ from openpyxl import load_workbook
 from decouple import config
 
 try: 
-	client = MongoClient(config('MONGO_CONNECTION_STRING_FOR_TESTING')) 
+	client = MongoClient(config('MONGO_CONNECTION_STRING'))
 	envDb = client.environment
 	collection = envDb.cities
 	print("Connected successfully!") 
