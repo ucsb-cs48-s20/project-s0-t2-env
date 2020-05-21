@@ -1,28 +1,12 @@
 import Layout from "../components/Layout";
 import Carousel from "react-bootstrap/Carousel";
-import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
 import { MdTrendingUp, MdCompareArrows, MdFlag } from "react-icons/md";
 
 import { optionalAuth } from "../utils/ssr";
+import { Container } from "@material-ui/core";
 export const getServerSideProps = optionalAuth;
-
-// function HomePage(props) {
-//   const user = props.user;
-
-//   return (
-//     <Layout user={user}>
-//       {user ? (
-//         <div>
-//           You're logged in! Here's what the server knows about you:
-//           <pre>{JSON.stringify(user, null, "\t")}</pre>
-//         </div>
-//       ) : (
-//         <div>You're not logged in!</div>
-//       )}
-//     </Layout>
-//   );
 
 function HomePage(props) {
   const user = props.user;

@@ -180,7 +180,7 @@ stateCodes = getStateCodes(stateCodesFile)
 replace = True
 
 # connect to MongoDB
-client = MongoClient(config('MONGO_CONNECTION_STRING_FOR_TESTING'))
+client = MongoClient(config('MONGO_CONNECTION_STRING'))
 envDataBase = client.environment
 citiesCollection = envDataBase.cities
 

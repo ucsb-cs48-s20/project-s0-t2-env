@@ -1,18 +1,17 @@
-import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
 import useSWR from "swr";
 import { fetch } from "../utils/fetch";
 import { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import Link from "next/link";
+import { useTheme } from "@material-ui/core";
+import { createFilterOptions } from "@material-ui/lab/Autocomplete";
 
 export default function CitiesSearch() {
   const { data: names } = useSWR("/api/cities/all", fetch, {});
-
-  const defaultProps = {
-    options: names,
-  };
+  const theme = useTheme();
+  const filterOptions = createFilterOptions({
+    limit: 5,
+  });
 
   const [value, setValue] = useState(null);
   useEffect(() => {
@@ -20,10 +19,14 @@ export default function CitiesSearch() {
       window.location.href = "/cities/" + value;
     }
   });
+  if (!names) {
+    return <div></div>;
+  }
   return (
     <div style={{ width: 300 }}>
       <Autocomplete
-        {...defaultProps}
+        filterOptions={filterOptions}
+        options={names}
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);

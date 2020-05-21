@@ -1,66 +1,75 @@
-import Link from "next/link";
-import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
-import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
+import NextLink from "next/link";
 import CitiesSearch from "./CitiesSearch";
+import {
+  Button,
+  AppBar,
+  Toolbar,
+  Typography,
+  Avatar,
+  Chip,
+  Link,
+} from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import Navbar from "react-bootstrap/Navbar";
 
 function AppNavbar(props) {
   const user = props.user;
+  const theme = useTheme();
 
   return (
-    <Navbar variant="dark" style={{ backgroundColor: "#edf4f8" }} expand="lg">
-      <Container style={{ padding: "0px" }}>
-        <Link href="/" passHref={true}>
-          <Navbar.Brand style={{ fontSize: "25px", color: "#325d79" }}>
+    <AppBar position="static">
+      <Toolbar style={{ minWidth: "65%", margin: "auto" }}>
+        <NextLink passHref={true} href="/">
+          <Navbar.Brand
+            variant="h6"
+            style={{
+              fontSize: "25px",
+              color: theme.palette.primary.contrastText,
+            }}
+          >
             Environmental Impacts App
           </Navbar.Brand>
-        </Link>
-        <Navbar.Toggle />
-        <Navbar.Collapse className="justify-content-end">
-          <Nav className="mr-auto">
-            <CitiesSearch />
-            {user && (
-              <Link href="/login" passHref={true}>
-                <Nav.Link
-                  style={{ fontSize: "15px", color: "#325d79" }}
-                  className="mt-4"
-                >
-                  Personal Input
-                </Nav.Link>
-              </Link>
-            )}
-          </Nav>
-          <Nav>
-            {user ? (
-              <NavDropdown
-                title={
-                  <>
-                    Hi, {user.name}
-                    <Image
-                      className="ml-2"
-                      src={user.picture}
-                      width={24}
-                      height={24}
-                    />
-                  </>
-                }
-              >
-                <NavDropdown.Item className="text-danger" href="/api/logout">
-                  Logout
-                </NavDropdown.Item>
-              </NavDropdown>
-            ) : (
-              <Button data-cy="login" href="/api/login">
-                Login
-              </Button>
-            )}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+        </NextLink>
+        <div style={{ marginLeft: theme.spacing(2) }}>
+          <CitiesSearch />
+        </div>
+        {user && (
+          <Link href="/login" passHref={true}>
+            <Nav.Link
+              style={{
+                fontSize: "15px",
+                color: theme.palette.primary.contrastText,
+              }}
+              className="mt-4"
+            >
+              Personal Input
+            </Nav.Link>
+          </Link>
+        )}
+        <div style={{ flexGrow: 1 }} />
+        {user ? (
+          <div>
+            <Chip
+              avatar={<Avatar src={user.picture} width={24} height={24} />}
+              label={user.name}
+              style={{ marginRight: "10px" }}
+            />
+            <Button variant="outlined" color="secondary" href="/api/logout">
+              Logout
+            </Button>
+          </div>
+        ) : (
+          <Button
+            color="secondary"
+            variant="contained"
+            data-cy="login"
+            href="/api/login"
+          >
+            Login
+          </Button>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 }
 
