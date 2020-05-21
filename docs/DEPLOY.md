@@ -165,7 +165,12 @@ After you have completed that we are ready to run the script.
 
 First we will want to run the Carbon script.
 
-To see the file, navigate to the folder scripts and the file carbonScript.py
+# <<<<<<< HEAD
+
+First we will want to run the Carbon script.
+
+> > > > > > > a1f3a38a51f4b1f0b1918ec19ffc605b30fa13ab
+> > > > > > > To see the file, navigate to the folder scripts and the file carbonScript.py
 
 - scripts/carbonScript.py
 
@@ -179,7 +184,12 @@ Once again navigate to the folder scripts and the file waterQualityScript.py in 
 
 To run the script type `python3 scripts/waterQualityScriptStable.py` in your terminal.
 
+<<<<<<< HEAD
 This process once again will take about half an hour to an hour depending on your internet speed.
+=======
+To run the script type `python3 scripts/waterQualityScript.py` in your terminal. Once again, if you do not have python3 type `brew install python3` or try running just `python scripts/waterQualityScripts.py`.
+
+> > > > > > > a1f3a38a51f4b1f0b1918ec19ffc605b30fa13ab
 
 Once this is completed proceed to step 9.
 
@@ -212,6 +222,7 @@ Once you are done click insert and you should see a collection that resembles th
     "waterpH": 7.9,
     "totalDissolvedSolids": 519,
     "specificConductance": 827
+<<<<<<< HEAD
   },
   {
     "_id": {
@@ -326,6 +337,122 @@ Once you are done click insert and you should see a collection that resembles th
   },
   {
     "_id": {
+=======
+  },
+  {
+    "_id": {
+      "$oid": "5ea8b57b2a0fb9acf19b2d37"
+    },
+    "name": "Los Angeles",
+    "county": "Los Angeles",
+    "state": "CA",
+    "vehicleMilesTravelled": 14832,
+    "electricity": 5593,
+    "waterpH": 7.8,
+    "totalDissolvedSolids": 659,
+    "specificConductance": 999
+  },
+  {
+    "_id": {
+      "$oid": "5ea8c07534891058165fd5a7"
+    },
+    "name": "San Francisco",
+    "county": "San Francisco",
+    "state": "CA",
+    "CO2": 13443701,
+    "vehicleMilesTravelled": 14754,
+    "electricity": 5217,
+    "waterpH": 7.51,
+    "totalDissolvedSolids": 331,
+    "specificConductance": 567
+  },
+  {
+    "_id": {
+      "$oid": "5ea8c23234891058165fd5a8"
+    },
+    "name": "Santa Barbara",
+    "county": "Santa Barbara",
+    "state": "CA",
+    "CO2": 2425803,
+    "vehicleMilesTravelled": 22700,
+    "electricity": 6574,
+    "waterpH": 7.9,
+    "totalDissolvedSolids": 519,
+    "specificConductance": 827
+  },
+  {
+    "_id": {
+      "$oid": "5ea8c29334891058165fd5a9"
+    },
+    "name": "San Diego",
+    "county": "San Diego",
+    "state": "CA",
+    "CO2": 18674513,
+    "vehicleMilesTravelled": 21496,
+    "electricity": 6569,
+    "waterpH": 7.2,
+    "totalDissolvedSolids": 13200,
+    "specificConductance": 63300
+  },
+  {
+    "_id": {
+      "$oid": "5ea8ccd6d7beb347a9090ee5"
+    },
+    "name": "San Jose",
+    "county": "Santa Clara",
+    "state": "CA",
+    "CO2": 15830739,
+    "vehicleMilesTravelled": 28858,
+    "electricity": 6976,
+    "waterpH": 7.5,
+    "totalDissolvedSolids": 360,
+    "specificConductance": 603
+  },
+  {
+    "_id": {
+      "$oid": "5ea8cd29d7beb347a9090ee6"
+    },
+    "name": "Sacramento",
+    "county": "Sacramento",
+    "state": "CA",
+    "CO2": 11039447,
+    "vehicleMilesTravelled": 19694,
+    "electricity": 6791,
+    "waterpH": 8,
+    "totalDissolvedSolids": 123,
+    "specificConductance": 195
+  },
+  {
+    "_id": {
+      "$oid": "5ea8cdb7d7beb347a9090ee7"
+    },
+    "name": "Oakland",
+    "county": "Alameda",
+    "state": "CA",
+    "CO2": 5975632,
+    "vehicleMilesTravelled": 17403,
+    "electricity": 5602,
+    "waterpH": 7.2,
+    "totalDissolvedSolids": 986,
+    "specificConductance": 1660
+  },
+  {
+    "_id": {
+      "$oid": "5ea8ce1bd7beb347a9090ee8"
+    },
+    "name": "Anaheim",
+    "county": "Orange",
+    "state": "CA",
+    "CO2": 4765640,
+    "vehicleMilesTravelled": 22915,
+    "electricity": 7251,
+    "waterpH": 7.5,
+    "totalDissolvedSolids": 453,
+    "specificConductance": 716
+  },
+  {
+    "_id": {
+>>>>>>> a1f3a38a51f4b1f0b1918ec19ffc605b30fa13ab
       "$oid": "5ea8cef9d7beb347a9090ee9"
     },
     "name": "Fresno",
@@ -345,7 +472,12 @@ Once you are done click insert and you should see a collection that resembles th
 
 At this point you should be able to run the application on localhost.
 
-In your terminal type `npm run dev` to see the application run. Go to localhost:3000 to see if the product is running.
+# <<<<<<< HEAD
+
+At this point you should be able to run the application on localhost.
+
+> > > > > > > a1f3a38a51f4b1f0b1918ec19ffc605b30fa13ab
+> > > > > > > In your terminal type `npm run dev` to see the application run. Go to localhost:3000 to see if the product is running.
 
 If it works, proceed to the next step.
 
@@ -372,3 +504,12 @@ After **Step 10** is complete return here.
 # Step 12: Continue with lab09
 
 Congratulations! The app should now be working on Heroku. Refer back to https://ucsb-cs48.github.io/s20/lab/lab09/ to continue with the rest of the lab.
+<<<<<<< HEAD
+=======
+
+# Step 13: Configure the application to run on Heroku
+
+The instructions are listed below:
+
+- https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/heroku.md
+  > > > > > > > a1f3a38a51f4b1f0b1918ec19ffc605b30fa13ab
