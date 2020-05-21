@@ -1,9 +1,23 @@
-import Container from "react-bootstrap/Container";
 import AppNavbar from "./AppNavbar";
 import AppFooter from "./AppFooter";
+import { ThemeProvider, createMuiTheme } from "@material-ui/core";
 
 function Layout(props) {
   const user = props.user;
+  const theme = createMuiTheme({
+    palette: {
+      primary: {
+        main: "#8ebd7b",
+        contrastText: "#ffffff",
+      },
+      secondary: {
+        main: "#758E9D",
+      },
+    },
+    typography: {
+      fontFamily: ["Lato"],
+    },
+  });
 
   return (
     <>
@@ -16,10 +30,13 @@ function Layout(props) {
           font-family: Lato;
           letter-spacing: 1px;
           word-spacing: 2px;
+          color: ${"#000000"};
         }
       `}</style>
-      <AppNavbar user={user} />
-      {props.children}
+      <ThemeProvider theme={theme}>
+        <AppNavbar user={user} />
+        {props.children}
+      </ThemeProvider>
       <AppFooter />
     </>
   );
