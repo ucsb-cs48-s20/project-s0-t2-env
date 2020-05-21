@@ -21,7 +21,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 
-function numberWithCommas(x) {
+export function numberWithCommas(x) {
   return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
