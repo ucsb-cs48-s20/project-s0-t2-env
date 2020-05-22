@@ -1,11 +1,15 @@
 describe("Home page", () => {
-  context("nav bar", () => {
+  context("App/Nav Bar", () => {
     beforeEach(() => {
       cy.visit("http://localhost:3000");
     });
 
     it("exists", () => {
-      cy.get("nav.navbar").should("exist");
+      cy.get("[data-cy=appbar]");
+    });
+
+    it("has a home page brand button", () => {
+      cy.get(".navbar-brand").should("exist");
     });
   });
   context("search bar", () => {
@@ -18,12 +22,11 @@ describe("Home page", () => {
     });
 
     it("can be typed in", () => {
-      cy.get("#searchfield");
-      //cy.get("div[data-cy='search-input']")
-      //  .parent()
-      //  .within(() => {
-      //    cy.get("input").type("StackOverflowHelp");
-      //  });
+      cy.get("div[data-cy='searchfield']")
+        .parent()
+        .within(() => {
+          cy.get("input").type("Goleta").should("have.value", "Goleta");
+        });
     });
   });
 });

@@ -46,14 +46,16 @@ function City() {
       <title>
         {data.name}, {data.state} | Environmental Impacts Dashboard
       </title>
-      <Typography variant="h3">
+      <Typography variant="h3" data-cy="location">
         {data.name}, {data.state}
       </Typography>
-      <Typography>Population: {numberWithCommas(data.population)}</Typography>
+      <Typography data-cy="population">
+        Population: {numberWithCommas(data.population)}
+      </Typography>
       <CardContent>
         <List>
           <Divider />
-          <Typography style={{ fontSize: 20 }}>
+          <Typography style={{ fontSize: 20 }} data-cy="carbon">
             Emits
             <Tooltip
               title="Learn more about this calculation"
@@ -128,7 +130,7 @@ function City() {
             />
           </svg>
           <Divider />
-          <Typography style={{ fontSize: 20 }}>
+          <Typography style={{ fontSize: 20 }} data-cy="waterquality">
             Water pH Level:
             <Tooltip
               title="Learn more about this calculation"
@@ -171,7 +173,7 @@ function City() {
               </Link>
             </Tooltip>
           </Typography>
-          <Typography style={{ fontSize: 20 }}>
+          <Typography style={{ fontSize: 20 }} data-cy="airquality">
             Today's Air Quality Index (AQI):&nbsp;
             <Tooltip
               title="Learn more about this calculation"

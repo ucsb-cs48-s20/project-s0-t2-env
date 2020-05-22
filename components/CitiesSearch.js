@@ -34,7 +34,12 @@ export default function CitiesSearch() {
         id="clear-on-escape"
         clearOnEscape
         renderInput={(params) => (
-          <TextField {...params} label="Cities" margin="normal" />
+          <TextField
+            {...params}
+            label="Cities"
+            margin="normal"
+            data-cy="searchfield"
+          />
         )}
       />
     </div>

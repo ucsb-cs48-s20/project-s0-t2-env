@@ -18,7 +18,7 @@ function AppNavbar(props) {
   const theme = useTheme();
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" data-cy="appbar">
       <Toolbar style={{ minWidth: "65%", margin: "auto" }}>
         <NextLink passHref={true} href="/">
           <Navbar.Brand
@@ -42,6 +42,7 @@ function AppNavbar(props) {
                 color: theme.palette.primary.contrastText,
               }}
               className="mt-4"
+              data-cy="personal-input"
             >
               Personal Input
             </Nav.Link>

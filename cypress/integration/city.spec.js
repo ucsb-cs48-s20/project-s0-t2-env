@@ -1,17 +1,20 @@
 describe("Cities page", () => {
   it("is reachable from the search bar", () => {
     cy.visit("http://localhost:3000");
-    //cy.get("[data-cy=search]");
-    //cy.get("Cities").click()
-    //cy.url().should("contain", "/cities/goleta");
+    cy.get("div[data-cy='searchfield']")
+      .parent()
+      .within(() => {
+        cy.get("input").type("Goleta");
+      });
+    cy.contains("Goleta").click({ force: true });
+    cy.url().should("contain", "/cities/Goleta");
   });
 
   it("contains the correct data", () => {
     cy.visit("http://localhost:3000/cities/goleta");
     cy.get("[data-cy=location]").contains("Goleta, CA");
-    cy.get("[data-cy=coordinates]").contains("34.4358295, -119.82763890000001");
-    cy.get("[data-cy=population]").contains("Population: ");
-    cy.get("[data-cy=carbon]").contains("Carbon Emissions:");
+    cy.get("[data-cy=population]").contains("Population:");
+    cy.get("[data-cy=carbon]").contains("Emits");
     cy.get("[data-cy=waterquality]").contains("Water pH Level:");
     cy.get("[data-cy=waterquality]")
       .contains("Total Dissolved Solids:")

@@ -20,19 +20,19 @@ async function getUserSession(req) {
   }
 
   if (session && session.user) {
-    await attachUserMetadata(session.user);
+    //await attachUserMetadata(session.user);
     return session.user;
   }
   return null;
 }
 
 export async function optionalAuth({ req }) {
-  const session = await auth0.getSession(req);
+  const user = await getUserSession(req);
 
-  if (session && session.user) {
+  if (user) {
     return {
       props: {
-        user: session.user,
+        user,
       },
     };
   }
