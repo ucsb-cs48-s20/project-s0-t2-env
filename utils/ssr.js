@@ -41,12 +41,12 @@ export async function optionalAuth({ req }) {
 }
 
 export async function requiredAuth({ req, res }) {
-  const session = await auth0.getSession(req);
+  const user = await getUserSession(req);
 
-  if (session && session.user) {
+  if (user) {
     return {
       props: {
-        user: session.user,
+        user,
       },
     };
   }

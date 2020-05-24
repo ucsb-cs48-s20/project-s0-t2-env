@@ -41,6 +41,7 @@ function AppNavbar(props) {
                 fontSize: "15px",
                 color: theme.palette.primary.contrastText,
               }}
+              href="/login"
               className="mt-4"
               data-cy="personal-input"
             >
