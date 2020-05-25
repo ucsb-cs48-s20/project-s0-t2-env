@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { FaMapPin, FaTree } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
 import { VictoryPie, VictoryLabel, VictoryTooltip } from "victory";
+import Image from "react-bootstrap/Image";
 import {
   useTheme,
   Card,
@@ -183,6 +184,12 @@ function City() {
               </Link>
             </Tooltip>
           </Typography>
+          <Image
+            src="https://d2v9ipibika81v.cloudfront.net/uploads/sites/190/AQI-Table.png"
+            align="center"
+            width="400"
+            height="300"
+          />
         </List>
       </CardContent>
     </div>
