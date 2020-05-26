@@ -26,7 +26,7 @@ function numberWithCommas(x) {
   // return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
   return x
     .toString()
-    .substring(0, x.indexOf("."))
+    .substring(0, x.toString().indexOf("."))
     .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
