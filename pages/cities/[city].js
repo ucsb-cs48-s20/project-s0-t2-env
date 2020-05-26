@@ -23,11 +23,14 @@ import {
 } from "@material-ui/core";
 
 function numberWithCommas(x) {
-  // return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-  return x
-    .toString()
-    .substring(0, x.toString().indexOf("."))
-    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  if (x.toString().indexOf(".") > 0) {
+    return x
+      .toString()
+      .substring(0, x.toString().indexOf("."))
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  } else {
+    return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  }
 }
 
 function City() {
