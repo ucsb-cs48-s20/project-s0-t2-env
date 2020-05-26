@@ -23,7 +23,11 @@ import {
 } from "@material-ui/core";
 
 function numberWithCommas(x) {
-  return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  // return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  return x
+    .toString()
+    .substring(0, x.indexOf("."))
+    .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 }
 
 function City() {
@@ -87,7 +91,7 @@ function City() {
                 {numberWithCommas(Math.floor(data.CO2 / 0.06))}
               </Link>
             </Tooltip>{" "}
-            trees to sequester that carbon .
+            trees to sequester that carbon.
           </Typography>
           <Divider />
           <svg viewBox="0 0 400 400" width="400px" height="400px">
