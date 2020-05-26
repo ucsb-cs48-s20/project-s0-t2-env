@@ -4,6 +4,7 @@ import { ThemeProvider, createMuiTheme } from "@material-ui/core";
 
 function Layout(props) {
   const user = props.user;
+  const names = props.names;
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -34,7 +35,7 @@ function Layout(props) {
         }
       `}</style>
       <ThemeProvider theme={theme}>
-        <AppNavbar user={user} />
+        <AppNavbar user={user} names={names} />
         {props.children}
       </ThemeProvider>
       <AppFooter />

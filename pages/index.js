@@ -4,15 +4,19 @@ import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
 import { MdTrendingUp, MdCompareArrows, MdFlag } from "react-icons/md";
 
+import useSWR from "swr";
+import { fetch } from "../utils/fetch";
+
 import { optionalAuth } from "../utils/ssr";
 import { Container } from "@material-ui/core";
 export const getServerSideProps = optionalAuth;
 
 function HomePage(props) {
   const user = props.user;
+  const { data: names } = useSWR("/api/cities/all", fetch, {});
 
   return (
-    <Layout user={user}>
+    <Layout user={user} names={names}>
       <title>Environmental Impacts Dashboard</title>
       <style jsx>
         {`

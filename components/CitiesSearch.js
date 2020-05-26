@@ -6,8 +6,9 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useTheme } from "@material-ui/core";
 import { createFilterOptions } from "@material-ui/lab/Autocomplete";
 
-export default function CitiesSearch() {
-  const { data: names } = useSWR("/api/cities/all", fetch, {});
+export default function CitiesSearch(props) {
+  const names = props.names;
+  // const { data: names } = useSWR("/api/cities/all", fetch, {});
   const theme = useTheme();
   const filterOptions = createFilterOptions({
     limit: 5,

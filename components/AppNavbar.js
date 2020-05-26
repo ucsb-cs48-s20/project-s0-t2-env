@@ -32,7 +32,7 @@ function AppNavbar(props) {
           </Navbar.Brand>
         </NextLink>
         <div style={{ marginLeft: theme.spacing(2) }}>
-          <CitiesSearch />
+          <CitiesSearch names={props.names} />
         </div>
         {user && (
           <Link href="/login" passHref={true}>
