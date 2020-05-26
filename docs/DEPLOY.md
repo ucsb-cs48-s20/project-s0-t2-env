@@ -1,3 +1,6 @@
+### If you want to follow a video tutorial while looking through the lab instructions, below is a link for the video
+- https://www.youtube.com/watch?v=_HVl3toFL5s
+
 # Step 1: Fork the repo
 
 Navigate to our project repository https://github.com/ucsb-cs48-s20/project-s0-t2-env
@@ -344,8 +347,6 @@ Once you are done click insert and you should see a collection that resembles th
 ```
 
 # Step 9: Running on Localhost
-
-At this point you should be able to run the application on localhost.
 
 At this point you should be able to run the application on localhost.
 
