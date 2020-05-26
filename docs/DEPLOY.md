@@ -347,8 +347,6 @@ Once you are done click insert and you should see a collection that resembles th
 
 At this point you should be able to run the application on localhost.
 
-At this point you should be able to run the application on localhost.
-
 In your terminal type `npm run dev` to see the application run. Go to localhost:3000 to see if the product is running.
 
 If it works, proceed to the next step.
