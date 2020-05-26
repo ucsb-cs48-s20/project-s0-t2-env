@@ -1,5 +1,5 @@
 import React from "react";
-import { select, text } from "@storybook/addon-knobs";
+import { select, text, array } from "@storybook/addon-knobs";
 import AppNavbar from "../components/AppNavbar";
 
 export default {
@@ -8,7 +8,24 @@ export default {
 };
 
 export const loggedOut = () => {
-  return <AppNavbar />;
+  const names = array(
+    "Names",
+    [
+      "Los Angeles",
+      "Goleta",
+      "Isla Vista",
+      "San Jose",
+      "Fremont",
+      "Newport Beach",
+      "",
+      "Cupertino",
+      "Santa Barbara",
+      "San Diego",
+      "Sunnyvale",
+    ],
+    ","
+  );
+  return <AppNavbar names={names} />;
 };
 
 export const loggedIn = () => {
@@ -19,5 +36,22 @@ export const loggedIn = () => {
     "https://avatars3.githubusercontent.com/u/1119017"
   );
   const user = { name, role, picture };
-  return <AppNavbar user={user} />;
+  const names = array(
+    "Names",
+    [
+      "Los Angeles",
+      "Goleta",
+      "Isla Vista",
+      "San Jose",
+      "Fremont",
+      "Newport Beach",
+      "",
+      "Cupertino",
+      "Santa Barbara",
+      "San Diego",
+      "Sunnyvale",
+    ],
+    ","
+  );
+  return <AppNavbar user={user} names={names} />;
 };
