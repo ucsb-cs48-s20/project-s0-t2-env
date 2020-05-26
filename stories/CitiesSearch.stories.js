@@ -15,6 +15,7 @@ export default {
 
 export const SimpleCitiesSearch = () => {
   const data = object(useSWR("/api/cities/all", fetch, {}));
+
   //   const data = object(useSWR("/api/shortJSON.json", fetch, {}));
   //   const data = object("Data", ["A", "B", "C", "D"]);
   const theme = object(useTheme());
@@ -31,17 +32,18 @@ export const SimpleCitiesSearch = () => {
   const opts = array("Options", [1, 2, 3, 4, 5, 6, 7, 8], ",");
   */
 
+  /*
   const value = text("Value", "San Francisco");
 
-  const names = { data, filterOptions };
+  const names = { data, filterOptions }; */
   //   const filterOptions = { options, filter };
   return (
     <AppBar>
       <Toolbar>
         <div>
           <CitiesSearch
-            names={names}
-            value={value}
+            names={data}
+            /*value={value}*/
             filterOptions={filterOptions}
           />
         </div>
