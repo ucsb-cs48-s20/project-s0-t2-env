@@ -143,6 +143,12 @@ function City() {
                 {data.waterpH}
               </Link>
             </Tooltip>
+            <Image
+              src="https://cdn-prod.medicalnewstoday.com/content/images/articles/327/327185/a-table-showing-the-ph-of-common-drinks.jpg"
+              align="center"
+              width="400"
+              height="300"
+            />
             <br />
             Total Dissolved Solids:
             <Tooltip
@@ -157,6 +163,12 @@ function City() {
                 {data.totalDissolvedSolids} mg/L
               </Link>
             </Tooltip>
+            <Image
+              src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/tds_range1.jpg"
+              align="center"
+              width="400"
+              height="300"
+            />
             <br />
             Specific Conductance:
             <Tooltip
@@ -171,6 +183,12 @@ function City() {
                 {data.specificConductance} μS/cm
               </Link>
             </Tooltip>
+            <Image
+              src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/conductivity_averages.jpg"
+              align="center"
+              width="400"
+              height="300"
+            />
           </Typography>
           <Typography style={{ fontSize: 20 }}>
             Today's Air Quality Index (AQI):&nbsp;
@@ -183,13 +201,13 @@ function City() {
                 {data.aqi}
               </Link>
             </Tooltip>
+            <Image
+              src="https://d2v9ipibika81v.cloudfront.net/uploads/sites/190/AQI-Table.png"
+              align="center"
+              width="400"
+              height="300"
+            />
           </Typography>
-          <Image
-            src="https://d2v9ipibika81v.cloudfront.net/uploads/sites/190/AQI-Table.png"
-            align="center"
-            width="400"
-            height="300"
-          />
         </List>
       </CardContent>
     </div>
