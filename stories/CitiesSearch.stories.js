@@ -23,7 +23,7 @@ export const SimpleCitiesSearch = () => {
       "San Jose",
       "Fremont",
       "Newport Beach",
-      "",
+      "Irvine",
       "Cupertino",
       "Santa Barbara",
       "San Diego",
@@ -35,7 +35,7 @@ export const SimpleCitiesSearch = () => {
     <AppBar>
       <Toolbar>
         <div>
-          <CitiesSearch names={names} />
+          <CitiesSearch names={names} onChange={(event, newValue) => {}} />
         </div>
       </Toolbar>
     </AppBar>

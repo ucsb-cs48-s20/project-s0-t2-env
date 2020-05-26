@@ -17,7 +17,7 @@ export const loggedOut = () => {
       "San Jose",
       "Fremont",
       "Newport Beach",
-      "",
+      "Irvine",
       "Cupertino",
       "Santa Barbara",
       "San Diego",
@@ -45,7 +45,7 @@ export const loggedIn = () => {
       "San Jose",
       "Fremont",
       "Newport Beach",
-      "",
+      "Irvine",
       "Cupertino",
       "Santa Barbara",
       "San Diego",
@@ -53,5 +53,7 @@ export const loggedIn = () => {
     ],
     ","
   );
-  return <AppNavbar user={user} names={names} />;
+  return (
+    <AppNavbar user={user} names={names} onChange={(event, newValue) => {}} />
+  );
 };
