@@ -377,9 +377,3 @@ After **Step 10** is complete return here.
 # Step 12: Continue with lab09
 
 Congratulations! The app should now be working on Heroku. Refer back to https://ucsb-cs48.github.io/s20/lab/lab09/ to continue with the rest of the lab.
-
-# Step 13: Configure the application to run on Heroku
-
-The instructions are listed below:
-
-- https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/heroku.md
