@@ -195,7 +195,7 @@ export default function CityPage(props) {
   const user = props.user;
 
   return (
-    <Layout user={user}>
+    <Layout user={user} names={props.names} onChange={props.onChange}>
       <Container>
         <Card style={{ textAlign: "center", margin: "20px" }}>
           <City />
