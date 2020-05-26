@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "../components/Layout";
 import Container from "react-bootstrap/Container";
-import { select, text } from "@storybook/addon-knobs";
+import { select, text, array } from "@storybook/addon-knobs";
 
 export default {
   title: "Layout",
@@ -9,7 +9,24 @@ export default {
 };
 
 export const loggedOutEmpty = () => {
-  return <Layout />;
+  const names = array(
+    "Names",
+    [
+      "Los Angeles",
+      "Goleta",
+      "Isla Vista",
+      "San Jose",
+      "Fremont",
+      "Newport Beach",
+      "Irvine",
+      "Cupertino",
+      "Santa Barbara",
+      "San Diego",
+      "Sunnyvale",
+    ],
+    ","
+  );
+  return <Layout names={names} onChange={(event, newValue) => {}} />;
 };
 
 export const loggedInWithContentInContainer = () => {
@@ -21,8 +38,26 @@ export const loggedInWithContentInContainer = () => {
     "https://avatars3.githubusercontent.com/u/1119017"
   );
   const user = { name, role, picture };
+
+  const names = array(
+    "Names",
+    [
+      "Los Angeles",
+      "Goleta",
+      "Isla Vista",
+      "San Jose",
+      "Fremont",
+      "Newport Beach",
+      "Irvine",
+      "Cupertino",
+      "Santa Barbara",
+      "San Diego",
+      "Sunnyvale",
+    ],
+    ","
+  );
   return (
-    <Layout user={user}>
+    <Layout user={user} names={names} onChange={(event, newValue) => {}}>
       <Container className="py-3">{content}</Container>
     </Layout>
   );
