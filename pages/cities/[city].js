@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { FaMapPin, FaTree } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
 import { VictoryPie, VictoryLabel, VictoryTooltip } from "victory";
+import CityWaterAir from "../../components/CityWaterAir";
 import {
   useTheme,
   Card,
@@ -128,7 +129,8 @@ function City() {
             />
           </svg>
           <Divider />
-          <Typography style={{ fontSize: 20 }}>
+          <CityWaterAir data={data} />
+          {/* <Typography style={{ fontSize: 20 }}>
             Water pH Level:
             <Tooltip
               title="Learn more about this calculation"
@@ -182,7 +184,7 @@ function City() {
                 {data.aqi}
               </Link>
             </Tooltip>
-          </Typography>
+          </Typography> */}
         </List>
       </CardContent>
     </div>
@@ -194,7 +196,6 @@ export const getServerSideProps = optionalAuth;
 export default function CityPage(props) {
   const user = props.user;
   const { data: names } = useSWR("/api/cities/all", fetch, {});
-  const onChange = props.onChange;
 
   return (
     <Layout
