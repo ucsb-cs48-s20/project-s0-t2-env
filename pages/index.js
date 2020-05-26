@@ -16,7 +16,15 @@ function HomePage(props) {
   const { data: names } = useSWR("/api/cities/all", fetch, {});
 
   return (
-    <Layout user={user} names={names}>
+    <Layout
+      user={user}
+      names={names}
+      onChange={(event, newValue) => {
+        if (newValue != null) {
+          window.location.href = "/cities/" + newValue;
+        }
+      }}
+    >
       <title>Environmental Impacts Dashboard</title>
       <style jsx>
         {`

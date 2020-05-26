@@ -87,7 +87,15 @@ function PersonalInputPage(props) {
   };
 
   return (
-    <Layout user={user} names={names}>
+    <Layout
+      user={user}
+      names={names}
+      onChange={(event, newValue) => {
+        if (newValue != null) {
+          window.location.href = "/cities/" + newValue;
+        }
+      }}
+    >
       <p
         style={{
           fontSize: "20px",

@@ -15,11 +15,11 @@ export default function CitiesSearch(props) {
   });
 
   const [value, setValue] = useState(null);
-  useEffect(() => {
-    if (value != null) {
-      window.location.href = "/cities/" + value;
-    }
-  });
+  // useEffect(() => {
+  //   if (value != null) {
+  //     window.location.href = "/cities/" + value;
+  //   }
+  // });
   if (!names) {
     return <div></div>;
   }
@@ -29,9 +29,7 @@ export default function CitiesSearch(props) {
         filterOptions={filterOptions}
         options={names}
         value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
+        onChange={props.onChange}
         id="clear-on-escape"
         clearOnEscape
         renderInput={(params) => (
