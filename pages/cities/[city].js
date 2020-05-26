@@ -193,9 +193,19 @@ export const getServerSideProps = optionalAuth;
 
 export default function CityPage(props) {
   const user = props.user;
+  const { data: names } = useSWR("/api/cities/all", fetch, {});
+  const onChange = props.onChange;
 
   return (
-    <Layout user={user} names={props.names} onChange={props.onChange}>
+    <Layout
+      user={user}
+      names={names}
+      onChange={(event, newValue) => {
+        if (newValue != null) {
+          window.location.href = "/cities/" + newValue;
+        }
+      }}
+    >
       <Container>
         <Card style={{ textAlign: "center", margin: "20px" }}>
           <City />
