@@ -22,7 +22,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 
-function numberWithCommas(x) {
+export function numberWithCommas(x) {
   if (x.toString().indexOf(".") > 0) {
     return x
       .toString()

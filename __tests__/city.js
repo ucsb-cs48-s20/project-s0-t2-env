@@ -8,8 +8,8 @@ describe("pages/cities/[city].js", () => {
     it("converts 471 to 471", () => {
       expect(numberWithCommas(471)).toBe("471");
     });
-    it("converts 2472471.23214 to 2,472,471.23214", () => {
-      expect(numberWithCommas(2472471.23214)).toBe("2,472,471.23214");
+    it("converts 2472471.23214 to 2,472,471", () => {
+      expect(numberWithCommas(2472471.23214)).toBe("2,472,471");
     });
   });
 });

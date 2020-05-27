@@ -30,7 +30,7 @@ export default function City(props) {
 
   return (
     <div>
-      <Typography style={{ fontSize: 20 }}>
+      <Typography style={{ fontSize: 20 }} data-cy="waterquality">
         Water pH Level:
         <Tooltip
           title="Learn more about this calculation"
@@ -73,7 +73,7 @@ export default function City(props) {
           </Link>
         </Tooltip>
       </Typography>
-      <Typography style={{ fontSize: 20 }}>
+      <Typography style={{ fontSize: 20 }} data-cy="airquality">
         Today's Air Quality Index (AQI):&nbsp;
         <Tooltip
           title="Learn more about this calculation"
