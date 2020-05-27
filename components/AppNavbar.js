@@ -15,6 +15,7 @@ import Nav from "react-bootstrap/Nav";
 
 function AppNavbar(props) {
   const user = props.user;
+  const onChange = props.onChange;
   const theme = useTheme();
 
   return (
@@ -32,11 +33,12 @@ function AppNavbar(props) {
           </Navbar.Brand>
         </NextLink>
         <div style={{ marginLeft: theme.spacing(2) }}>
-          <CitiesSearch />
+          <CitiesSearch names={props.names} onChange={onChange} />
         </div>
         {user && (
           <Link href="/login" passHref={true}>
             <Nav.Link
+              href="/login"
               style={{
                 fontSize: "15px",
                 color: theme.palette.primary.contrastText,

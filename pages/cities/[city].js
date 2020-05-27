@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { FaMapPin, FaTree } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
 import { VictoryPie, VictoryLabel, VictoryTooltip } from "victory";
+import CityWaterAir from "../../components/CityWaterAir";
 import {
   useTheme,
   Card,
@@ -21,8 +22,15 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 
-export function numberWithCommas(x) {
-  return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+function numberWithCommas(x) {
+  if (x.toString().indexOf(".") > 0) {
+    return x
+      .toString()
+      .substring(0, x.toString().indexOf("."))
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  } else {
+    return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  }
 }
 
 function City() {
@@ -88,7 +96,7 @@ function City() {
                 {numberWithCommas(Math.floor(data.CO2 / 0.06))}
               </Link>
             </Tooltip>{" "}
-            trees to sequester that carbon .
+            trees to sequester that carbon.
           </Typography>
           <Divider />
           <svg viewBox="0 0 400 400" width="400px" height="400px">
@@ -130,7 +138,8 @@ function City() {
             />
           </svg>
           <Divider />
-          <Typography style={{ fontSize: 20 }} data-cy="waterquality">
+          <CityWaterAir data={data} />
+          {/* <Typography style={{ fontSize: 20 }}>
             Water pH Level:
             <Tooltip
               title="Learn more about this calculation"
@@ -184,7 +193,7 @@ function City() {
                 {data.aqi}
               </Link>
             </Tooltip>
-          </Typography>
+          </Typography> */}
         </List>
       </CardContent>
     </div>
@@ -195,9 +204,18 @@ export const getServerSideProps = optionalAuth;
 
 export default function CityPage(props) {
   const user = props.user;
+  const { data: names } = useSWR("/api/cities/all", fetch, {});
 
   return (
-    <Layout user={user}>
+    <Layout
+      user={user}
+      names={names}
+      onChange={(event, newValue) => {
+        if (newValue != null) {
+          window.location.href = "/cities/" + newValue;
+        }
+      }}
+    >
       <Container>
         <Card style={{ textAlign: "center", margin: "20px" }}>
           <City />
