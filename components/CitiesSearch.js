@@ -33,7 +33,7 @@ export default function CitiesSearch(props) {
         id="clear-on-escape"
         clearOnEscape
         renderInput={(params) => (
-          <TextField {...params} label="Cities" margin="normal" />
+          <TextField {...params} label="Cities in California" margin="normal" />
         )}
       />
     </div>
