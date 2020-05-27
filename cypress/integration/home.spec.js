@@ -12,6 +12,15 @@ describe("Home page", () => {
       cy.get(".navbar-brand").should("exist");
     });
   });
+  context("Footer", () => {
+    beforeEach(() => {
+      cy.visit("http://localhost:3000");
+    });
+
+    it("exists", () => {
+      cy.get("[data-cy=footer]");
+    });
+  });
   context("search bar", () => {
     beforeEach(() => {
       cy.visit("http://localhost:3000");
