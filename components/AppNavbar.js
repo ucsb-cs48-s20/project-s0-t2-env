@@ -59,7 +59,12 @@ function AppNavbar(props) {
               label={user.name}
               style={{ marginRight: "10px" }}
             />
-            <Button variant="outlined" color="secondary" href="/api/logout">
+            <Button
+              variant="outlined"
+              color="secondary"
+              href="/api/logout"
+              data-cy="logout"
+            >
               Logout
             </Button>
           </div>
