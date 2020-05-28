@@ -57,9 +57,15 @@ function City() {
       <Typography variant="h3" data-cy="location">
         {data.name}, {data.state}
       </Typography>
-      <Typography data-cy="population">
-        Population: {numberWithCommas(data.population)}
-      </Typography>
+      {data.population ? (
+        <Typography data-cy="population">
+          Population: {numberWithCommas(data.population)}
+        </Typography>
+      ) : (
+        <Typography data-cy="population">
+          Sorry, we're missing population information for this city!
+        </Typography>
+      )}
       <CardContent>
         <List>
           <Divider />

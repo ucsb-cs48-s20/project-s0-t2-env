@@ -51,19 +51,14 @@ handler.get(async (req, res) => {
       response.results[0].bounds.southwest.lng) /
     2.0;
 
-  let aqiAPI = null;
-  try {
-    aqiAPI = await fetch(
-      "https://api.waqi.info/feed/geo:" +
-        latitude +
-        ";" +
-        longitude +
-        "/?token=" +
-        process.env.AQI_KEY
-    );
-  } catch (err) {
-    console.log(err);
-  }
+  const aqiAPI = await fetch(
+    "https://api.waqi.info/feed/geo:" +
+      latitude +
+      ";" +
+      longitude +
+      "/?token=" +
+      process.env.AQI_KEY
+  );
 
   console.log(aqiAPI);
   console.log(
@@ -82,35 +77,19 @@ handler.get(async (req, res) => {
 
   console.log(popAPI);
 
-  if (aqiAPI) {
-    res.json({
-      name,
-      state,
-      population: popAPI.records[0].fields.population,
-      CO2,
-      latitude,
-      longitude,
-      aqi: aqiAPI.data.aqi,
-      url: aqiAPI.data.city.url,
-      waterpH,
-      totalDissolvedSolids,
-      specificConductance,
-    });
-  } else {
-    res.json({
-      name,
-      state,
-      population: popAPI.records[0].fields.population,
-      CO2,
-      latitude,
-      longitude,
-      aqi: "",
-      url: "",
-      waterpH,
-      totalDissolvedSolids,
-      specificConductance,
-    });
-  }
+  res.json({
+    name,
+    state,
+    population: popAPI.records[0].fields.population,
+    CO2,
+    latitude,
+    longitude,
+    aqi: aqiAPI.data.aqi,
+    url: aqiAPI.data.city.url,
+    waterpH,
+    totalDissolvedSolids,
+    specificConductance,
+  });
 });
 
 export default handler;
