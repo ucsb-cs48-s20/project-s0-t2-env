@@ -32,7 +32,12 @@ function AppNavbar(props) {
             Environmental Impacts App
           </Navbar.Brand>
         </NextLink>
-        <div style={{ marginLeft: theme.spacing(2) }}>
+        <div
+          style={{
+            marginLeft: theme.spacing(2),
+            marginTop: theme.spacing(-2.5),
+          }}
+        >
           <CitiesSearch names={props.names} onChange={onChange} />
         </div>
         {user && (
@@ -44,7 +49,7 @@ function AppNavbar(props) {
                 color: theme.palette.primary.contrastText,
               }}
               href="/login"
-              className="mt-4"
+              className="mt-2"
               data-cy="personal-input"
             >
               Personal Input

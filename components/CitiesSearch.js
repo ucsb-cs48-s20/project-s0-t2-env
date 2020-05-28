@@ -35,7 +35,7 @@ export default function CitiesSearch(props) {
         renderInput={(params) => (
           <TextField
             {...params}
-            label="Cities"
+            label="Cities in California"
             margin="normal"
             data-cy="searchfield"
           />
