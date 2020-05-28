@@ -9,3 +9,4 @@
 | Thurs 05/21 | Zachary Friedland | Do demo of iteration 2                                 |
 | Tues 05/26  | Sara Mandic       | Leading third Retro                                    |
 | Tues 05/26  | Katelyn Zhang     | Leading the spring planning                            |
+| Thurs 06/11 | Stuart Wayland    | Final Presentation                                     |
