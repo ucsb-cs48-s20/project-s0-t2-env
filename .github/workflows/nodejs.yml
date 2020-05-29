@@ -24,11 +24,15 @@ jobs:
           AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
           AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
           MONGO_CONNECTION_STRING: ${{ secrets.MONGO_CONNECTION_STRING }}
+          MONGO_CONNECTION_STRING_FOR_TESTING: ${{ secrets.MONGO_CONNECTION_STRING_FOR_TESTING }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
           LONGLAT_KEY: ${{ secrets.LONGLAT_KEY }}
           AIR_KEY: ${{ secrets.AIR_KEY }}
           AQI_KEY: ${{ secrets.AQI_KEY }}
           AQI_KEY2: ${{ secrets.AQI_KEY2 }}
+          SESSION_COOKIE_SECRET: ${{ secrets.SESSION_COOKIE_SECRET }}
+          POST_LOGOUT_REDIRECT_URI: ${{ secrets.POST_LOGOUT_REDIRECT_URI }}
+          REDIRECT_URI: ${{ secrets.REDIRECT_URI }}
       - uses: actions/upload-artifact@v1
         if: failure()
         with:
