@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { FaMapPin, FaTree } from "react-icons/fa";
 import Container from "react-bootstrap/Container";
 import { VictoryPie, VictoryLabel, VictoryTooltip } from "victory";
-import Image from "react-bootstrap/Image";
+import CityWaterAir from "../../components/CityWaterAir";
 import {
   useTheme,
   Card,
@@ -23,7 +23,14 @@ import {
 } from "@material-ui/core";
 
 function numberWithCommas(x) {
-  return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  if (x.toString().indexOf(".") > 0) {
+    return x
+      .toString()
+      .substring(0, x.toString().indexOf("."))
+      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  } else {
+    return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+  }
 }
 
 function City() {
@@ -87,7 +94,7 @@ function City() {
                 {numberWithCommas(Math.floor(data.CO2 / 0.06))}
               </Link>
             </Tooltip>{" "}
-            trees to sequester that carbon .
+            trees to sequester that carbon.
           </Typography>
           <Divider />
           <svg viewBox="0 0 400 400" width="400px" height="400px">
@@ -129,85 +136,7 @@ function City() {
             />
           </svg>
           <Divider />
-          <Typography style={{ fontSize: 20 }}>
-            Water pH Level:
-            <Tooltip
-              title="Learn more about this calculation"
-              placement="right"
-              arrow
-            >
-              <Link
-                style={{ margin: "5px" }}
-                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
-              >
-                {data.waterpH}
-              </Link>
-            </Tooltip>
-            <Image
-              src="https://cdn-prod.medicalnewstoday.com/content/images/articles/327/327185/a-table-showing-the-ph-of-common-drinks.jpg"
-              align="center"
-              width="400"
-              height="300"
-            />
-            <br />
-            Total Dissolved Solids:
-            <Tooltip
-              title="Learn more about this calculation"
-              placement="right"
-              arrow
-            >
-              <Link
-                style={{ margin: "5px" }}
-                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
-              >
-                {data.totalDissolvedSolids} mg/L
-              </Link>
-            </Tooltip>
-            <Image
-              src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/tds_range1.jpg"
-              align="center"
-              width="400"
-              height="300"
-            />
-            <br />
-            Specific Conductance:
-            <Tooltip
-              title="Learn more about this calculation"
-              placement="right"
-              arrow
-            >
-              <Link
-                style={{ margin: "5px" }}
-                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
-              >
-                {data.specificConductance} μS/cm
-              </Link>
-            </Tooltip>
-            <Image
-              src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/conductivity_averages.jpg"
-              align="center"
-              width="400"
-              height="300"
-            />
-          </Typography>
-          <Typography style={{ fontSize: 20 }}>
-            Today's Air Quality Index (AQI):&nbsp;
-            <Tooltip
-              title="Learn more about this calculation"
-              placement="right"
-              arrow
-            >
-              <Link style={{ margin: "1px" }} href={data.url}>
-                {data.aqi}
-              </Link>
-            </Tooltip>
-            <Image
-              src="https://d2v9ipibika81v.cloudfront.net/uploads/sites/190/AQI-Table.png"
-              align="center"
-              width="400"
-              height="300"
-            />
-          </Typography>
+          <CityWaterAir data={data} />
         </List>
       </CardContent>
     </div>
@@ -218,9 +147,18 @@ export const getServerSideProps = optionalAuth;
 
 export default function CityPage(props) {
   const user = props.user;
+  const { data: names } = useSWR("/api/cities/all", fetch, {});
 
   return (
-    <Layout user={user}>
+    <Layout
+      user={user}
+      names={names}
+      onChange={(event, newValue) => {
+        if (newValue != null) {
+          window.location.href = "/cities/" + newValue;
+        }
+      }}
+    >
       <Container>
         <Card style={{ textAlign: "center", margin: "20px" }}>
           <City />

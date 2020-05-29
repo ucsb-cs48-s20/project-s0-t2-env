@@ -12,6 +12,7 @@ export const getServerSideProps = requiredAuth;
 
 function PersonalInputPage(props) {
   const user = props.user;
+  const { data: names } = useSWR("/api/cities/all", fetch, {});
   // const [username, setUsername] = useState(props.user.nickname); for future storing of data per user?
   const [milesDriven, setMilesDriven] = useState("N/A");
   const [meatConsumption, setMeatConsumption] = useState("N/A");
@@ -86,7 +87,15 @@ function PersonalInputPage(props) {
   };
 
   return (
-    <Layout user={user}>
+    <Layout
+      user={user}
+      names={names}
+      onChange={(event, newValue) => {
+        if (newValue != null) {
+          window.location.href = "/cities/" + newValue;
+        }
+      }}
+    >
       <p
         style={{
           fontSize: "20px",

@@ -4,6 +4,8 @@ import { ThemeProvider, createMuiTheme } from "@material-ui/core";
 
 function Layout(props) {
   const user = props.user;
+  const names = props.names;
+  const onChange = props.onChange;
   const theme = createMuiTheme({
     palette: {
       primary: {
@@ -34,7 +36,7 @@ function Layout(props) {
         }
       `}</style>
       <ThemeProvider theme={theme}>
-        <AppNavbar user={user} />
+        <AppNavbar user={user} names={names} onChange={onChange} />
         {props.children}
       </ThemeProvider>
       <AppFooter />

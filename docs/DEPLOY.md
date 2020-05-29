@@ -1,3 +1,7 @@
+### If you want to follow a video tutorial while looking through the lab instructions, below is a link for the video
+
+- https://www.youtube.com/watch?v=_HVl3toFL5s
+
 # Step 1: Fork the repo
 
 Navigate to our project repository https://github.com/ucsb-cs48-s20/project-s0-t2-env
@@ -134,7 +138,8 @@ When we deploy this to heroku we will change these to correlate on Heroku (Step 
 - Click on Add My Own Data
 - Set the database name to be environment and the collection to be called cities inside the databases
 - After you are done click Connect
-- click add your current IP address
+- **If you click "add your current IP address" this only allows you to access this website from your certain IP address if you want it to be accessible throughout the internet follow this link and go to step 8: whitelist the entire internet https://ucsb-cs48.github.io/topics/mongodb_cloud_atlas_setup/ after you are done return here**
+  - this part is not in the video
 - click on create a MongoDB user (this can have any username and password)
 - click on connect your application
 - copy the connection string and put it in .env under MONGO_CONNECTION_STRING
@@ -162,8 +167,6 @@ If that does not work try `python3 -m pip install <name of module>` for each oth
 - ex: `python3 -m pip install pandas`
 
 After you have completed that we are ready to run the script.
-
-First we will want to run the Carbon script.
 
 First we will want to run the Carbon script.
 
@@ -347,8 +350,6 @@ Once you are done click insert and you should see a collection that resembles th
 
 At this point you should be able to run the application on localhost.
 
-At this point you should be able to run the application on localhost.
-
 In your terminal type `npm run dev` to see the application run. Go to localhost:3000 to see if the product is running.
 
 If it works, proceed to the next step.
@@ -376,9 +377,3 @@ After **Step 10** is complete return here.
 # Step 12: Continue with lab09
 
 Congratulations! The app should now be working on Heroku. Refer back to https://ucsb-cs48.github.io/s20/lab/lab09/ to continue with the rest of the lab.
-
-# Step 13: Configure the application to run on Heroku
-
-The instructions are listed below:
-
-- https://github.com/ucsb-cs48-s20/demo-nextjs-app/blob/master/docs/heroku.md
