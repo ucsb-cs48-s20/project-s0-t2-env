@@ -8,8 +8,7 @@ const handler = nextConnect();
 handler.use(middleware);
 
 handler.get(async (req, res) => {
-  // The city name is held in req.query.city, but we want to convert santa-barbara to "santa barbara"
-  const city = req.query.city.replace("-", " ");
+  const city = req.query.city;
   // construct a query object for the database. we want to filter only results where the name = city
   const query = { name: city };
   console.log(query);
@@ -29,6 +28,14 @@ handler.get(async (req, res) => {
     totalDissolvedSolids,
     specificConductance,
   } = doc;
+  const energyShare = {
+    transport: doc.Transport,
+    housing: doc.Housing,
+    food: doc.Food,
+    goods: doc.Goods,
+    services: doc.Services,
+    total: doc.Transport + doc.Housing + doc.Food + doc.Goods + doc.Services,
+  };
 
   const response = await fetch(
     "https://api.opencagedata.com/geocode/v1/json?q=" +
@@ -89,6 +96,7 @@ handler.get(async (req, res) => {
     waterpH,
     totalDissolvedSolids,
     specificConductance,
+    energyShare,
   });
 });
 
