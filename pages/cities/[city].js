@@ -137,61 +137,6 @@ function City() {
           </svg>
           <Divider />
           <CityWaterAir data={data} />
-          {/* <Typography style={{ fontSize: 20 }}>
-            Water pH Level:
-            <Tooltip
-              title="Learn more about this calculation"
-              placement="right"
-              arrow
-            >
-              <Link
-                style={{ margin: "5px" }}
-                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
-              >
-                {data.waterpH}
-              </Link>
-            </Tooltip>
-            <br />
-            Total Dissolved Solids:
-            <Tooltip
-              title="Learn more about this calculation"
-              placement="right"
-              arrow
-            >
-              <Link
-                style={{ margin: "5px" }}
-                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
-              >
-                {data.totalDissolvedSolids} mg/L
-              </Link>
-            </Tooltip>
-            <br />
-            Specific Conductance:
-            <Tooltip
-              title="Learn more about this calculation"
-              placement="right"
-              arrow
-            >
-              <Link
-                style={{ margin: "5px" }}
-                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
-              >
-                {data.specificConductance} μS/cm
-              </Link>
-            </Tooltip>
-          </Typography>
-          <Typography style={{ fontSize: 20 }}>
-            Today's Air Quality Index (AQI):&nbsp;
-            <Tooltip
-              title="Learn more about this calculation"
-              placement="right"
-              arrow
-            >
-              <Link style={{ margin: "1px" }} href={data.url}>
-                {data.aqi}
-              </Link>
-            </Tooltip>
-          </Typography> */}
         </List>
       </CardContent>
     </div>

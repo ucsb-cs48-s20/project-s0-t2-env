@@ -1,4 +1,5 @@
 ### If you want to follow a video tutorial while looking through the lab instructions, below is a link for the video
+
 - https://www.youtube.com/watch?v=_HVl3toFL5s
 
 # Step 1: Fork the repo
