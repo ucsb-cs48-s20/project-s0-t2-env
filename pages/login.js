@@ -17,6 +17,8 @@ function PersonalInputPage(props) {
   const [milesDriven, setMilesDriven] = useState("N/A");
   const [meatConsumption, setMeatConsumption] = useState("N/A");
   const [tempApplianceUsage, setTempApplianceUsage] = useState("N/A");
+  const [showerTime, setShowerTime] = useState("N/A");
+  const [screenTime, setScreenTime] = useState("N/A/");
   const [total, setTotal] = useState(0);
   const [info, setInfo] = useState("");
 
@@ -29,25 +31,28 @@ function PersonalInputPage(props) {
   };
   const resetTotal = () => {
     setTotal(0);
-    setMilesDriven(0);
-    setMeatConsumption(0);
-    setTempApplianceUsage(0);
+    setMilesDriven("N/A");
+    setMeatConsumption("N/A");
+    setTempApplianceUsage("N/A");
+    setShowerTime("N/A");
+    setScreenTime("N/A");
+    setInfo("");
   };
 
   const [date1, setDate1] = useState(new Date());
   const handleChange1 = (date1) => setDate1(date1);
 
-  const [date2, setDate2] = useState(new Date());
-  const handleChange2 = (date2) => setDate2(date2);
+  // const [date2, setDate2] = useState(new Date());
+  // const handleChange2 = (date2) => setDate2(date2);
 
-  const [date3, setDate3] = useState(new Date());
-  const handleChange3 = (date3) => setDate3(date3);
+  // const [date3, setDate3] = useState(new Date());
+  // const handleChange3 = (date3) => setDate3(date3);
 
-  const [date4, setDate4] = useState(new Date());
-  const handleChange4 = (date4) => setDate4(date4);
+  // const [date4, setDate4] = useState(new Date());
+  // const handleChange4 = (date4) => setDate4(date4);
 
-  const [date5, setDate5] = useState(new Date());
-  const handleChange5 = (date5) => setDate5(date5);
+  // const [date5, setDate5] = useState(new Date());
+  // const handleChange5 = (date5) => setDate5(date5);
 
   const today = new Date();
   let pastWeek = new Date();
@@ -55,30 +60,42 @@ function PersonalInputPage(props) {
 
   const getInfo = () => {
     setInfo(
-      info +
-        "On " +
+      // info +
+      "On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
         user.name +
         " drove " +
         parseFloat(milesDriven) +
-        " miles." +
-        "\n" +
+        " mile(s).\n" +
         "On " +
-        date2.toUTCString().substring(0, date2.toUTCString().indexOf(":") - 3) +
+        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
         user.name +
         " ate " +
         parseFloat(meatConsumption) +
-        " meals containing meat." +
-        "\n" +
+        " meal(s) containing meat.\n" +
         "On " +
-        date3.toUTCString().substring(0, date3.toUTCString().indexOf(":") - 3) +
+        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
         user.name +
         " had the air-conditioning or heater on for " +
         parseFloat(tempApplianceUsage) +
-        " hours.\n"
+        " hour(s).\n" +
+        "On " +
+        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
+        ", " +
+        user.name +
+        " took a shower for " +
+        parseFloat(showerTime) +
+        " minute(s).\n" +
+        "On " +
+        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
+        ", " +
+        user.name +
+        " had a total screen time of " +
+        parseFloat(screenTime) +
+        " hour(s).\n"
     );
   };
 
@@ -106,6 +123,24 @@ function PersonalInputPage(props) {
         know a certain field type 0.
       </p>
       <label
+        htmlFor="dateSelect"
+        style={{
+          marginLeft: "25px",
+        }}
+      >
+        <b>Please select a date:</b>
+      </label>
+      <br></br>
+      <br></br>
+      <DatePicker
+        selected={date1}
+        onChange={handleChange1}
+        minDate={pastWeek}
+        maxDate={today}
+        dateFormat="MMMM d, yyyy"
+      />
+      <br></br>
+      <label
         htmlFor="milesDriven"
         style={{
           marginLeft: "25px",
@@ -123,17 +158,10 @@ function PersonalInputPage(props) {
         value={milesDriven}
         onChange={(event) => setMilesDriven(event.target.value)}
         type="number"
-        placeholder="00.00"
+        placeholder="0"
         name="milesDriven"
         required
       ></input>
-      <DatePicker
-        selected={date1}
-        onChange={handleChange1}
-        minDate={pastWeek}
-        maxDate={today}
-        dateFormat="MMMM d, yyyy"
-      />
       <br></br>
       <label
         htmlFor="meatConsumption"
@@ -153,17 +181,10 @@ function PersonalInputPage(props) {
         value={meatConsumption}
         onChange={(event) => setMeatConsumption(event.target.value)}
         type="number"
-        placeholder="00.00"
+        placeholder="0"
         name="meatConsumption"
         required
       ></input>
-      <DatePicker
-        selected={date2}
-        onChange={handleChange2}
-        minDate={pastWeek}
-        maxDate={today}
-        dateFormat="MMMM d, yyyy"
-      />
       <br></br>
       <label
         htmlFor="tempApplianceUsage"
@@ -178,27 +199,68 @@ function PersonalInputPage(props) {
         style={{
           marginLeft: "25px",
           marginRight: "25px",
+          marginBottom: "25px",
         }}
         value={tempApplianceUsage}
         onChange={(event) => setTempApplianceUsage(event.target.value)}
         type="number"
-        placeholder="00.00"
+        placeholder="0"
         name="tempApplianceUsage"
         required
       ></input>
-      <DatePicker
-        selected={date3}
-        onChange={handleChange3}
-        minDate={pastWeek}
-        maxDate={today}
-        dateFormat="MMMM d, yyyy"
-      />
+      <br></br>
+      <label
+        htmlFor="showerTime"
+        style={{
+          marginLeft: "25px",
+        }}
+      >
+        <b>Minutes in shower on the day selected:</b>
+      </label>
+      <br></br>
+      <input
+        style={{
+          marginLeft: "25px",
+          marginRight: "25px",
+          marginBottom: "25px",
+        }}
+        value={showerTime}
+        onChange={(event) => setShowerTime(event.target.value)}
+        type="number"
+        placeholder="0"
+        name="showerTime"
+        required
+      ></input>
+      <br></br>
+      <label
+        htmlFor="screenTime"
+        style={{
+          marginLeft: "25px",
+        }}
+      >
+        <b>Hours in front of a screen on the day selected:</b>
+      </label>
+      <br></br>
+      <input
+        style={{
+          marginLeft: "25px",
+          marginRight: "25px",
+        }}
+        value={screenTime}
+        onChange={(event) => setScreenTime(event.target.value)}
+        type="number"
+        placeholder="0"
+        name="screenTime"
+        required
+      ></input>
 
       <br></br>
       <br></br>
       {milesDriven >= 0 &&
         meatConsumption >= 0 &&
         tempApplianceUsage >= 0 &&
+        showerTime >= 0 &&
+        screenTime >= 0 &&
         info.length <= 0 && (
           <button
             style={{
@@ -224,6 +286,8 @@ function PersonalInputPage(props) {
       {milesDriven >= 0 &&
         meatConsumption >= 0 &&
         tempApplianceUsage >= 0 &&
+        showerTime >= 0 &&
+        screenTime >= 0 &&
         info.length > 0 && (
           <p
             style={{
@@ -234,6 +298,7 @@ function PersonalInputPage(props) {
             Log (last updated {today.toLocaleString()}):
             <br></br>
             {info}
+            <br></br>
           </p>
         )}
       {info.length > 0 && (
@@ -241,7 +306,8 @@ function PersonalInputPage(props) {
           style={{
             marginLeft: "25px",
           }}
-          onClick={resetInfo}
+          // onClick={resetInfo}
+          onClick={resetTotal}
         >
           Clear My Information
         </button>
