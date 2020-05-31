@@ -1,17 +1,6 @@
 import { FaTree } from "react-icons/fa";
 import { useTheme, Typography, Tooltip, Link } from "@material-ui/core";
-
-function numberWithCommas(x) {
-  if (x.toString().indexOf(".") > 0) {
-    return x
-      .toString()
-      .substring(0, x.toString().indexOf("."))
-      .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-  } else {
-    return x.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-  }
-}
-
+import { numberWithCommas } from "../utils/numbers";
 function CarbonEmissions(props) {
   const data = props.data;
   const theme = useTheme();
@@ -19,7 +8,7 @@ function CarbonEmissions(props) {
     <>
       <div style={{ margin: "20px" }}>
         <Typography variant="h5">Emits</Typography>
-        <Typography variant="h3">
+        <Typography variant="h4">
           <Tooltip
             title="Learn more about this calculation"
             placement="right"
@@ -38,7 +27,7 @@ function CarbonEmissions(props) {
       <div style={{ margin: "20px" }}>
         <Typography variant="h5">You would need to plant </Typography>
         <Typography
-          variant="h3"
+          variant="h4"
           style={{ color: theme.palette.primary.main, fontWeight: "bold" }}
         >
           <FaTree />

@@ -1,15 +1,5 @@
 import { VictoryPie, VictoryLabel } from "victory";
-import {
-  useTheme,
-  Card,
-  CardContent,
-  Typography,
-  Tooltip,
-  List,
-  Divider,
-  Link,
-  CircularProgress,
-} from "@material-ui/core";
+import { useTheme } from "@material-ui/core";
 
 function EmissionsPie(props) {
   const data = props.data;
@@ -34,7 +24,11 @@ function EmissionsPie(props) {
         width={400}
         height={400}
         origin={{ x: 250, y: 250 }}
-        labels={({ datum }) => `${datum.title}`}
+        labels={({ datum }) =>
+          `${datum.title} (${Math.floor(
+            (100 * datum.y) / data.energyShare.total
+          )}%)`
+        }
         data={[
           { x: 1, y: data.energyShare.transport, title: "Transport" },
           { x: 2, y: data.energyShare.housing, title: "Housing" },
