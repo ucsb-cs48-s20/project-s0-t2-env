@@ -75,7 +75,7 @@ function PersonalInputPage(props) {
     }
     if (milesDriven < 29) {
       miles =
-        "LESS than the average by " + parseInt(29 - milesDriven) + "mile(s).";
+        "LESS than the average by " + parseInt(29 - milesDriven) + " mile(s).";
     }
     if (meatConsumption > 1) {
       meat =
@@ -142,43 +142,44 @@ function PersonalInputPage(props) {
         user.name +
         " drove " +
         parseFloat(milesDriven) +
-        " mile(s). Which is " +
+        " mile(s) which is " +
         miles +
         "\n" +
-        "On " +
-        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
-        ", " +
-        user.name +
-        " ate " +
+        //"On " +
+        //date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
+        // ", " +
+        // user.name +
+        "You ate " +
         parseFloat(meatConsumption) +
-        " meal(s) containing meat. Which is " +
+        " meal(s) containing meat which is " +
         meat +
         "\n" +
-        "On " +
+        /* "On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
-        user.name +
-        " had the air-conditioning or heater on for " +
+        user.name +*/
+
+        " You had the air-conditioning or heater on for " +
         parseFloat(tempApplianceUsage) +
-        " hour(s). Which is " +
+        " hour(s) which is " +
         tempAppliance +
         "\n" +
-        "On " +
+        /*"On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
-        ", " +
-        user.name +
-        " took a shower for " +
+        ", " 
+        user.name + */
+        " You took a shower for " +
         parseFloat(showerTime) +
-        " minute(s). Which is " +
+        " minute(s) which is " +
         shower +
         "\n" +
-        "On " +
+        /*"On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
-        user.name +
-        " had a total screen time of " +
+        user.name + */
+        " You had a total screen time of " +
         parseFloat(screenTime) +
-        " hour(s). Which is " +
+        " hour(s) which is " +
         screen +
         "\n" +
         "----------------------------------------------------------------------------------------------------------------------------------------------------------------------" +
