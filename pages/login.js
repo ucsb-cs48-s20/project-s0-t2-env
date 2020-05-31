@@ -28,14 +28,6 @@ function PersonalInputPage(props) {
   var shower = "";
   var screen = "";
 
-  /*const calculateTotal = () => {
-    setTotal(
-      parseFloat(milesDriven) +
-        parseFloat(meatConsumption) +
-        parseFloat(tempApplianceUsage)
-    );
-  };*/
-
   const resetTotal = () => {
     setTotal(0);
     setMilesDriven("N/A");
@@ -71,7 +63,7 @@ function PersonalInputPage(props) {
         "MORE than the average by " + parseInt(milesDriven - 29) + " mile(s).";
     }
     if (milesDriven == 29) {
-      miles = "exactly the average number of miles a person drives a day.";
+      miles = "exactly the average.";
     }
     if (milesDriven < 29) {
       miles =
@@ -84,8 +76,7 @@ function PersonalInputPage(props) {
         " meal(s).";
     }
     if (meatConsumption == 1) {
-      meat =
-        "exactly the average number of meals containing meat daily consumed.";
+      meat = "exactly the average.";
     }
     if (meatConsumption < 1) {
       meat =
@@ -100,8 +91,7 @@ function PersonalInputPage(props) {
         " hour(s).";
     }
     if (tempApplianceUsage == 4) {
-      tempAppliance =
-        "exactly the average number of hours of daily temperature appliance usage. ";
+      tempAppliance = "exactly the average. ";
     }
     if (tempApplianceUsage < 4) {
       tempAppliance =
@@ -111,12 +101,10 @@ function PersonalInputPage(props) {
     }
     if (showerTime > 8) {
       shower =
-        "MORE than the average minutes in the shower by " +
-        parseInt(showerTime - 8) +
-        " minute(s).";
+        "MORE than the average by " + parseInt(showerTime - 8) + " minute(s).";
     }
     if (showerTime == 8) {
-      shower = "exactly the average number of minutes in the shower daily. ";
+      shower = "exactly the average. ";
     }
     if (showerTime < 8) {
       shower =
@@ -127,7 +115,7 @@ function PersonalInputPage(props) {
         "MORE than the average by " + parseInt(screenTime - 3) + " hour(s).";
     }
     if (screenTime == 3) {
-      screen = "exactly the average number of daily hours of screen time. ";
+      screen = "exactly the average. ";
     }
     if (screenTime < 3) {
       screen =
@@ -139,8 +127,8 @@ function PersonalInputPage(props) {
         "On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
-        user.name +
-        " drove " +
+        //user.name +
+        "you drove " +
         parseFloat(milesDriven) +
         " mile(s) which is " +
         miles +
@@ -186,16 +174,6 @@ function PersonalInputPage(props) {
         "\n"
     );
   };
-
-  /*function compareMiles () {
-    if(parseFloat(milesDriven)>29.2){
-       miles=("more than the average by " + parseFloat(milesDriven)-29.2 + " miles.");
-    }
-    else{
-       miles=("less than the average by " + 29.2-parseFloat(milesDriven) + "miles.");
-    }
-    return miles;
-  }*/
 
   const resetInfo = () => {
     setInfo("");
