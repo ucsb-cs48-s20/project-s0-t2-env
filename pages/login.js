@@ -18,17 +18,23 @@ function PersonalInputPage(props) {
   const [meatConsumption, setMeatConsumption] = useState("N/A");
   const [tempApplianceUsage, setTempApplianceUsage] = useState("N/A");
   const [showerTime, setShowerTime] = useState("N/A");
-  const [screenTime, setScreenTime] = useState("N/A/");
+  const [screenTime, setScreenTime] = useState("N/A");
   const [total, setTotal] = useState(0);
   const [info, setInfo] = useState("");
+  var miles = "";
+  var meat = "";
+  var tempAppliance = "";
+  var shower = "";
+  var screen = "";
 
-  const calculateTotal = () => {
+  /*const calculateTotal = () => {
     setTotal(
       parseFloat(milesDriven) +
         parseFloat(meatConsumption) +
         parseFloat(tempApplianceUsage)
     );
-  };
+  };*/
+
   const resetTotal = () => {
     setTotal(0);
     setMilesDriven("N/A");
@@ -59,45 +65,135 @@ function PersonalInputPage(props) {
   pastWeek.setDate(pastWeek.getDate() - 6);
 
   const getInfo = () => {
+    if (milesDriven > 29) {
+      miles =
+        "MORE than the average by " + parseInt(milesDriven - 29) + " mile(s).";
+    }
+    if (milesDriven == 29) {
+      miles = "exactly the average number of miles a person drives a day.";
+    }
+    if (milesDriven < 29) {
+      miles =
+        "LESS than the average by " + parseInt(29 - milesDriven) + "mile(s).";
+    }
+    if (meatConsumption > 1) {
+      meat =
+        "MORE than the average by " +
+        parseInt(meatConsumption - 1) +
+        " meal(s).";
+    }
+    if (meatConsumption == 1) {
+      meat =
+        "exactly the average number of meals containing meat daily consumed.";
+    }
+    if (meatConsumption < 1) {
+      meat =
+        "LESS than the average by " +
+        parseInt(1 - meatConsumption) +
+        " meal(s).";
+    }
+    if (tempApplianceUsage > 4) {
+      tempAppliance =
+        "MORE than the average by " +
+        parseInt(tempApplianceUsage - 4) +
+        " hour(s).";
+    }
+    if (tempApplianceUsage == 4) {
+      tempAppliance =
+        "exactly the average number of hours of daily temperature appliance usage. ";
+    }
+    if (tempApplianceUsage < 4) {
+      tempAppliance =
+        "LESS than the average by " +
+        parseInt(4 - tempApplianceUsage) +
+        " hour(s).";
+    }
+    if (showerTime > 8) {
+      shower =
+        "MORE than the average minutes in the shower by " +
+        parseInt(showerTime - 8) +
+        " minute(s).";
+    }
+    if (showerTime == 8) {
+      shower = "exactly the average number of minutes in the shower daily. ";
+    }
+    if (showerTime < 8) {
+      shower =
+        "LESS than the average by " + parseInt(8 - showerTime) + " minute(s).";
+    }
+    if (screenTime > 3) {
+      screen =
+        "MORE than the average by " + parseInt(screenTime - 3) + " hour(s).";
+    }
+    if (screenTime == 3) {
+      screen = "exactly the average number of daily hours of screen time. ";
+    }
+    if (screenTime < 3) {
+      screen =
+        "LESS than the average by " + parseInt(3 - screenTime) + " hour(s).";
+    }
+
     setInfo(
-      // info +
-      "On " +
+      info +
+        "On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
         user.name +
         " drove " +
         parseFloat(milesDriven) +
-        " mile(s).\n" +
+        " mile(s). Which is " +
+        miles +
+        "\n" +
         "On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
         user.name +
         " ate " +
         parseFloat(meatConsumption) +
-        " meal(s) containing meat.\n" +
+        " meal(s) containing meat. Which is " +
+        meat +
+        "\n" +
         "On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
         user.name +
         " had the air-conditioning or heater on for " +
         parseFloat(tempApplianceUsage) +
-        " hour(s).\n" +
+        " hour(s). Which is " +
+        tempAppliance +
+        "\n" +
         "On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
         user.name +
         " took a shower for " +
         parseFloat(showerTime) +
-        " minute(s).\n" +
+        " minute(s). Which is " +
+        shower +
+        "\n" +
         "On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
         ", " +
         user.name +
         " had a total screen time of " +
         parseFloat(screenTime) +
-        " hour(s).\n"
+        " hour(s). Which is " +
+        screen +
+        "\n" +
+        "----------------------------------------------------------------------------------------------------------------------------------------------------------------------" +
+        "\n"
     );
   };
+
+  /*function compareMiles () {
+    if(parseFloat(milesDriven)>29.2){
+       miles=("more than the average by " + parseFloat(milesDriven)-29.2 + " miles.");
+    }
+    else{
+       miles=("less than the average by " + 29.2-parseFloat(milesDriven) + "miles.");
+    }
+    return miles;
+  }*/
 
   const resetInfo = () => {
     setInfo("");
@@ -120,7 +216,8 @@ function PersonalInputPage(props) {
         }}
       >
         See how you compare to the average person in your city! If you do not
-        know a certain field type 0.
+        know a certain field type 0. Please approximate your values to the
+        nearest whole number.
       </p>
       <label
         htmlFor="dateSelect"
@@ -131,8 +228,8 @@ function PersonalInputPage(props) {
         <b>Please select a date:</b>
       </label>
       <br></br>
-      <br></br>
       <DatePicker
+        className="ml-4"
         selected={date1}
         onChange={handleChange1}
         minDate={pastWeek}
@@ -143,6 +240,7 @@ function PersonalInputPage(props) {
       <label
         htmlFor="milesDriven"
         style={{
+          marginTop: "25px",
           marginLeft: "25px",
         }}
       >
@@ -306,7 +404,6 @@ function PersonalInputPage(props) {
           style={{
             marginLeft: "25px",
           }}
-          // onClick={resetInfo}
           onClick={resetTotal}
         >
           Clear My Information
