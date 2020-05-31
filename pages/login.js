@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import React, { Component, useState } from "react";
 import DatePicker from "react-datepicker";
 import { Test, QuestionGroup, Question, Option } from "react-multiple-choice";
+import Image from "react-bootstrap/Image";
 
 export const getServerSideProps = requiredAuth;
 
@@ -209,10 +210,19 @@ function PersonalInputPage(props) {
         }
       }}
     >
+      <Image
+        src="https://blog.derby.ac.uk/wp-content/uploads/2017/01/Blog-800x450px-1.png"
+        width="700"
+        height="300"
+        align="right"
+        className="mt-5"
+        fliud
+      />
       <p
         style={{
           fontSize: "20px",
           margin: "25px",
+          className: "mr-auto",
         }}
       >
         See how you compare to the average person in your city! If you do not
