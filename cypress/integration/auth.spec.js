@@ -10,6 +10,7 @@ describe("Authentication", () => {
     });
 
     it("has a logout button", () => {
+      cy.get("[data-cy=greeting]").click();
       cy.get("[data-cy=logout]").should("exist");
     });
 
@@ -24,6 +25,10 @@ describe("Authentication", () => {
 
     it("has a login button", () => {
       cy.get("[data-cy=login]").should("exist");
+    });
+
+    it("does not have a greeting", () => {
+      cy.get("[data-cy=greeting]").should("not.exist");
     });
 
     it("does not have a logout button", () => {

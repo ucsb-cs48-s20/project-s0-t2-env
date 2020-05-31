@@ -12,6 +12,9 @@ import {
 import { useTheme } from "@material-ui/core/styles";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
 
 function AppNavbar(props) {
   const user = props.user;
@@ -19,8 +22,13 @@ function AppNavbar(props) {
   const theme = useTheme();
 
   return (
-    <AppBar position="static" data-cy="appbar">
-      <Toolbar style={{ minWidth: "65%", margin: "auto" }}>
+    <Navbar
+      variant="dark"
+      style={{ backgroundColor: theme.palette.primary.main }}
+      expand="lg"
+      data-cy="navbar"
+    >
+      <Container style={{ padding: "0px" }}>
         <NextLink passHref={true} href="/">
           <Navbar.Brand
             variant="h6"
@@ -56,35 +64,46 @@ function AppNavbar(props) {
             </Nav.Link>
           </Link>
         )}
-        <div style={{ flexGrow: 1 }} />
-        {user ? (
-          <div>
-            <Chip
-              avatar={<Avatar src={user.picture} width={24} height={24} />}
-              label={user.name}
-              style={{ marginRight: "10px" }}
-            />
-            <Button
-              variant="outlined"
-              color="secondary"
-              href="/api/logout"
-              data-cy="logout"
-            >
-              Logout
-            </Button>
-          </div>
-        ) : (
-          <Button
-            color="secondary"
-            variant="contained"
-            data-cy="login"
-            href="/api/login"
-          >
-            Login
-          </Button>
-        )}
-      </Toolbar>
-    </AppBar>
+        <Navbar.Toggle />
+        <Navbar.Collapse className="justify-content-end">
+          <Nav>
+            {user ? (
+              <NavDropdown
+                title={
+                  <>
+                    Hi, {user.name}
+                    <Image
+                      className="ml-2"
+                      src={user.picture}
+                      width={24}
+                      height={24}
+                    />
+                  </>
+                }
+                data-cy="greeting"
+              >
+                <NavDropdown.Item
+                  className="text-danger"
+                  href="/api/logout"
+                  data-cy="logout"
+                >
+                  Logout
+                </NavDropdown.Item>
+              </NavDropdown>
+            ) : (
+              <Button
+                color="secondary"
+                variant="contained"
+                data-cy="login"
+                href="/api/login"
+              >
+                Login
+              </Button>
+            )}
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 }
 

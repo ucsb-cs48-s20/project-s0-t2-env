@@ -1,11 +1,11 @@
 describe("Home page", () => {
-  context("App/Nav Bar", () => {
+  context("Nav Bar", () => {
     beforeEach(() => {
       cy.visit("http://localhost:3000");
     });
 
     it("exists", () => {
-      cy.get("[data-cy=appbar]");
+      cy.get("[data-cy=navbar]");
     });
 
     it("has a home page brand button", () => {
