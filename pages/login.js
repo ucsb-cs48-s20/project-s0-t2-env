@@ -7,84 +7,132 @@ import Button from "react-bootstrap/Button";
 import React, { Component, useState } from "react";
 import DatePicker from "react-datepicker";
 import { Test, QuestionGroup, Question, Option } from "react-multiple-choice";
+import CompBarGraph from "../components/CompBarGraph";
+import { Card, Image } from "react-bootstrap";
 
 export const getServerSideProps = requiredAuth;
 
 function PersonalInputPage(props) {
   const user = props.user;
+  const username = user.name.substring(0, user.name.indexOf(" "));
   const { data: names } = useSWR("/api/cities/all", fetch, {});
   // const [username, setUsername] = useState(props.user.nickname); for future storing of data per user?
-  const [milesDriven, setMilesDriven] = useState("N/A");
-  const [meatConsumption, setMeatConsumption] = useState("N/A");
-  const [tempApplianceUsage, setTempApplianceUsage] = useState("N/A");
+  let [milesDriven, setMilesDriven] = useState("N/A");
+  let [meatConsumption, setMeatConsumption] = useState("N/A");
+  let [tempApplianceUsage, setTempApplianceUsage] = useState("N/A");
+  let [showerTime, setShowerTime] = useState("N/A");
+  let [screenTime, setScreenTime] = useState("N/A");
   const [total, setTotal] = useState(0);
-  const [info, setInfo] = useState("");
 
-  const calculateTotal = () => {
-    setTotal(
-      parseFloat(milesDriven) +
-        parseFloat(meatConsumption) +
-        parseFloat(tempApplianceUsage)
-    );
-  };
   const resetTotal = () => {
     setTotal(0);
-    setMilesDriven(0);
-    setMeatConsumption(0);
-    setTempApplianceUsage(0);
+    setMilesDriven("N/A");
+    setMeatConsumption("N/A");
+    setTempApplianceUsage("N/A");
+    setShowerTime("N/A");
+    setScreenTime("N/A");
   };
 
   const [date1, setDate1] = useState(new Date());
   const handleChange1 = (date1) => setDate1(date1);
 
-  const [date2, setDate2] = useState(new Date());
-  const handleChange2 = (date2) => setDate2(date2);
-
-  const [date3, setDate3] = useState(new Date());
-  const handleChange3 = (date3) => setDate3(date3);
-
-  const [date4, setDate4] = useState(new Date());
-  const handleChange4 = (date4) => setDate4(date4);
-
-  const [date5, setDate5] = useState(new Date());
-  const handleChange5 = (date5) => setDate5(date5);
-
   const today = new Date();
   let pastWeek = new Date();
   pastWeek.setDate(pastWeek.getDate() - 6);
 
-  const getInfo = () => {
-    setInfo(
-      info +
-        "On " +
-        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
-        ", " +
-        user.name +
-        " drove " +
-        parseFloat(milesDriven) +
-        " miles." +
-        "\n" +
-        "On " +
-        date2.toUTCString().substring(0, date2.toUTCString().indexOf(":") - 3) +
-        ", " +
-        user.name +
-        " ate " +
-        parseFloat(meatConsumption) +
-        " meals containing meat." +
-        "\n" +
-        "On " +
-        date3.toUTCString().substring(0, date3.toUTCString().indexOf(":") - 3) +
-        ", " +
-        user.name +
-        " had the air-conditioning or heater on for " +
-        parseFloat(tempApplianceUsage) +
-        " hours.\n"
-    );
+  let averages = {
+    milesDriven: {
+      value: 29,
+      metric: "mile(s)",
+      metric2: "mile(s)",
+      action: "drove",
+      advice:
+        "Try to bike or walk if possible, if not, carpooling or public transportation is usually a good alternative!",
+      saved: "saving gas and reducing carbon emissions",
+      keep: "decrease the number of miles you drive",
+    },
+    meatConsumption: {
+      value: 1,
+      metric: "meal(s) containing meat",
+      metric2: "meal(s)",
+      action: "ate",
+      advice:
+        "You can lower your meals with meat by planning ahead what you're going to cook each day!",
+      saved: "reducing carbon emissions",
+      keep: "reduce the meals you eat containing meat",
+    },
+    tempApplianceUsage: {
+      value: 4,
+      metric: "hour(s)",
+      metric2: "hour(s)",
+      action: "had the AC/heater on for",
+      advice: "Remember to turn off appliances when they are no longer needed!",
+      saved: "saving electricity",
+      keep: "limit the time you have your household appliances on",
+    },
+    showerTime: {
+      value: 8,
+      metric: "minute(s)",
+      metric2: "minute(s)",
+      action: "showered for",
+      advice:
+        "It can help to set an audible timer to prevent wasting too much water!",
+      saved: "saving water",
+      keep: "take quick showers",
+    },
+    screenTime: {
+      value: 3,
+      metric: "hour(s)",
+      metric2: "hour(s)",
+      action: "stared at a screen for",
+      advice:
+        "Try to do some electronic-free activities to relieve your eyes and help the environment!",
+      saved: "saving electricity",
+      keep: "avoid having electronics on for long periods of time",
+    },
   };
 
-  const resetInfo = () => {
-    setInfo("");
+  let userAverages = {
+    milesDriven,
+    meatConsumption,
+    tempApplianceUsage,
+    showerTime,
+    screenTime,
   };
+
+  let keys = Object.keys(userAverages);
+
+  let totalHTML = keys.map((key) => {
+    let trueAvg = averages[key];
+    let userAvg = userAverages[key];
+    if (trueAvg.value < userAvg) {
+      return (
+        <div style={{ color: "#d00202" }}>
+          You {trueAvg.action} {userAvg} {trueAvg.metric}. You are above the
+          average by {userAvg - trueAvg.value} {trueAvg.metric2}.{" "}
+          {trueAvg.advice}
+        </div>
+      );
+    }
+    if (trueAvg.value > userAvg) {
+      return (
+        <div style={{ color: "#7ed321" }}>
+          You {trueAvg.action} {userAvg} {trueAvg.metric}. You are below the
+          average by {trueAvg.value - userAvg} {trueAvg.metric2}. Amazing! Keep
+          up the good work in {trueAvg.saved}!
+        </div>
+      );
+    }
+    if (trueAvg.value == userAvg) {
+      return (
+        <div style={{ color: "#f8e71c" }}>
+          You {trueAvg.action} {userAvg} {trueAvg.metric}. You are exactly the
+          same as the average of {userAvg} {trueAvg.metric2}. Good job! Hope to
+          see you continue to {trueAvg.keep}!
+        </div>
+      );
+    }
+  });
 
   return (
     <Layout
@@ -100,309 +148,246 @@ function PersonalInputPage(props) {
         style={{
           fontSize: "20px",
           margin: "25px",
+          className: "mr-auto",
         }}
       >
         See how you compare to the average person in your city! If you do not
-        know a certain field type 0.
+        know a certain field type 0. Please approximate your values to the
+        nearest whole number.
       </p>
-      <label
-        htmlFor="milesDriven"
+      <div
         style={{
-          marginLeft: "25px",
+          margin: "25px",
+          height: "850px",
         }}
       >
-        <b>Miles driven on the day selected:</b>
-      </label>
-      <br></br>
-      <input
-        style={{
-          marginLeft: "25px",
-          marginRight: "25px",
-          marginBottom: "25px",
-        }}
-        value={milesDriven}
-        onChange={(event) => setMilesDriven(event.target.value)}
-        type="number"
-        placeholder="00.00"
-        name="milesDriven"
-        required
-      ></input>
-      <DatePicker
-        selected={date1}
-        onChange={handleChange1}
-        minDate={pastWeek}
-        maxDate={today}
-        dateFormat="MMMM d, yyyy"
-      />
-      <br></br>
-      <label
-        htmlFor="meatConsumption"
-        style={{
-          marginLeft: "25px",
-        }}
-      >
-        <b>Meals eaten containing meat on the day selected:</b>
-      </label>
-      <br></br>
-      <input
-        style={{
-          marginLeft: "25px",
-          marginRight: "25px",
-          marginBottom: "25px",
-        }}
-        value={meatConsumption}
-        onChange={(event) => setMeatConsumption(event.target.value)}
-        type="number"
-        placeholder="00.00"
-        name="meatConsumption"
-        required
-      ></input>
-      <DatePicker
-        selected={date2}
-        onChange={handleChange2}
-        minDate={pastWeek}
-        maxDate={today}
-        dateFormat="MMMM d, yyyy"
-      />
-      <br></br>
-      <label
-        htmlFor="tempApplianceUsage"
-        style={{
-          marginLeft: "25px",
-        }}
-      >
-        <b>Hours air-conditioning or heater was used on the day selected:</b>
-      </label>
-      <br></br>
-      <input
-        style={{
-          marginLeft: "25px",
-          marginRight: "25px",
-        }}
-        value={tempApplianceUsage}
-        onChange={(event) => setTempApplianceUsage(event.target.value)}
-        type="number"
-        placeholder="00.00"
-        name="tempApplianceUsage"
-        required
-      ></input>
-      <DatePicker
-        selected={date3}
-        onChange={handleChange3}
-        minDate={pastWeek}
-        maxDate={today}
-        dateFormat="MMMM d, yyyy"
-      />
-
-      <br></br>
-      <br></br>
-      {milesDriven >= 0 &&
-        meatConsumption >= 0 &&
-        tempApplianceUsage >= 0 &&
-        info.length <= 0 && (
-          <button
-            style={{
-              marginLeft: "25px",
-            }}
-            onClick={getInfo}
-          >
-            View My Information
-          </button>
-        )}
-      {info.length > 0 && (
-        <button
+        {/* <Image
+          src="https://i.pinimg.com/originals/dd/56/f4/dd56f428a0c5fda79f60aba5bda482a2.jpg"
+          width="400"
+          height="700"
+          align="right"
           style={{
-            marginLeft: "25px",
+            marginTop: "100px",
+            marginRight: "25px",
           }}
-          onClick={getInfo}
+        /> */}
+        <div
+          style={{
+            width: "40%",
+            float: "left",
+          }}
         >
-          Update My Information
-        </button>
-      )}
-      <br></br>
-      <br></br>
-      {milesDriven >= 0 &&
-        meatConsumption >= 0 &&
-        tempApplianceUsage >= 0 &&
-        info.length > 0 && (
-          <p
+          <label htmlFor="dateSelect">
+            <b>Please select a date:</b>
+          </label>
+          <br></br>
+          <DatePicker
+            selected={date1}
+            onChange={handleChange1}
+            minDate={pastWeek}
+            maxDate={today}
+            dateFormat="MMMM d, yyyy"
+          />
+          <br></br>
+          <label
+            htmlFor="milesDriven"
             style={{
-              marginLeft: "25px",
-              whiteSpace: "pre-line",
+              marginTop: "25px",
             }}
           >
-            Log (last updated {today.toLocaleString()}):
+            <b>Miles driven on the day selected:</b>
+          </label>
+          <br></br>
+          <input
+            style={{
+              marginBottom: "25px",
+              width: "175px",
+            }}
+            value={milesDriven}
+            onChange={(event) => setMilesDriven(event.target.value)}
+            type="number"
+            min="0"
+            placeholder="0"
+            name="milesDriven"
+            required
+          ></input>
+          <br></br>
+          <label htmlFor="meatConsumption">
+            <b>Meals eaten containing meat on the day selected:</b>
+          </label>
+          <br></br>
+          <input
+            style={{
+              marginBottom: "25px",
+              width: "175px",
+            }}
+            value={meatConsumption}
+            onChange={(event) => setMeatConsumption(event.target.value)}
+            type="number"
+            min="0"
+            placeholder="0"
+            name="meatConsumption"
+            required
+          ></input>
+          <br></br>
+          <label htmlFor="tempApplianceUsage">
+            <b>
+              Hours air-conditioning or heater was used on the day selected:
+            </b>
+          </label>
+          <br></br>
+          <input
+            style={{
+              marginBottom: "25px",
+              width: "175px",
+            }}
+            value={tempApplianceUsage}
+            onChange={(event) => setTempApplianceUsage(event.target.value)}
+            type="number"
+            min="0"
+            max="24"
+            placeholder="0"
+            name="tempApplianceUsage"
+            required
+          ></input>
+          <br></br>
+          <label htmlFor="showerTime">
+            <b>Minutes in shower on the day selected:</b>
+          </label>
+          <br></br>
+          <input
+            style={{
+              marginBottom: "25px",
+              width: "175px",
+            }}
+            value={showerTime}
+            onChange={(event) => setShowerTime(event.target.value)}
+            type="number"
+            min="0"
+            max="1440"
+            placeholder="0"
+            name="showerTime"
+            required
+          ></input>
+          <br></br>
+          <label htmlFor="screenTime">
+            <b>Hours in front of a screen on the day selected:</b>
+          </label>
+          <br></br>
+          <input
+            value={screenTime}
+            onChange={(event) => setScreenTime(event.target.value)}
+            type="number"
+            min="0"
+            max="24"
+            style={{
+              width: "175px",
+            }}
+            placeholder="0"
+            name="screenTime"
+            required
+          ></input>
+          <br></br>
+          <br></br>
+          {!(
+            milesDriven == "N/A" &&
+            meatConsumption == "N/A" &&
+            tempApplianceUsage == "N/A" &&
+            showerTime == "N/A" &&
+            screenTime == "N/A"
+          ) && (
+            <p
+              style={{
+                whiteSpace: "pre-line",
+              }}
+            >
+              Log (last updated {today.toLocaleString()}):
+              <br></br>
+              On {date1.toDateString()}:{totalHTML}
+              <br></br>
+            </p>
+          )}
+          {!(
+            milesDriven == "N/A" &&
+            meatConsumption == "N/A" &&
+            tempApplianceUsage == "N/A" &&
+            showerTime == "N/A" &&
+            screenTime == "N/A"
+          ) && <button onClick={resetTotal}>Reset</button>}
+        </div>
+        <div
+          style={{
+            width: "60%",
+            float: "right",
+          }}
+        >
+          <div
+            style={{
+              width: "48%",
+              float: "left",
+            }}
+          >
+            {milesDriven != "N/A" && (
+              <Card>
+                <CompBarGraph
+                  labels={["Average", username]}
+                  data={[29, parseFloat(milesDriven)]}
+                  title="Mile(s) Driven Per Day"
+                />
+              </Card>
+            )}
             <br></br>
-            {info}
-          </p>
-        )}
-      {info.length > 0 && (
-        <button
-          style={{
-            marginLeft: "25px",
-          }}
-          onClick={resetInfo}
-        >
-          Clear My Information
-        </button>
-      )}
+            {meatConsumption != "N/A" && (
+              <Card>
+                <CompBarGraph
+                  labels={["Average", username]}
+                  data={[1, parseFloat(meatConsumption)]}
+                  title="Meal(s) with Meat Eaten Per Day"
+                />
+              </Card>
+            )}
+          </div>
+          <div
+            style={{
+              width: "48%",
+              float: "right",
+            }}
+          >
+            {tempApplianceUsage != "N/A" && (
+              <Card>
+                <CompBarGraph
+                  labels={["Average", username]}
+                  data={[4, parseFloat(tempApplianceUsage)]}
+                  title="Hour(s) Using AC/Heater Per Day"
+                />
+              </Card>
+            )}
+            <br></br>
+            {showerTime != "N/A" && (
+              <Card>
+                <CompBarGraph
+                  labels={["Average", username]}
+                  data={[8, parseFloat(showerTime)]}
+                  title="Minute(s) In Shower Per Day"
+                />
+              </Card>
+            )}
+            <br></br>
+            {screenTime != "N/A" && (
+              <Card>
+                <CompBarGraph
+                  labels={["Average", username]}
+                  data={[3, parseFloat(screenTime)]}
+                  title="Hour(s) of Screen Time Per Day"
+                />
+              </Card>
+            )}
+          </div>
+        </div>
+      </div>
       <br></br>
       <br></br>
     </Layout>
   );
 }
 export default PersonalInputPage;
-
-/*
-return (
-    <Layout user={user}>
-      <p
-        style={{
-          fontSize: "20px",
-          margin: "25px",
-        }}
-      >
-        See how you compare to the average person in your city!
-      </p>
-      <center>
-      <Test
-      onOptionSelect={(selectedOptions) => console.log(selectedOptions)}
-    >
-      <QuestionGroup questionNumber={0}>
-        <Question>How many miles do you drive each week?</Question>
-        <Option value="0">None!</Option>
-        <Option value="1">Less than 50</Option>
-        <Option value="2">Less than 100</Option>
-        <Option value="3">More than 100 :(</Option>
-      </QuestionGroup>
-    </Test>
-
-    <DatePicker
-      selected={date1}
-      onChange={handleChange1}
-      minDate={pastWeek}
-      maxDate={today}
-      dateFormat="MMMM d, yyyy"
-    />
-    {}
-    <br></br>
-    <br></br>
-    <Test
-      onOptionSelect={(selectedOptions) => console.log(selectedOptions)}
-    >
-      <QuestionGroup questionNumber={1}>
-        <Question>What's your car's MPG?</Question>
-        <Option value="0">N/A</Option>
-        <Option value="1">Less than 12 MPG</Option>
-        <Option value="2">Less than 20 MPG</Option>
-        <Option value="3">More than 20 MPG</Option>
-      </QuestionGroup>
-    </Test>
-
-    <DatePicker
-      selected={date2}
-      onChange={handleChange2}
-      minDate={pastWeek}
-      maxDate={today}
-      dateFormat="MMMM d, yyyy"
-    />
-    {}
-    <br></br>
-    <br></br>
-    <Test
-      onOptionSelect={(selectedOptions) => console.log(selectedOptions)}
-    >
-      <QuestionGroup questionNumber={2}>
-        <Question>How often do you eat meat?</Question>
-        <Option value="0">Never</Option>
-        <Option value="1">Less than once a week</Option>
-        <Option value="2">A few times a week</Option>
-        <Option value="3">All the time</Option>
-      </QuestionGroup>
-    </Test>
-    <DatePicker
-      selected={date3}
-      onChange={handleChange3}
-      minDate={pastWeek}
-      maxDate={today}
-      dateFormat="MMMM d, yyyy"
-    />
-    <br></br>
-    <br></br>
-    <Test
-      onOptionSelect={(selectedOptions) => console.log(selectedOptions)}
-    >
-      <QuestionGroup questionNumber={3}>
-        <Question>How often do you run air-conditioning?</Question>
-        <Option value="0">Never</Option>
-        <Option value="1">Seldomly</Option>
-        <Option value="2">Often</Option>
-        <Option value="3">All the time</Option>
-      </QuestionGroup>
-    </Test>
-
-    <DatePicker
-      selected={date4}
-      onChange={handleChange4}
-      minDate={pastWeek}
-      maxDate={today}
-      dateFormat="MMMM d, yyyy"
-    />
-    <br></br>
-    <br></br>
-    <Test
-      onOptionSelect={(selectedOptions) => console.log(selectedOptions)}
-    >
-      <QuestionGroup questionNumber={1}>
-        <Question>How often do you fly?</Question>
-        <Option value="0">Never</Option>
-        <Option value="1">Less than once a year</Option>
-        <Option value="2">A few times a year</Option>
-        <Option value="3">Frequently</Option>
-      </QuestionGroup>
-    </Test>
-
-    <DatePicker
-      selected={date5}
-      onChange={handleChange5}
-      minDate={pastWeek}
-      maxDate={today}
-      dateFormat="MMMM d, yyyy"
-    />
-  </center>
-  <br></br>
-  <br></br>
-  <center>
-    <button
-      style={{
-        marginLeft: "25px",
-      }}
-      onClick={calculateTotal}
-    >
-      Submit!
-    </button>
-  </center>
-  <br></br>
-  <br></br>
-  <p
-    style={{
-      marginLeft: "25px",
-    }}
-  >
-    You did great! Our team is currently working on analyzing your data, but
-    remember there are always ways to improve your impact!
-  </p>
-  <center>
-    <button
-      style={{
-        marginLeft: "25px",
-      }}
-      onClick={resetTotal}
-    >
-      Reset my Quiz!
-    </button>
-  </center>
-</Layout>
-);
-}
-*/
