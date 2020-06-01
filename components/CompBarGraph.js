@@ -2,69 +2,71 @@ import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
 import { Card, Button } from "react-bootstrap";
 
-var cbkColor = "rgba(238,130,238,0.2)";
-var cboColor = "rgba(238,130,238,1)";
-var chbkColor = "rgba(238,130,238,0.4)";
-var chboColor = "rgba(238,130,238,1)";
-var bkColor,
-  boColor,
-  hbkColor,
-  hboColor,
-  ibkColor,
-  iboColor,
-  ihbkColor,
-  ihboColor;
+var averageColor,
+  averageBorderColor,
+  averageHoverColor,
+  averageHoverBorderColor,
+  goodColor,
+  goodBorderColor,
+  goodHoverColor,
+  goodHoverBorderColor,
+  sameColor,
+  sameBorderColor,
+  sameHoverColor,
+  sameHoverBorderColor,
+  badColor,
+  badBorderColor,
+  badHoverColor,
+  badHoverBorderColor,
+  userColor,
+  userBorderColor,
+  userHoverColor,
+  userHoverBorderColor;
 
 export default class CompBarGraph extends Component {
   static getDerivedStateFromProps(props, state) {
-    ibkColor = "rgba(0,0,255,0.2)";
-    iboColor = "rgba(0,0,255,1)";
-    ihbkColor = "rgba(0,0,255,0.4)";
-    ihboColor = "rgba(0,0,255,1)";
-    bkColor = "rgba(0,255,0,0.2)";
-    boColor = "rgba(0,255,0,1)";
-    hbkColor = "rgba(0,255,0,0.4)";
-    hboColor = "rgba(0,255,0,1)";
+    averageColor = "#40acff";
+    averageBorderColor = "#00518f";
+    averageHoverColor = "#0f73bf";
+    averageHoverBorderColor = "#63bbff";
+    goodColor = "#7ed321";
+    goodBorderColor = "green";
+    goodHoverColor = "#bfffa6";
+    goodHoverBorderColor = "#48ff00";
+    sameColor = "#f8e71c";
+    sameBorderColor = "#f5cf00";
+    sameHoverColor = "#ffff96";
+    sameHoverBorderColor = "#ffef96";
+    badColor = "#d00202";
+    badBorderColor = "#850000";
+    badHoverColor = "#ff3d74";
+    badHoverBorderColor = "#ffabca";
+    if (props.data[0] < props.data[1]) {
+      userColor = badColor;
+      userBorderColor = badBorderColor;
+      userHoverColor = badHoverColor;
+      userHoverBorderColor = badHoverBorderColor;
+    } else if (props.data[0] == props.data[1]) {
+      userColor = sameColor;
+      userBorderColor = sameBorderColor;
+      userHoverColor = sameHoverColor;
+      userHoverBorderColor = sameHoverBorderColor;
+    } else {
+      userColor = goodColor;
+      userBorderColor = goodBorderColor;
+      userHoverColor = goodHoverColor;
+      userHoverBorderColor = goodHoverBorderColor;
+    }
     return {
       labels: props.labels,
       datasets: [
         {
           label: props.title,
-          backgroundColor: [
-            ibkColor,
-            bkColor,
-            cbkColor,
-            cbkColor,
-            cbkColor,
-            cbkColor,
-            cbkColor,
-          ],
-          borderColor: [
-            iboColor,
-            boColor,
-            cboColor,
-            cboColor,
-            cboColor,
-            cboColor,
-            cboColor,
-          ],
+          backgroundColor: [averageColor, userColor],
+          borderColor: [averageBorderColor, userBorderColor],
           borderWidth: 1,
-          hoverBackgroundColor: [
-            ihbkColor,
-            hbkColor,
-            chbkColor,
-            chbkColor,
-            chbkColor,
-            chbkColor,
-          ],
-          hoverBorderColor: [
-            ihboColor,
-            hboColor,
-            chboColor,
-            chboColor,
-            chboColor,
-            chboColor,
-          ],
+          hoverBackgroundColor: [averageHoverColor, userHoverColor],
+          hoverBorderColor: [averageHoverBorderColor, userHoverBorderColor],
           data: props.data,
         },
       ],
