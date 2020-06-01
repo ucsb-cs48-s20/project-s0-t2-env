@@ -201,6 +201,7 @@ function PersonalInputPage(props) {
           <input
             style={{
               marginBottom: "25px",
+              width: "175px",
             }}
             value={milesDriven}
             onChange={(event) => setMilesDriven(event.target.value)}
@@ -218,6 +219,7 @@ function PersonalInputPage(props) {
           <input
             style={{
               marginBottom: "25px",
+              width: "175px",
             }}
             value={meatConsumption}
             onChange={(event) => setMeatConsumption(event.target.value)}
@@ -237,6 +239,7 @@ function PersonalInputPage(props) {
           <input
             style={{
               marginBottom: "25px",
+              width: "175px",
             }}
             value={tempApplianceUsage}
             onChange={(event) => setTempApplianceUsage(event.target.value)}
@@ -255,6 +258,7 @@ function PersonalInputPage(props) {
           <input
             style={{
               marginBottom: "25px",
+              width: "175px",
             }}
             value={showerTime}
             onChange={(event) => setShowerTime(event.target.value)}
@@ -276,6 +280,9 @@ function PersonalInputPage(props) {
             type="number"
             min="0"
             max="24"
+            style={{
+              width: "175px",
+            }}
             placeholder="0"
             name="screenTime"
             required
