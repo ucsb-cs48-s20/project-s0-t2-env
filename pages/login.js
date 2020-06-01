@@ -8,6 +8,7 @@ import React, { Component, useState } from "react";
 import DatePicker from "react-datepicker";
 import { Test, QuestionGroup, Question, Option } from "react-multiple-choice";
 import Image from "react-bootstrap/Image";
+import CompBarGraph from "../components/CompBarGraph";
 
 export const getServerSideProps = requiredAuth;
 
@@ -73,13 +74,7 @@ function PersonalInputPage(props) {
   let keys = Object.keys(userAverages);
 
   const getInfo = () => {
-    setInfo(
-      info +
-        "On " +
-        // date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
-        date1.toDateString() +
-        ": \n"
-    );
+    setInfo(info + "On " + date1.toDateString() + ": \n");
   };
 
   let totalHTML = keys.map((key) => {
@@ -111,10 +106,6 @@ function PersonalInputPage(props) {
     }
   });
 
-  const resetInfo = () => {
-    setInfo("");
-  };
-
   return (
     <Layout
       user={user}
@@ -125,6 +116,7 @@ function PersonalInputPage(props) {
         }
       }}
     >
+      <CompBarGraph labels={["Income", "You"]} data={[10, 9]} />
       <Image
         src="https://i.pinimg.com/originals/dd/56/f4/dd56f428a0c5fda79f60aba5bda482a2.jpg"
         width="400"
