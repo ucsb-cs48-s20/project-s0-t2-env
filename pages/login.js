@@ -319,51 +319,62 @@ function PersonalInputPage(props) {
           style={{
             marginLeft: "70%",
             marginRight: "25px",
+            height: "700px",
           }}
         >
-          <Card>
-            <CompBarGraph
-              labels={["Average", "Yours"]}
-              data={[29, parseFloat(milesDriven)]}
-              title="Miles Driven Per Day"
-            />
-          </Card>
+          {milesDriven != "N/A" && (
+            <Card>
+              <CompBarGraph
+                labels={["Average", "Yours"]}
+                data={[29, parseFloat(milesDriven)]}
+                title="Miles Driven Per Day"
+              />
+            </Card>
+          )}
           <br></br>
           <br></br>
-          <Card>
-            <CompBarGraph
-              labels={["Average", "Yours"]}
-              data={[1, parseFloat(meatConsumption)]}
-              title="Meals with Meat Eaten Per Day"
-            />
-          </Card>
+          {meatConsumption != "N/A" && (
+            <Card>
+              <CompBarGraph
+                labels={["Average", "Yours"]}
+                data={[1, parseFloat(meatConsumption)]}
+                title="Meals with Meat Eaten Per Day"
+              />
+            </Card>
+          )}
           <br></br>
           <br></br>
-          <Card>
-            <CompBarGraph
-              labels={["Average", "Yours"]}
-              data={[4, parseFloat(tempApplianceUsage)]}
-              title="Hours Using AC/Heater Per Day"
-            />
-          </Card>
+          {tempApplianceUsage != "N/A" && (
+            <Card>
+              <CompBarGraph
+                labels={["Average", "Yours"]}
+                data={[4, parseFloat(tempApplianceUsage)]}
+                title="Hours Using AC/Heater Per Day"
+              />
+            </Card>
+          )}
           <br></br>
           <br></br>
-          <Card>
-            <CompBarGraph
-              labels={["Average", "Yours"]}
-              data={[8, parseFloat(showerTime)]}
-              title="Minutes In Shower Per Day"
-            />
-          </Card>
+          {showerTime != "N/A" && (
+            <Card>
+              <CompBarGraph
+                labels={["Average", "Yours"]}
+                data={[8, parseFloat(showerTime)]}
+                title="Minutes In Shower Per Day"
+              />
+            </Card>
+          )}
           <br></br>
           <br></br>
-          <Card>
-            <CompBarGraph
-              labels={["Average", "Yours"]}
-              data={[3, parseFloat(screenTime)]}
-              title="Hourse of Screen Time Per Day"
-            />
-          </Card>
+          {screenTime != "N/A" && (
+            <Card>
+              <CompBarGraph
+                labels={["Average", "Yours"]}
+                data={[3, parseFloat(screenTime)]}
+                title="Hourse of Screen Time Per Day"
+              />
+            </Card>
+          )}
         </div>
       </div>
       <br></br>
