@@ -10,75 +10,81 @@ export default function City(props) {
 
   return (
     <div>
-      <Typography style={{ fontSize: 25 }} data-cy="waterquality">
-        <br />
-        <p>
-          Water pH Level:
-          <Tooltip
-            title="Learn more about this calculation"
-            placement="right"
-            arrow
-          >
-            <Link
-              style={{ fontWeight: "bold", margin: "5px", fontSize: 30 }}
-              href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
-            >
-              {data.waterpH}
-            </Link>
-          </Tooltip>
+      {data.waterpH ? (
+        <Typography style={{ fontSize: 25 }} data-cy="waterquality">
           <br />
-          <Image
-            src="https://cdn-prod.medicalnewstoday.com/content/images/articles/327/327185/a-table-showing-the-ph-of-common-drinks.jpg"
-            align="center"
-            width="450"
-            height="300"
-          />
-        </p>
-        <p>
-          Total Dissolved Solids:
-          <Tooltip
-            title="Learn more about this calculation"
-            placement="right"
-            arrow
-          >
-            <Link
-              style={{ fontWeight: "bold", margin: "5px", fontSize: 30 }}
-              href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+          <p>
+            Water pH Level:
+            <Tooltip
+              title="Learn more about this calculation"
+              placement="right"
+              arrow
             >
-              {data.totalDissolvedSolids} mg/L
-            </Link>
-          </Tooltip>
-          <br />
-          <Image
-            src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/tds_range1.jpg"
-            align="center"
-            width="450"
-            height="300"
-          />
-        </p>
-        <p>
-          Specific Conductance:
-          <Tooltip
-            title="Learn more about this calculation"
-            placement="right"
-            arrow
-          >
-            <Link
-              style={{ fontWeight: "bold", margin: "5px", fontSize: 30 }}
-              href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+              <Link
+                style={{ fontWeight: "bold", margin: "5px", fontSize: 30 }}
+                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+              >
+                {data.waterpH}
+              </Link>
+            </Tooltip>
+            <br />
+            <Image
+              src="https://cdn-prod.medicalnewstoday.com/content/images/articles/327/327185/a-table-showing-the-ph-of-common-drinks.jpg"
+              align="center"
+              width="450"
+              height="300"
+            />
+          </p>
+          <p>
+            Total Dissolved Solids:
+            <Tooltip
+              title="Learn more about this calculation"
+              placement="right"
+              arrow
             >
-              {data.specificConductance} μS/cm
-            </Link>
-          </Tooltip>
-          <br />
-          <Image
-            src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/conductivity_averages.jpg"
-            align="center"
-            width="450"
-            height="300"
-          />
-        </p>
-      </Typography>
+              <Link
+                style={{ fontWeight: "bold", margin: "5px", fontSize: 30 }}
+                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+              >
+                {data.totalDissolvedSolids} mg/L
+              </Link>
+            </Tooltip>
+            <br />
+            <Image
+              src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/tds_range1.jpg"
+              align="center"
+              width="450"
+              height="300"
+            />
+          </p>
+          <p>
+            Specific Conductance:
+            <Tooltip
+              title="Learn more about this calculation"
+              placement="right"
+              arrow
+            >
+              <Link
+                style={{ fontWeight: "bold", margin: "5px", fontSize: 30 }}
+                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+              >
+                {data.specificConductance} μS/cm
+              </Link>
+            </Tooltip>
+            <br />
+            <Image
+              src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/conductivity_averages.jpg"
+              align="center"
+              width="450"
+              height="300"
+            />
+          </p>
+        </Typography>
+      ) : (
+        <Typography style={{ fontSize: 25 }} data-cy="waterquality">
+          Sorry, we're missing water quality information for this city!
+        </Typography>
+      )}
       <Typography style={{ fontSize: 25 }} data-cy="airquality">
         <p>
           <p>
