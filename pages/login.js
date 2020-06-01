@@ -15,18 +15,13 @@ function PersonalInputPage(props) {
   const user = props.user;
   const { data: names } = useSWR("/api/cities/all", fetch, {});
   // const [username, setUsername] = useState(props.user.nickname); for future storing of data per user?
-  const [milesDriven, setMilesDriven] = useState("N/A");
-  const [meatConsumption, setMeatConsumption] = useState("N/A");
-  const [tempApplianceUsage, setTempApplianceUsage] = useState("N/A");
-  const [showerTime, setShowerTime] = useState("N/A");
-  const [screenTime, setScreenTime] = useState("N/A");
+  let [milesDriven, setMilesDriven] = useState("N/A");
+  let [meatConsumption, setMeatConsumption] = useState("N/A");
+  let [tempApplianceUsage, setTempApplianceUsage] = useState("N/A");
+  let [showerTime, setShowerTime] = useState("N/A");
+  let [screenTime, setScreenTime] = useState("N/A");
   const [total, setTotal] = useState(0);
   const [info, setInfo] = useState("");
-  var miles = "";
-  var meat = "";
-  var tempAppliance = "";
-  var shower = "";
-  var screen = "";
 
   const resetTotal = () => {
     setTotal(0);
@@ -41,139 +36,79 @@ function PersonalInputPage(props) {
   const [date1, setDate1] = useState(new Date());
   const handleChange1 = (date1) => setDate1(date1);
 
-  // const [date2, setDate2] = useState(new Date());
-  // const handleChange2 = (date2) => setDate2(date2);
-
-  // const [date3, setDate3] = useState(new Date());
-  // const handleChange3 = (date3) => setDate3(date3);
-
-  // const [date4, setDate4] = useState(new Date());
-  // const handleChange4 = (date4) => setDate4(date4);
-
-  // const [date5, setDate5] = useState(new Date());
-  // const handleChange5 = (date5) => setDate5(date5);
-
   const today = new Date();
   let pastWeek = new Date();
   pastWeek.setDate(pastWeek.getDate() - 6);
 
-  const getInfo = () => {
-    if (milesDriven > 29) {
-      miles =
-        "MORE than the average by " + parseInt(milesDriven - 29) + " mile(s).";
-    }
-    if (milesDriven == 29) {
-      miles = "exactly the average.";
-    }
-    if (milesDriven < 29) {
-      miles =
-        "LESS than the average by " + parseInt(29 - milesDriven) + " mile(s).";
-    }
-    if (meatConsumption > 1) {
-      meat =
-        "MORE than the average by " +
-        parseInt(meatConsumption - 1) +
-        " meal(s).";
-    }
-    if (meatConsumption == 1) {
-      meat = "exactly the average.";
-    }
-    if (meatConsumption < 1) {
-      meat =
-        "LESS than the average by " +
-        parseInt(1 - meatConsumption) +
-        " meal(s).";
-    }
-    if (tempApplianceUsage > 4) {
-      tempAppliance =
-        "MORE than the average by " +
-        parseInt(tempApplianceUsage - 4) +
-        " hour(s).";
-    }
-    if (tempApplianceUsage == 4) {
-      tempAppliance = "exactly the average. ";
-    }
-    if (tempApplianceUsage < 4) {
-      tempAppliance =
-        "LESS than the average by " +
-        parseInt(4 - tempApplianceUsage) +
-        " hour(s).";
-    }
-    if (showerTime > 8) {
-      shower =
-        "MORE than the average by " + parseInt(showerTime - 8) + " minute(s).";
-    }
-    if (showerTime == 8) {
-      shower = "exactly the average. ";
-    }
-    if (showerTime < 8) {
-      shower =
-        "LESS than the average by " + parseInt(8 - showerTime) + " minute(s).";
-    }
-    if (screenTime > 3) {
-      screen =
-        "MORE than the average by " + parseInt(screenTime - 3) + " hour(s).";
-    }
-    if (screenTime == 3) {
-      screen = "exactly the average. ";
-    }
-    if (screenTime < 3) {
-      screen =
-        "LESS than the average by " + parseInt(3 - screenTime) + " hour(s).";
-    }
+  let averages = {
+    milesDriven: {
+      value: 29,
+      metric: "mile(s) driven ",
+    },
+    meatConsumption: {
+      value: 1,
+      metric: "meal(s) with meat eaten ",
+    },
+    tempApplianceUsage: {
+      value: 4,
+      metric: "hour(s) of heater/AC usage ",
+    },
+    showerTime: {
+      value: 8,
+      metric: "minute(s) in the shower ",
+    },
+    screenTime: {
+      value: 3,
+      metric: "hour(s) in front of screen ",
+    },
+  };
+  let userAverages = {
+    milesDriven,
+    meatConsumption,
+    tempApplianceUsage,
+    showerTime,
+    screenTime,
+  };
 
+  let keys = Object.keys(userAverages);
+
+  const getInfo = () => {
     setInfo(
       info +
         "On " +
         date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
-        ", " +
-        //user.name +
-        "you drove " +
-        parseFloat(milesDriven) +
-        " mile(s) which is " +
-        miles +
-        "\n" +
-        //"On " +
-        //date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
-        // ", " +
-        // user.name +
-        "You ate " +
-        parseFloat(meatConsumption) +
-        " meal(s) containing meat which is " +
-        meat +
-        "\n" +
-        /* "On " +
-        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
-        ", " +
-        user.name +*/
-
-        " You had the air-conditioning or heater on for " +
-        parseFloat(tempApplianceUsage) +
-        " hour(s) which is " +
-        tempAppliance +
-        "\n" +
-        /*"On " +
-        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
-        ", " 
-        user.name + */
-        " You took a shower for " +
-        parseFloat(showerTime) +
-        " minute(s) which is " +
-        shower +
-        "\n" +
-        /*"On " +
-        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
-        ", " +
-        user.name + */
-        " You had a total screen time of " +
-        parseFloat(screenTime) +
-        " hour(s) which is " +
-        screen +
-        "\n" +
-        "----------------------------------------------------------------------------------------------------------------------------------------------------------------------" +
-        "\n"
+        ": \n"
     );
   };
+
+  let totalHTML = keys.map((key) => {
+    let trueAvg = averages[key];
+    let userAvg = userAverages[key];
+    if (trueAvg.value < userAvg) {
+      return (
+        <div style={{ color: "#d00202" }}>
+          Your entered value: {userAvg}. You are above the average by{" "}
+          {userAvg - trueAvg.value} {trueAvg.metric} daily.
+        </div>
+      );
+    }
+    if (trueAvg.value > userAvg) {
+      return (
+        <div style={{ color: "#7ed321" }}>
+          Your entered value: {userAvg}. You are below the average by{" "}
+          {trueAvg.value - userAvg} {trueAvg.metric} daily.
+        </div>
+      );
+    }
+    if (trueAvg.value == userAvg) {
+      return (
+        <div style={{ color: "#f8e71c" }}>
+          Your entered value: {userAvg}. You are exactly the same as the average
+          of {userAvg} {trueAvg.metric} daily.
+        </div>
+      );
+    }
+  });
 
   const resetInfo = () => {
     setInfo("");
@@ -190,12 +125,14 @@ function PersonalInputPage(props) {
       }}
     >
       <Image
-        src="https://blog.derby.ac.uk/wp-content/uploads/2017/01/Blog-800x450px-1.png"
-        width="700"
-        height="300"
+        src="https://i.pinimg.com/originals/dd/56/f4/dd56f428a0c5fda79f60aba5bda482a2.jpg"
+        width="400"
+        height="700"
         align="right"
-        className="mt-5"
-        fliud
+        style={{
+          marginTop: "100px",
+          marginRight: "25px",
+        }}
       />
       <p
         style={{
@@ -382,9 +319,10 @@ function PersonalInputPage(props) {
               whiteSpace: "pre-line",
             }}
           >
-            Log (last updated {today.toLocaleString()}):
+            {today.toLocaleString()}):
             <br></br>
             {info}
+            {totalHTML}
             <br></br>
           </p>
         )}
@@ -404,157 +342,3 @@ function PersonalInputPage(props) {
   );
 }
 export default PersonalInputPage;
-
-/*
-return (
-    <Layout user={user}>
-      <p
-        style={{
-          fontSize: "20px",
-          margin: "25px",
-        }}
-      >
-        See how you compare to the average person in your city!
-      </p>
-      <center>
-      <Test
-      onOptionSelect={(selectedOptions) => console.log(selectedOptions)}
-    >
-      <QuestionGroup questionNumber={0}>
-        <Question>How many miles do you drive each week?</Question>
-        <Option value="0">None!</Option>
-        <Option value="1">Less than 50</Option>
-        <Option value="2">Less than 100</Option>
-        <Option value="3">More than 100 :(</Option>
-      </QuestionGroup>
-    </Test>
-
-    <DatePicker
-      selected={date1}
-      onChange={handleChange1}
-      minDate={pastWeek}
-      maxDate={today}
-      dateFormat="MMMM d, yyyy"
-    />
-    {}
-    <br></br>
-    <br></br>
-    <Test
-      onOptionSelect={(selectedOptions) => console.log(selectedOptions)}
-    >
-      <QuestionGroup questionNumber={1}>
-        <Question>What's your car's MPG?</Question>
-        <Option value="0">N/A</Option>
-        <Option value="1">Less than 12 MPG</Option>
-        <Option value="2">Less than 20 MPG</Option>
-        <Option value="3">More than 20 MPG</Option>
-      </QuestionGroup>
-    </Test>
-
-    <DatePicker
-      selected={date2}
-      onChange={handleChange2}
-      minDate={pastWeek}
-      maxDate={today}
-      dateFormat="MMMM d, yyyy"
-    />
-    {}
-    <br></br>
-    <br></br>
-    <Test
-      onOptionSelect={(selectedOptions) => console.log(selectedOptions)}
-    >
-      <QuestionGroup questionNumber={2}>
-        <Question>How often do you eat meat?</Question>
-        <Option value="0">Never</Option>
-        <Option value="1">Less than once a week</Option>
-        <Option value="2">A few times a week</Option>
-        <Option value="3">All the time</Option>
-      </QuestionGroup>
-    </Test>
-    <DatePicker
-      selected={date3}
-      onChange={handleChange3}
-      minDate={pastWeek}
-      maxDate={today}
-      dateFormat="MMMM d, yyyy"
-    />
-    <br></br>
-    <br></br>
-    <Test
-      onOptionSelect={(selectedOptions) => console.log(selectedOptions)}
-    >
-      <QuestionGroup questionNumber={3}>
-        <Question>How often do you run air-conditioning?</Question>
-        <Option value="0">Never</Option>
-        <Option value="1">Seldomly</Option>
-        <Option value="2">Often</Option>
-        <Option value="3">All the time</Option>
-      </QuestionGroup>
-    </Test>
-
-    <DatePicker
-      selected={date4}
-      onChange={handleChange4}
-      minDate={pastWeek}
-      maxDate={today}
-      dateFormat="MMMM d, yyyy"
-    />
-    <br></br>
-    <br></br>
-    <Test
-      onOptionSelect={(selectedOptions) => console.log(selectedOptions)}
-    >
-      <QuestionGroup questionNumber={1}>
-        <Question>How often do you fly?</Question>
-        <Option value="0">Never</Option>
-        <Option value="1">Less than once a year</Option>
-        <Option value="2">A few times a year</Option>
-        <Option value="3">Frequently</Option>
-      </QuestionGroup>
-    </Test>
-
-    <DatePicker
-      selected={date5}
-      onChange={handleChange5}
-      minDate={pastWeek}
-      maxDate={today}
-      dateFormat="MMMM d, yyyy"
-    />
-  </center>
-  <br></br>
-  <br></br>
-  <center>
-    <button
-      style={{
-        marginLeft: "25px",
-      }}
-      onClick={calculateTotal}
-    >
-      Submit!
-    </button>
-  </center>
-  <br></br>
-  <br></br>
-  <p
-    style={{
-      marginLeft: "25px",
-    }}
-  >
-    You did great! Our team is currently working on analyzing your data, but
-    remember there are always ways to improve your impact!
-  </p>
-  <center>
-    <button
-      style={{
-        marginLeft: "25px",
-      }}
-      onClick={resetTotal}
-    >
-      Reset my Quiz!
-    </button>
-  </center>
-</Layout>
-);
-}
-*/
