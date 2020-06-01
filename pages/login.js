@@ -14,6 +14,7 @@ export const getServerSideProps = requiredAuth;
 
 function PersonalInputPage(props) {
   const user = props.user;
+  const username = user.name.substring(0, user.name.indexOf(" "));
   const { data: names } = useSWR("/api/cities/all", fetch, {});
   // const [username, setUsername] = useState(props.user.nickname); for future storing of data per user?
   let [milesDriven, setMilesDriven] = useState("N/A");
@@ -281,7 +282,7 @@ function PersonalInputPage(props) {
             {milesDriven != "N/A" && (
               <Card>
                 <CompBarGraph
-                  labels={["Average", "Yours"]}
+                  labels={["Average", username]}
                   data={[29, parseFloat(milesDriven)]}
                   title="Miles Driven Per Day"
                 />
@@ -291,7 +292,7 @@ function PersonalInputPage(props) {
             {meatConsumption != "N/A" && (
               <Card>
                 <CompBarGraph
-                  labels={["Average", "Yours"]}
+                  labels={["Average", username]}
                   data={[1, parseFloat(meatConsumption)]}
                   title="Meals with Meat Eaten Per Day"
                 />
@@ -307,7 +308,7 @@ function PersonalInputPage(props) {
             {tempApplianceUsage != "N/A" && (
               <Card>
                 <CompBarGraph
-                  labels={["Average", "Yours"]}
+                  labels={["Average", username]}
                   data={[4, parseFloat(tempApplianceUsage)]}
                   title="Hours Using AC/Heater Per Day"
                 />
@@ -317,7 +318,7 @@ function PersonalInputPage(props) {
             {showerTime != "N/A" && (
               <Card>
                 <CompBarGraph
-                  labels={["Average", "Yours"]}
+                  labels={["Average", username]}
                   data={[8, parseFloat(showerTime)]}
                   title="Minutes In Shower Per Day"
                 />
@@ -327,7 +328,7 @@ function PersonalInputPage(props) {
             {screenTime != "N/A" && (
               <Card>
                 <CompBarGraph
-                  labels={["Average", "Yours"]}
+                  labels={["Average", username]}
                   data={[3, parseFloat(screenTime)]}
                   title="Hourse of Screen Time Per Day"
                 />
