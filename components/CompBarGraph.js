@@ -77,8 +77,8 @@ export default class CompBarGraph extends Component {
         <Bar
           id="bar-graph"
           data={this.state}
-          width={100}
-          height={50}
+          width={1000}
+          height={500}
           options={{
             scales: {
               yAxes: [

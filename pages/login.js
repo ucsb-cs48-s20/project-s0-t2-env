@@ -124,7 +124,8 @@ function PersonalInputPage(props) {
       </p>
       <div
         style={{
-          width: "100%",
+          margin: "25px",
+          height: "800px",
         }}
       >
         {/* <Image
@@ -139,21 +140,15 @@ function PersonalInputPage(props) {
         /> */}
         <div
           style={{
-            width: "70%",
+            width: "750px",
             float: "left",
           }}
         >
-          <label
-            htmlFor="dateSelect"
-            style={{
-              marginLeft: "25px",
-            }}
-          >
+          <label htmlFor="dateSelect">
             <b>Please select a date:</b>
           </label>
           <br></br>
           <DatePicker
-            className="ml-4"
             selected={date1}
             onChange={handleChange1}
             minDate={pastWeek}
@@ -165,7 +160,6 @@ function PersonalInputPage(props) {
             htmlFor="milesDriven"
             style={{
               marginTop: "25px",
-              marginLeft: "25px",
             }}
           >
             <b>Miles driven on the day selected:</b>
@@ -173,8 +167,6 @@ function PersonalInputPage(props) {
           <br></br>
           <input
             style={{
-              marginLeft: "25px",
-              marginRight: "25px",
               marginBottom: "25px",
             }}
             value={milesDriven}
@@ -185,19 +177,12 @@ function PersonalInputPage(props) {
             required
           ></input>
           <br></br>
-          <label
-            htmlFor="meatConsumption"
-            style={{
-              marginLeft: "25px",
-            }}
-          >
+          <label htmlFor="meatConsumption">
             <b>Meals eaten containing meat on the day selected:</b>
           </label>
           <br></br>
           <input
             style={{
-              marginLeft: "25px",
-              marginRight: "25px",
               marginBottom: "25px",
             }}
             value={meatConsumption}
@@ -208,12 +193,7 @@ function PersonalInputPage(props) {
             required
           ></input>
           <br></br>
-          <label
-            htmlFor="tempApplianceUsage"
-            style={{
-              marginLeft: "25px",
-            }}
-          >
+          <label htmlFor="tempApplianceUsage">
             <b>
               Hours air-conditioning or heater was used on the day selected:
             </b>
@@ -221,8 +201,6 @@ function PersonalInputPage(props) {
           <br></br>
           <input
             style={{
-              marginLeft: "25px",
-              marginRight: "25px",
               marginBottom: "25px",
             }}
             value={tempApplianceUsage}
@@ -233,19 +211,12 @@ function PersonalInputPage(props) {
             required
           ></input>
           <br></br>
-          <label
-            htmlFor="showerTime"
-            style={{
-              marginLeft: "25px",
-            }}
-          >
+          <label htmlFor="showerTime">
             <b>Minutes in shower on the day selected:</b>
           </label>
           <br></br>
           <input
             style={{
-              marginLeft: "25px",
-              marginRight: "25px",
               marginBottom: "25px",
             }}
             value={showerTime}
@@ -256,20 +227,11 @@ function PersonalInputPage(props) {
             required
           ></input>
           <br></br>
-          <label
-            htmlFor="screenTime"
-            style={{
-              marginLeft: "25px",
-            }}
-          >
+          <label htmlFor="screenTime">
             <b>Hours in front of a screen on the day selected:</b>
           </label>
           <br></br>
           <input
-            style={{
-              marginLeft: "25px",
-              marginRight: "25px",
-            }}
             value={screenTime}
             onChange={(event) => setScreenTime(event.target.value)}
             type="number"
@@ -288,7 +250,6 @@ function PersonalInputPage(props) {
           ) && (
             <p
               style={{
-                marginLeft: "25px",
                 whiteSpace: "pre-line",
               }}
             >
@@ -304,77 +265,75 @@ function PersonalInputPage(props) {
             tempApplianceUsage == "N/A" &&
             showerTime == "N/A" &&
             screenTime == "N/A"
-          ) && (
-            <button
-              style={{
-                marginLeft: "25px",
-              }}
-              onClick={resetTotal}
-            >
-              Reset
-            </button>
-          )}
+          ) && <button onClick={resetTotal}>Reset</button>}
         </div>
         <div
           style={{
-            marginLeft: "70%",
-            marginRight: "25px",
-            height: "700px",
+            marginLeft: "775px",
           }}
         >
-          {milesDriven != "N/A" && (
-            <Card>
-              <CompBarGraph
-                labels={["Average", "Yours"]}
-                data={[29, parseFloat(milesDriven)]}
-                title="Miles Driven Per Day"
-              />
-            </Card>
-          )}
-          <br></br>
-          <br></br>
-          {meatConsumption != "N/A" && (
-            <Card>
-              <CompBarGraph
-                labels={["Average", "Yours"]}
-                data={[1, parseFloat(meatConsumption)]}
-                title="Meals with Meat Eaten Per Day"
-              />
-            </Card>
-          )}
-          <br></br>
-          <br></br>
-          {tempApplianceUsage != "N/A" && (
-            <Card>
-              <CompBarGraph
-                labels={["Average", "Yours"]}
-                data={[4, parseFloat(tempApplianceUsage)]}
-                title="Hours Using AC/Heater Per Day"
-              />
-            </Card>
-          )}
-          <br></br>
-          <br></br>
-          {showerTime != "N/A" && (
-            <Card>
-              <CompBarGraph
-                labels={["Average", "Yours"]}
-                data={[8, parseFloat(showerTime)]}
-                title="Minutes In Shower Per Day"
-              />
-            </Card>
-          )}
-          <br></br>
-          <br></br>
-          {screenTime != "N/A" && (
-            <Card>
-              <CompBarGraph
-                labels={["Average", "Yours"]}
-                data={[3, parseFloat(screenTime)]}
-                title="Hourse of Screen Time Per Day"
-              />
-            </Card>
-          )}
+          <div
+            style={{
+              width: "48%",
+              float: "left",
+            }}
+          >
+            {milesDriven != "N/A" && (
+              <Card>
+                <CompBarGraph
+                  labels={["Average", "Yours"]}
+                  data={[29, parseFloat(milesDriven)]}
+                  title="Miles Driven Per Day"
+                />
+              </Card>
+            )}
+            <br></br>
+            {meatConsumption != "N/A" && (
+              <Card>
+                <CompBarGraph
+                  labels={["Average", "Yours"]}
+                  data={[1, parseFloat(meatConsumption)]}
+                  title="Meals with Meat Eaten Per Day"
+                />
+              </Card>
+            )}
+          </div>
+          <div
+            style={{
+              width: "48%",
+              float: "right",
+            }}
+          >
+            {tempApplianceUsage != "N/A" && (
+              <Card>
+                <CompBarGraph
+                  labels={["Average", "Yours"]}
+                  data={[4, parseFloat(tempApplianceUsage)]}
+                  title="Hours Using AC/Heater Per Day"
+                />
+              </Card>
+            )}
+            <br></br>
+            {showerTime != "N/A" && (
+              <Card>
+                <CompBarGraph
+                  labels={["Average", "Yours"]}
+                  data={[8, parseFloat(showerTime)]}
+                  title="Minutes In Shower Per Day"
+                />
+              </Card>
+            )}
+            <br></br>
+            {screenTime != "N/A" && (
+              <Card>
+                <CompBarGraph
+                  labels={["Average", "Yours"]}
+                  data={[3, parseFloat(screenTime)]}
+                  title="Hourse of Screen Time Per Day"
+                />
+              </Card>
+            )}
+          </div>
         </div>
       </div>
       <br></br>
