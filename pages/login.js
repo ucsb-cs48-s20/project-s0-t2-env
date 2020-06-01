@@ -205,6 +205,7 @@ function PersonalInputPage(props) {
             value={milesDriven}
             onChange={(event) => setMilesDriven(event.target.value)}
             type="number"
+            min="0"
             placeholder="0"
             name="milesDriven"
             required
@@ -221,6 +222,7 @@ function PersonalInputPage(props) {
             value={meatConsumption}
             onChange={(event) => setMeatConsumption(event.target.value)}
             type="number"
+            min="0"
             placeholder="0"
             name="meatConsumption"
             required
@@ -239,6 +241,8 @@ function PersonalInputPage(props) {
             value={tempApplianceUsage}
             onChange={(event) => setTempApplianceUsage(event.target.value)}
             type="number"
+            min="0"
+            max="24"
             placeholder="0"
             name="tempApplianceUsage"
             required
@@ -255,6 +259,8 @@ function PersonalInputPage(props) {
             value={showerTime}
             onChange={(event) => setShowerTime(event.target.value)}
             type="number"
+            min="0"
+            max="1440"
             placeholder="0"
             name="showerTime"
             required
@@ -268,6 +274,8 @@ function PersonalInputPage(props) {
             value={screenTime}
             onChange={(event) => setScreenTime(event.target.value)}
             type="number"
+            min="0"
+            max="24"
             placeholder="0"
             name="screenTime"
             required
