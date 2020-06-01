@@ -81,6 +81,7 @@ export default class CompBarGraph extends Component {
           data={this.state}
           width={1000}
           height={500}
+          options={{ maintainAspectRatio: false }}
           options={{
             scales: {
               yAxes: [
