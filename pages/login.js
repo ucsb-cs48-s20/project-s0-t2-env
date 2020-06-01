@@ -79,7 +79,7 @@ function PersonalInputPage(props) {
   let keys = Object.keys(userAverages);
 
   const getInfo = () => {
-    setInfo(info + "On " + date1.toDateString() + ": \n");
+    setInfo("On " + date1.toDateString() + ": \n");
   };
 
   let totalHTML = keys.map((key) => {
@@ -346,8 +346,6 @@ function PersonalInputPage(props) {
               Clear My Information
             </button>
           )}
-          <br></br>
-          <br></br>
         </div>
         <div
           style={{
@@ -399,6 +397,8 @@ function PersonalInputPage(props) {
           </Card>
         </div>
       </div>
+      <br></br>
+      <br></br>
     </Layout>
   );
 }
