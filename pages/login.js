@@ -7,13 +7,8 @@ import Button from "react-bootstrap/Button";
 import React, { Component, useState } from "react";
 import DatePicker from "react-datepicker";
 import { Test, QuestionGroup, Question, Option } from "react-multiple-choice";
-// import Image from "react-bootstrap/Image";
 import CompBarGraph from "../components/CompBarGraph";
-import {
-  Card,
-  // CardRo,
-  Image,
-} from "react-bootstrap";
+import { Card, Image } from "react-bootstrap";
 
 export const getServerSideProps = requiredAuth;
 
@@ -27,7 +22,6 @@ function PersonalInputPage(props) {
   let [showerTime, setShowerTime] = useState("N/A");
   let [screenTime, setScreenTime] = useState("N/A");
   const [total, setTotal] = useState(0);
-  const [info, setInfo] = useState("");
 
   const resetTotal = () => {
     setTotal(0);
@@ -36,7 +30,6 @@ function PersonalInputPage(props) {
     setTempApplianceUsage("N/A");
     setShowerTime("N/A");
     setScreenTime("N/A");
-    setInfo("");
   };
 
   const [date1, setDate1] = useState(new Date());
@@ -68,6 +61,7 @@ function PersonalInputPage(props) {
       metric: "hour(s) in front of screen ",
     },
   };
+
   let userAverages = {
     milesDriven,
     meatConsumption,
@@ -77,10 +71,6 @@ function PersonalInputPage(props) {
   };
 
   let keys = Object.keys(userAverages);
-
-  const getInfo = () => {
-    setInfo("On " + date1.toDateString() + ": \n");
-  };
 
   let totalHTML = keys.map((key) => {
     let trueAvg = averages[key];
@@ -287,69 +277,48 @@ function PersonalInputPage(props) {
             name="screenTime"
             required
           ></input>
-
           <br></br>
           <br></br>
-          {milesDriven >= 0 &&
-            meatConsumption >= 0 &&
-            tempApplianceUsage >= 0 &&
-            showerTime >= 0 &&
-            screenTime >= 0 &&
-            info.length <= 0 && (
-              <button
-                style={{
-                  marginLeft: "25px",
-                }}
-                onClick={getInfo}
-              >
-                View My Information
-              </button>
-            )}
-          {info.length > 0 && (
-            <button
+          {!(
+            milesDriven == "N/A" &&
+            meatConsumption == "N/A" &&
+            tempApplianceUsage == "N/A" &&
+            showerTime == "N/A" &&
+            screenTime == "N/A"
+          ) && (
+            <p
               style={{
                 marginLeft: "25px",
+                whiteSpace: "pre-line",
               }}
-              onClick={getInfo}
             >
-              Update My Information
-            </button>
+              Log (last updated {today.toLocaleString()}):
+              <br></br>
+              On {date1.toDateString()}:{totalHTML}
+              <br></br>
+            </p>
           )}
-          <br></br>
-          <br></br>
-          {milesDriven >= 0 &&
-            meatConsumption >= 0 &&
-            tempApplianceUsage >= 0 &&
-            showerTime >= 0 &&
-            screenTime >= 0 &&
-            info.length > 0 && (
-              <p
-                style={{
-                  marginLeft: "25px",
-                  whiteSpace: "pre-line",
-                }}
-              >
-                Log (last updated {today.toLocaleString()}):
-                <br></br>
-                {info}
-                {totalHTML}
-                <br></br>
-              </p>
-            )}
-          {info.length > 0 && (
+          {!(
+            milesDriven == "N/A" &&
+            meatConsumption == "N/A" &&
+            tempApplianceUsage == "N/A" &&
+            showerTime == "N/A" &&
+            screenTime == "N/A"
+          ) && (
             <button
               style={{
                 marginLeft: "25px",
               }}
               onClick={resetTotal}
             >
-              Clear My Information
+              Reset
             </button>
           )}
         </div>
         <div
           style={{
             marginLeft: "70%",
+            marginRight: "25px",
           }}
         >
           <Card>
