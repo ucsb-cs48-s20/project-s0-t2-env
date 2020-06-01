@@ -30,20 +30,3 @@ NextJS
 ## Deployment Instructions:
 
 - [Deployment Instructions](./docs/DEPLOY.md)
-
-# Team s0-t1-budget Final Report, CS48, S20
-
-- Team Members: Darragh Burke, Zach Friedland, Sara Mandic, Noah Pang, Katelyn Zhang
-- Tech Stack: Node.js
-
-## Sections
-
-- [Part 1: Users Guide](./users_guide.md)
-- [Part 2: Programmers Guide](./programmers_guide.md)
-- [Part 3: Roles](./roles.md)
-
-## Links
-
-- Source Code: https://github.com/ucsb-cs48-s20/project-s0-t2-env
-- React Storybook: https://ucsb-cs48-s20.github.io/project-s0-t2-env-storybook
-- Production Link: https://cs48-s20-s0-t2-prod.herokuapp.com/
