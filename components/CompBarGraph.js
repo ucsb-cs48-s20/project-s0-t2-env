@@ -64,7 +64,7 @@ export default class CompBarGraph extends Component {
           label: props.title,
           backgroundColor: [averageColor, userColor],
           borderColor: [averageBorderColor, userBorderColor],
-          borderWidth: 1,
+          borderWidth: 2,
           hoverBackgroundColor: [averageHoverColor, userHoverColor],
           hoverBorderColor: [averageHoverBorderColor, userHoverBorderColor],
           data: props.data,
