@@ -25,6 +25,6 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import guestUser from "../fixtures/guestUser.json";
 
-Cypress.Commands.add("loginAsGuest", () =>
-  cy.setCookie("AUTH", JSON.stringify(guestUser))
-);
+Cypress.Commands.add("loginAsGuest", () => {
+  cy.setCookie("AUTH", JSON.stringify(guestUser));
+});

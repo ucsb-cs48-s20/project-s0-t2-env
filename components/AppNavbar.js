@@ -26,6 +26,7 @@ function AppNavbar(props) {
       variant="dark"
       style={{ backgroundColor: theme.palette.primary.main }}
       expand="lg"
+      data-cy="navbar"
     >
       <Container style={{ padding: "0px" }}>
         <NextLink passHref={true} href="/">
@@ -55,7 +56,9 @@ function AppNavbar(props) {
                 fontSize: "15px",
                 color: theme.palette.primary.contrastText,
               }}
+              href="/login"
               className="mt-2"
+              data-cy="personal-input"
             >
               Personal Input
             </Nav.Link>
@@ -77,8 +80,13 @@ function AppNavbar(props) {
                     />
                   </>
                 }
+                data-cy="greeting"
               >
-                <NavDropdown.Item className="text-danger" href="/api/logout">
+                <NavDropdown.Item
+                  className="text-danger"
+                  href="/api/logout"
+                  data-cy="logout"
+                >
                   Logout
                 </NavDropdown.Item>
               </NavDropdown>
