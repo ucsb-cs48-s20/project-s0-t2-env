@@ -141,7 +141,7 @@ function PersonalInputPage(props) {
         /> */}
         <div
           style={{
-            width: "750px",
+            width: "40%",
             float: "left",
           }}
         >
@@ -270,7 +270,8 @@ function PersonalInputPage(props) {
         </div>
         <div
           style={{
-            marginLeft: "775px",
+            width: "60%",
+            float: "right",
           }}
         >
           <div
@@ -284,7 +285,7 @@ function PersonalInputPage(props) {
                 <CompBarGraph
                   labels={["Average", username]}
                   data={[29, parseFloat(milesDriven)]}
-                  title="Miles Driven Per Day"
+                  title="Mile(s) Driven Per Day"
                 />
               </Card>
             )}
@@ -294,7 +295,7 @@ function PersonalInputPage(props) {
                 <CompBarGraph
                   labels={["Average", username]}
                   data={[1, parseFloat(meatConsumption)]}
-                  title="Meals with Meat Eaten Per Day"
+                  title="Meal(s) with Meat Eaten Per Day"
                 />
               </Card>
             )}
@@ -310,7 +311,7 @@ function PersonalInputPage(props) {
                 <CompBarGraph
                   labels={["Average", username]}
                   data={[4, parseFloat(tempApplianceUsage)]}
-                  title="Hours Using AC/Heater Per Day"
+                  title="Hour(s) Using AC/Heater Per Day"
                 />
               </Card>
             )}
@@ -320,7 +321,7 @@ function PersonalInputPage(props) {
                 <CompBarGraph
                   labels={["Average", username]}
                   data={[8, parseFloat(showerTime)]}
-                  title="Minutes In Shower Per Day"
+                  title="Minute(s) In Shower Per Day"
                 />
               </Card>
             )}
@@ -330,7 +331,7 @@ function PersonalInputPage(props) {
                 <CompBarGraph
                   labels={["Average", username]}
                   data={[3, parseFloat(screenTime)]}
-                  title="Hourse of Screen Time Per Day"
+                  title="Hour(s) of Screen Time Per Day"
                 />
               </Card>
             )}
