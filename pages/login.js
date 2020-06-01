@@ -76,7 +76,8 @@ function PersonalInputPage(props) {
     setInfo(
       info +
         "On " +
-        date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
+        // date1.toUTCString().substring(0, date1.toUTCString().indexOf(":") - 3) +
+        date1.toDateString() +
         ": \n"
     );
   };
@@ -319,7 +320,7 @@ function PersonalInputPage(props) {
               whiteSpace: "pre-line",
             }}
           >
-            {today.toLocaleString()}):
+            Log (last updated {today.toLocaleString()}):
             <br></br>
             {info}
             {totalHTML}
