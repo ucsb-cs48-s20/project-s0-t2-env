@@ -138,7 +138,8 @@ When we deploy this to heroku we will change these to correlate on Heroku (Step 
 - Click on Add My Own Data
 - Set the database name to be environment and the collection to be called cities inside the databases
 - After you are done click Connect
-- click add your current IP address
+- **If you click "add your current IP address" this only allows you to access this website from your certain IP address if you want it to be accessible throughout the internet follow this link and go to step 8: whitelist the entire internet https://ucsb-cs48.github.io/topics/mongodb_cloud_atlas_setup/ after you are done return here**
+  - this part is not in the video
 - click on create a MongoDB user (this can have any username and password)
 - click on connect your application
 - copy the connection string and put it in .env under MONGO_CONNECTION_STRING
@@ -166,8 +167,6 @@ If that does not work try `python3 -m pip install <name of module>` for each oth
 - ex: `python3 -m pip install pandas`
 
 After you have completed that we are ready to run the script.
-
-First we will want to run the Carbon script.
 
 First we will want to run the Carbon script.
 

@@ -1,4 +1,4 @@
-import { numberWithCommas } from "../pages/cities/[city].js";
+import { numberWithCommas } from "../utils/numbers.js";
 
 describe("pages/cities/[city].js", () => {
   describe("numberWithCommas", () => {

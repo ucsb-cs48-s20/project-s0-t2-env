@@ -1,25 +1,5 @@
-import useSWR from "swr";
-import Spinner from "react-bootstrap/Spinner";
-import { fetch } from "../utils/fetch";
-import Layout from "../components/Layout";
-import { optionalAuth } from "../utils/ssr";
-import { useRouter } from "next/router";
-import { FaMapPin, FaTree } from "react-icons/fa";
-import Container from "react-bootstrap/Container";
-import { VictoryPie, VictoryLabel, VictoryTooltip } from "victory";
-import {
-  useTheme,
-  Card,
-  CardContent,
-  CardActionArea,
-  Typography,
-  Tooltip,
-  List,
-  ListItem,
-  Divider,
-  Link,
-  CircularProgress,
-} from "@material-ui/core";
+import Image from "react-bootstrap/Image";
+import { Typography, Tooltip, Link, CircularProgress } from "@material-ui/core";
 
 export default function City(props) {
   const data = props.data;
@@ -31,66 +11,104 @@ export default function City(props) {
   return (
     <div>
       {data.waterpH ? (
-        <Typography style={{ fontSize: 20 }} data-cy="waterquality">
-          Water pH Level:
-          <Tooltip
-            title="Learn more about this calculation"
-            placement="right"
-            arrow
-          >
-            <Link
-              style={{ margin: "5px" }}
-              href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
-            >
-              {data.waterpH}
-            </Link>
-          </Tooltip>
+        <Typography style={{ fontSize: 25 }} data-cy="waterquality">
           <br />
-          Total Dissolved Solids:
-          <Tooltip
-            title="Learn more about this calculation"
-            placement="right"
-            arrow
-          >
-            <Link
-              style={{ margin: "5px" }}
-              href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+          <p>
+            Water pH Level:
+            <Tooltip
+              title="Learn more about this calculation"
+              placement="right"
+              arrow
             >
-              {data.totalDissolvedSolids} mg/L
-            </Link>
-          </Tooltip>
-          <br />
-          Specific Conductance:
-          <Tooltip
-            title="Learn more about this calculation"
-            placement="right"
-            arrow
-          >
-            <Link
-              style={{ margin: "5px" }}
-              href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+              <Link
+                style={{ fontWeight: "bold", margin: "5px", fontSize: 30 }}
+                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+              >
+                {data.waterpH}
+              </Link>
+            </Tooltip>
+            <br />
+            <Image
+              src="https://cdn-prod.medicalnewstoday.com/content/images/articles/327/327185/a-table-showing-the-ph-of-common-drinks.jpg"
+              align="center"
+              width="450"
+              height="300"
+            />
+          </p>
+          <p>
+            Total Dissolved Solids:
+            <Tooltip
+              title="Learn more about this calculation"
+              placement="right"
+              arrow
             >
-              {data.specificConductance} μS/cm
-            </Link>
-          </Tooltip>
+              <Link
+                style={{ fontWeight: "bold", margin: "5px", fontSize: 30 }}
+                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+              >
+                {data.totalDissolvedSolids} mg/L
+              </Link>
+            </Tooltip>
+            <br />
+            <Image
+              src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/tds_range1.jpg"
+              align="center"
+              width="450"
+              height="300"
+            />
+          </p>
+          <p>
+            Specific Conductance:
+            <Tooltip
+              title="Learn more about this calculation"
+              placement="right"
+              arrow
+            >
+              <Link
+                style={{ fontWeight: "bold", margin: "5px", fontSize: 30 }}
+                href="https://www.michiganseagrant.org/lessons/lessons/by-broad-concept/earth-science/water-quality/"
+              >
+                {data.specificConductance} μS/cm
+              </Link>
+            </Tooltip>
+            <br />
+            <Image
+              src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/conductivity_averages.jpg"
+              align="center"
+              width="450"
+              height="300"
+            />
+          </p>
         </Typography>
       ) : (
-        <Typography style={{ fontSize: 20 }} data-cy="waterquality">
+        <Typography style={{ fontSize: 25 }} data-cy="waterquality">
           Sorry, we're missing water quality information for this city!
         </Typography>
       )}
-
-      <Typography style={{ fontSize: 20 }} data-cy="airquality">
-        Today's Air Quality Index (AQI):&nbsp;
-        <Tooltip
-          title="Learn more about this calculation"
-          placement="right"
-          arrow
-        >
-          <Link style={{ margin: "1px" }} href={data.url}>
-            {data.aqi}
-          </Link>
-        </Tooltip>
+      <Typography style={{ fontSize: 25 }} data-cy="airquality">
+        <p>
+          <p>
+            Today's Air Quality Index (AQI):&nbsp;
+            <Tooltip
+              title="Learn more about this calculation"
+              placement="right"
+              arrow
+            >
+              <Link
+                style={{ fontWeight: "bold", margin: "5px", fontSize: 30 }}
+                href={data.url}
+              >
+                {data.aqi}
+              </Link>
+            </Tooltip>
+          </p>
+          <Image
+            src="https://d2v9ipibika81v.cloudfront.net/uploads/sites/190/AQI-Table.png"
+            align="center"
+            width="450"
+            height="300"
+          />
+        </p>
       </Typography>
     </div>
   );
