@@ -2,17 +2,17 @@
 
 ## Environmental Impacts Dashboard
 
-A dashboard of info about your city's environmental impact. When possible, the app shows you things like: amt of car traffic, public transportation options, news about policies enacted. User could tweak numbers and see how that would impact emissions
+A dashboard of info about your city's environmental impact. It provides information about Carbon Emissions, Water Pollution, and Air Quality. User could tweak numbers and see how that would impact emissions on the personal input page. 
 
 - Gives people suggestions (lifestyle changes) on how they can lower their emissions.
 - Tracking air quality, CO2 emissions, water usage
-- Allow users to track their own impact on the specific data sets
+- Allow users to see their own impact on the specific data sets
 
 ## Roles
 
-- Admin - ability to remove users and upload large amounts of data
+- Admin - ability to upload large amounts of data
 - Guest - has the ability to view the general information
-- User - can input their personal data and compare their personal impacts to the impact of their city (also has the access to view the general information as the guest). Can also post comments or start a discussion based on their lifestyle.
+- User - can input their personal data and compare their personal impacts to the impact of their city (also has the access to view the general information as the guest). 
 
 ## Tech Stack
 
