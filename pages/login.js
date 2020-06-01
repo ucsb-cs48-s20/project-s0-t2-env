@@ -126,7 +126,7 @@ function PersonalInputPage(props) {
       <div
         style={{
           margin: "25px",
-          height: "800px",
+          height: "850px",
         }}
       >
         {/* <Image
