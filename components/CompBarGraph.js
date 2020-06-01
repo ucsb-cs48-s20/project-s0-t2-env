@@ -16,42 +16,20 @@ var bkColor,
   ihboColor;
 
 export default class CompBarGraph extends Component {
-  state = {
-    labels: ["Average", "Yours"],
-    datasets: [
-      {
-        label: "Amount ($)",
-        backgroundColor: ["rgba(0,255,0,0.2)", "rgba(255,99,132,0.2)"],
-        borderColor: ["rgba(0,255,0,1)", "rgba(255,99,132,1)"],
-        borderWidth: 1,
-        hoverBackgroundColor: "rgba(255,99,132,0.4)",
-        hoverBorderColor: "rgba(255,99,132,1)",
-        data: [0, 0],
-      },
-    ],
-  };
-
   static getDerivedStateFromProps(props, state) {
     ibkColor = "rgba(0,0,255,0.2)";
     iboColor = "rgba(0,0,255,1)";
     ihbkColor = "rgba(0,0,255,0.4)";
     ihboColor = "rgba(0,0,255,1)";
-    if (props.data[1] > 0) {
-      bkColor = "rgba(0,255,0,0.2)";
-      boColor = "rgba(0,255,0,1)";
-      hbkColor = "rgba(0,255,0,0.4)";
-      hboColor = "rgba(0,255,0,1)";
-    } else {
-      bkColor = "rgba(255,99,132,0.2)";
-      boColor = "rgba(255,99,132,1)";
-      hbkColor = "rgba(255,99,132,0.4)";
-      hboColor = "rgba(255,99,132,0,1)";
-    }
+    bkColor = "rgba(0,255,0,0.2)";
+    boColor = "rgba(0,255,0,1)";
+    hbkColor = "rgba(0,255,0,0.4)";
+    hboColor = "rgba(0,255,0,1)";
     return {
       labels: props.labels,
       datasets: [
         {
-          label: "Amount ($)",
+          label: props.title,
           backgroundColor: [
             ibkColor,
             bkColor,

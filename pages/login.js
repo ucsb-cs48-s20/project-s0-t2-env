@@ -7,8 +7,13 @@ import Button from "react-bootstrap/Button";
 import React, { Component, useState } from "react";
 import DatePicker from "react-datepicker";
 import { Test, QuestionGroup, Question, Option } from "react-multiple-choice";
-import Image from "react-bootstrap/Image";
+// import Image from "react-bootstrap/Image";
 import CompBarGraph from "../components/CompBarGraph";
+import {
+  Card,
+  // CardRo,
+  Image,
+} from "react-bootstrap";
 
 export const getServerSideProps = requiredAuth;
 
@@ -116,17 +121,6 @@ function PersonalInputPage(props) {
         }
       }}
     >
-      <CompBarGraph labels={["Income", "You"]} data={[10, 9]} />
-      <Image
-        src="https://i.pinimg.com/originals/dd/56/f4/dd56f428a0c5fda79f60aba5bda482a2.jpg"
-        width="400"
-        height="700"
-        align="right"
-        style={{
-          marginTop: "100px",
-          marginRight: "25px",
-        }}
-      />
       <p
         style={{
           fontSize: "20px",
@@ -138,199 +132,273 @@ function PersonalInputPage(props) {
         know a certain field type 0. Please approximate your values to the
         nearest whole number.
       </p>
-      <label
-        htmlFor="dateSelect"
+      <div
         style={{
-          marginLeft: "25px",
+          width: "100%",
         }}
       >
-        <b>Please select a date:</b>
-      </label>
-      <br></br>
-      <DatePicker
-        className="ml-4"
-        selected={date1}
-        onChange={handleChange1}
-        minDate={pastWeek}
-        maxDate={today}
-        dateFormat="MMMM d, yyyy"
-      />
-      <br></br>
-      <label
-        htmlFor="milesDriven"
-        style={{
-          marginTop: "25px",
-          marginLeft: "25px",
-        }}
-      >
-        <b>Miles driven on the day selected:</b>
-      </label>
-      <br></br>
-      <input
-        style={{
-          marginLeft: "25px",
-          marginRight: "25px",
-          marginBottom: "25px",
-        }}
-        value={milesDriven}
-        onChange={(event) => setMilesDriven(event.target.value)}
-        type="number"
-        placeholder="0"
-        name="milesDriven"
-        required
-      ></input>
-      <br></br>
-      <label
-        htmlFor="meatConsumption"
-        style={{
-          marginLeft: "25px",
-        }}
-      >
-        <b>Meals eaten containing meat on the day selected:</b>
-      </label>
-      <br></br>
-      <input
-        style={{
-          marginLeft: "25px",
-          marginRight: "25px",
-          marginBottom: "25px",
-        }}
-        value={meatConsumption}
-        onChange={(event) => setMeatConsumption(event.target.value)}
-        type="number"
-        placeholder="0"
-        name="meatConsumption"
-        required
-      ></input>
-      <br></br>
-      <label
-        htmlFor="tempApplianceUsage"
-        style={{
-          marginLeft: "25px",
-        }}
-      >
-        <b>Hours air-conditioning or heater was used on the day selected:</b>
-      </label>
-      <br></br>
-      <input
-        style={{
-          marginLeft: "25px",
-          marginRight: "25px",
-          marginBottom: "25px",
-        }}
-        value={tempApplianceUsage}
-        onChange={(event) => setTempApplianceUsage(event.target.value)}
-        type="number"
-        placeholder="0"
-        name="tempApplianceUsage"
-        required
-      ></input>
-      <br></br>
-      <label
-        htmlFor="showerTime"
-        style={{
-          marginLeft: "25px",
-        }}
-      >
-        <b>Minutes in shower on the day selected:</b>
-      </label>
-      <br></br>
-      <input
-        style={{
-          marginLeft: "25px",
-          marginRight: "25px",
-          marginBottom: "25px",
-        }}
-        value={showerTime}
-        onChange={(event) => setShowerTime(event.target.value)}
-        type="number"
-        placeholder="0"
-        name="showerTime"
-        required
-      ></input>
-      <br></br>
-      <label
-        htmlFor="screenTime"
-        style={{
-          marginLeft: "25px",
-        }}
-      >
-        <b>Hours in front of a screen on the day selected:</b>
-      </label>
-      <br></br>
-      <input
-        style={{
-          marginLeft: "25px",
-          marginRight: "25px",
-        }}
-        value={screenTime}
-        onChange={(event) => setScreenTime(event.target.value)}
-        type="number"
-        placeholder="0"
-        name="screenTime"
-        required
-      ></input>
+        {/* <Image
+          src="https://i.pinimg.com/originals/dd/56/f4/dd56f428a0c5fda79f60aba5bda482a2.jpg"
+          width="400"
+          height="700"
+          align="right"
+          style={{
+            marginTop: "100px",
+            marginRight: "25px",
+          }}
+        /> */}
+        <div
+          style={{
+            width: "70%",
+            float: "left",
+          }}
+        >
+          <label
+            htmlFor="dateSelect"
+            style={{
+              marginLeft: "25px",
+            }}
+          >
+            <b>Please select a date:</b>
+          </label>
+          <br></br>
+          <DatePicker
+            className="ml-4"
+            selected={date1}
+            onChange={handleChange1}
+            minDate={pastWeek}
+            maxDate={today}
+            dateFormat="MMMM d, yyyy"
+          />
+          <br></br>
+          <label
+            htmlFor="milesDriven"
+            style={{
+              marginTop: "25px",
+              marginLeft: "25px",
+            }}
+          >
+            <b>Miles driven on the day selected:</b>
+          </label>
+          <br></br>
+          <input
+            style={{
+              marginLeft: "25px",
+              marginRight: "25px",
+              marginBottom: "25px",
+            }}
+            value={milesDriven}
+            onChange={(event) => setMilesDriven(event.target.value)}
+            type="number"
+            placeholder="0"
+            name="milesDriven"
+            required
+          ></input>
+          <br></br>
+          <label
+            htmlFor="meatConsumption"
+            style={{
+              marginLeft: "25px",
+            }}
+          >
+            <b>Meals eaten containing meat on the day selected:</b>
+          </label>
+          <br></br>
+          <input
+            style={{
+              marginLeft: "25px",
+              marginRight: "25px",
+              marginBottom: "25px",
+            }}
+            value={meatConsumption}
+            onChange={(event) => setMeatConsumption(event.target.value)}
+            type="number"
+            placeholder="0"
+            name="meatConsumption"
+            required
+          ></input>
+          <br></br>
+          <label
+            htmlFor="tempApplianceUsage"
+            style={{
+              marginLeft: "25px",
+            }}
+          >
+            <b>
+              Hours air-conditioning or heater was used on the day selected:
+            </b>
+          </label>
+          <br></br>
+          <input
+            style={{
+              marginLeft: "25px",
+              marginRight: "25px",
+              marginBottom: "25px",
+            }}
+            value={tempApplianceUsage}
+            onChange={(event) => setTempApplianceUsage(event.target.value)}
+            type="number"
+            placeholder="0"
+            name="tempApplianceUsage"
+            required
+          ></input>
+          <br></br>
+          <label
+            htmlFor="showerTime"
+            style={{
+              marginLeft: "25px",
+            }}
+          >
+            <b>Minutes in shower on the day selected:</b>
+          </label>
+          <br></br>
+          <input
+            style={{
+              marginLeft: "25px",
+              marginRight: "25px",
+              marginBottom: "25px",
+            }}
+            value={showerTime}
+            onChange={(event) => setShowerTime(event.target.value)}
+            type="number"
+            placeholder="0"
+            name="showerTime"
+            required
+          ></input>
+          <br></br>
+          <label
+            htmlFor="screenTime"
+            style={{
+              marginLeft: "25px",
+            }}
+          >
+            <b>Hours in front of a screen on the day selected:</b>
+          </label>
+          <br></br>
+          <input
+            style={{
+              marginLeft: "25px",
+              marginRight: "25px",
+            }}
+            value={screenTime}
+            onChange={(event) => setScreenTime(event.target.value)}
+            type="number"
+            placeholder="0"
+            name="screenTime"
+            required
+          ></input>
 
-      <br></br>
-      <br></br>
-      {milesDriven >= 0 &&
-        meatConsumption >= 0 &&
-        tempApplianceUsage >= 0 &&
-        showerTime >= 0 &&
-        screenTime >= 0 &&
-        info.length <= 0 && (
-          <button
-            style={{
-              marginLeft: "25px",
-            }}
-            onClick={getInfo}
-          >
-            View My Information
-          </button>
-        )}
-      {info.length > 0 && (
-        <button
+          <br></br>
+          <br></br>
+          {milesDriven >= 0 &&
+            meatConsumption >= 0 &&
+            tempApplianceUsage >= 0 &&
+            showerTime >= 0 &&
+            screenTime >= 0 &&
+            info.length <= 0 && (
+              <button
+                style={{
+                  marginLeft: "25px",
+                }}
+                onClick={getInfo}
+              >
+                View My Information
+              </button>
+            )}
+          {info.length > 0 && (
+            <button
+              style={{
+                marginLeft: "25px",
+              }}
+              onClick={getInfo}
+            >
+              Update My Information
+            </button>
+          )}
+          <br></br>
+          <br></br>
+          {milesDriven >= 0 &&
+            meatConsumption >= 0 &&
+            tempApplianceUsage >= 0 &&
+            showerTime >= 0 &&
+            screenTime >= 0 &&
+            info.length > 0 && (
+              <p
+                style={{
+                  marginLeft: "25px",
+                  whiteSpace: "pre-line",
+                }}
+              >
+                Log (last updated {today.toLocaleString()}):
+                <br></br>
+                {info}
+                {totalHTML}
+                <br></br>
+              </p>
+            )}
+          {info.length > 0 && (
+            <button
+              style={{
+                marginLeft: "25px",
+              }}
+              onClick={resetTotal}
+            >
+              Clear My Information
+            </button>
+          )}
+          <br></br>
+          <br></br>
+        </div>
+        <div
           style={{
-            marginLeft: "25px",
+            marginLeft: "70%",
           }}
-          onClick={getInfo}
         >
-          Update My Information
-        </button>
-      )}
-      <br></br>
-      <br></br>
-      {milesDriven >= 0 &&
-        meatConsumption >= 0 &&
-        tempApplianceUsage >= 0 &&
-        showerTime >= 0 &&
-        screenTime >= 0 &&
-        info.length > 0 && (
-          <p
-            style={{
-              marginLeft: "25px",
-              whiteSpace: "pre-line",
-            }}
-          >
-            Log (last updated {today.toLocaleString()}):
-            <br></br>
-            {info}
-            {totalHTML}
-            <br></br>
-          </p>
-        )}
-      {info.length > 0 && (
-        <button
-          style={{
-            marginLeft: "25px",
-          }}
-          onClick={resetTotal}
-        >
-          Clear My Information
-        </button>
-      )}
-      <br></br>
-      <br></br>
+          <Card>
+            <CompBarGraph
+              labels={["Average", "Yours"]}
+              data={[29, parseFloat(milesDriven)]}
+              title="Miles Driven Per Day"
+            />
+          </Card>
+          <br></br>
+          <br></br>
+          <Card>
+            <CompBarGraph
+              labels={["Average", "Yours"]}
+              data={[1, parseFloat(meatConsumption)]}
+              title="Meals with Meat Eaten Per Day"
+            />
+          </Card>
+          <br></br>
+          <br></br>
+          <Card>
+            <CompBarGraph
+              labels={["Average", "Yours"]}
+              data={[4, parseFloat(tempApplianceUsage)]}
+              title="Hours Using AC/Heater Per Day"
+            />
+          </Card>
+          <br></br>
+          <br></br>
+          <Card>
+            <CompBarGraph
+              labels={["Average", "Yours"]}
+              data={[8, parseFloat(showerTime)]}
+              title="Minutes In Shower Per Day"
+            />
+          </Card>
+          <br></br>
+          <br></br>
+          <Card>
+            <CompBarGraph
+              labels={["Average", "Yours"]}
+              data={[3, parseFloat(screenTime)]}
+              title="Hourse of Screen Time Per Day"
+            />
+          </Card>
+        </div>
+      </div>
     </Layout>
   );
 }
