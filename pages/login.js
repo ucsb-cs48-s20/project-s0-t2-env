@@ -43,23 +43,52 @@ function PersonalInputPage(props) {
   let averages = {
     milesDriven: {
       value: 29,
-      metric: "mile(s) driven ",
+      metric: "mile(s)",
+      metric2: "mile(s)",
+      action: "drove",
+      advice:
+        "Try to bike or walk if possible, if not, carpooling or public transportation is usually a good alternative!",
+      saved: "saving gas and reducing carbon emissions",
+      keep: "decrease the number of miles you drive",
     },
     meatConsumption: {
       value: 1,
-      metric: "meal(s) with meat eaten ",
+      metric: "meal(s) containing meat",
+      metric2: "meal(s)",
+      action: "ate",
+      advice:
+        "You can lower your meals with meat by planning ahead what you're going to cook each day!",
+      saved: "reducing carbon emissions",
+      keep: "reduce the meals you eat containing meat",
     },
     tempApplianceUsage: {
       value: 4,
-      metric: "hour(s) of heater/AC usage ",
+      metric: "hour(s)",
+      metric2: "hour(s)",
+      action: "had the AC/heater on for",
+      advice: "Remember to turn off appliances when they are no longer needed!",
+      saved: "saving electricity",
+      keep: "limit the time you have your household appliances on",
     },
     showerTime: {
       value: 8,
-      metric: "minute(s) in the shower ",
+      metric: "minute(s)",
+      metric2: "minute(s)",
+      action: "showered for",
+      advice:
+        "It can help to set an audible timer to prevent wasting too much water!",
+      saved: "saving water",
+      keep: "take quick showers",
     },
     screenTime: {
       value: 3,
-      metric: "hour(s) in front of screen ",
+      metric: "hour(s)",
+      metric2: "hour(s)",
+      action: "stared at a screen for",
+      advice:
+        "Try to do some electronic-free activities to relieve your eyes and help the environment!",
+      saved: "saving electricity",
+      keep: "avoid having electronics on for long periods of time",
     },
   };
 
@@ -79,24 +108,27 @@ function PersonalInputPage(props) {
     if (trueAvg.value < userAvg) {
       return (
         <div style={{ color: "#d00202" }}>
-          Your entered value: {userAvg}. You are above the average by{" "}
-          {userAvg - trueAvg.value} {trueAvg.metric} daily.
+          You {trueAvg.action} {userAvg} {trueAvg.metric}. You are above the
+          average by {userAvg - trueAvg.value} {trueAvg.metric2}.{" "}
+          {trueAvg.advice}
         </div>
       );
     }
     if (trueAvg.value > userAvg) {
       return (
         <div style={{ color: "#7ed321" }}>
-          Your entered value: {userAvg}. You are below the average by{" "}
-          {trueAvg.value - userAvg} {trueAvg.metric} daily.
+          You {trueAvg.action} {userAvg} {trueAvg.metric}. You are below the
+          average by {trueAvg.value - userAvg} {trueAvg.metric2}. Amazing! Keep
+          up the good work in {trueAvg.saved}!
         </div>
       );
     }
     if (trueAvg.value == userAvg) {
       return (
         <div style={{ color: "#f8e71c" }}>
-          Your entered value: {userAvg}. You are exactly the same as the average
-          of {userAvg} {trueAvg.metric} daily.
+          You {trueAvg.action} {userAvg} {trueAvg.metric}. You are exactly the
+          same as the average of {userAvg} {trueAvg.metric2}. Good job! Hope to
+          see you continue to {trueAvg.keep}!
         </div>
       );
     }
