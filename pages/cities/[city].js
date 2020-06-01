@@ -39,10 +39,12 @@ function City() {
       <title>
         {data.name}, {data.state} | Environmental Impacts Dashboard
       </title>
-      <Typography variant="h3">
+      <Typography variant="h3" data-cy="location">
         {data.name}, {data.state}
       </Typography>
-      <Typography>Population: {numberWithCommas(data.population)}</Typography>
+      <Typography data-cy="population">
+        Population: {numberWithCommas(data.population)}
+      </Typography>
       <CardContent>
         <List>
           <Divider />

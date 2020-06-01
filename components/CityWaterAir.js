@@ -10,7 +10,7 @@ export default function City(props) {
 
   return (
     <div>
-      <Typography style={{ fontSize: 25 }}>
+      <Typography style={{ fontSize: 25 }} data-cy="waterquality">
         <br />
         <p>
           Water pH Level:
@@ -78,6 +78,8 @@ export default function City(props) {
             height="300"
           />
         </p>
+      </Typography>
+      <Typography style={{ fontSize: 25 }} data-cy="airquality">
         <p>
           <p>
             Today's Air Quality Index (AQI):&nbsp;

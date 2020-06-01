@@ -113,3 +113,11 @@ dist
 .yarn/unplugged
 .yarn/build-state.yml
 .pnp.*
+
+# Cypress
+cypress.env.json
+cypress/screenshots
+cypress/videos
+
+# Mac OS
+.DS_Store

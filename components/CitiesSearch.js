@@ -24,7 +24,7 @@ export default function CitiesSearch(props) {
     return <div></div>;
   }
   return (
-    <div style={{ width: 300 }}>
+    <div style={{ width: 300 }} data-cy="search">
       <Autocomplete
         filterOptions={filterOptions}
         options={names}
@@ -33,7 +33,12 @@ export default function CitiesSearch(props) {
         id="clear-on-escape"
         clearOnEscape
         renderInput={(params) => (
-          <TextField {...params} label="Cities in California" margin="normal" />
+          <TextField
+            {...params}
+            label="Cities in California"
+            margin="normal"
+            data-cy="searchfield"
+          />
         )}
       />
     </div>

@@ -6,7 +6,7 @@ function CarbonEmissions(props) {
   const theme = useTheme();
   return (
     <>
-      <div style={{ margin: "20px" }}>
+      <div style={{ margin: "20px" }} data-cy="carbon">
         <Typography variant="h5">Emits</Typography>
         <Typography variant="h4">
           <Tooltip
