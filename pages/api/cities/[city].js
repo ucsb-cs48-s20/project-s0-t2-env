@@ -84,20 +84,37 @@ handler.get(async (req, res) => {
 
   console.log(popAPI);
 
-  res.json({
-    name,
-    state,
-    population: popAPI.records[0].fields.population,
-    CO2,
-    latitude,
-    longitude,
-    aqi: aqiAPI.data.aqi,
-    url: aqiAPI.data.city.url,
-    waterpH,
-    totalDissolvedSolids,
-    specificConductance,
-    energyShare,
-  });
+  if (popAPI.records[0]) {
+    res.json({
+      name,
+      state,
+      population: popAPI.records[0].fields.population,
+      CO2,
+      latitude,
+      longitude,
+      aqi: aqiAPI.data.aqi,
+      url: aqiAPI.data.city.url,
+      waterpH,
+      totalDissolvedSolids,
+      specificConductance,
+      energyShare,
+    });
+  } else {
+    res.json({
+      name,
+      state,
+      population: undefined,
+      CO2,
+      latitude,
+      longitude,
+      aqi: aqiAPI.data.aqi,
+      url: aqiAPI.data.city.url,
+      waterpH,
+      totalDissolvedSolids,
+      specificConductance,
+      energyShare,
+    });
+  }
 });
 
 export default handler;
