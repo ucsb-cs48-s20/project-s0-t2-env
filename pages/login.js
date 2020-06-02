@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
 import React, { Component, useState } from "react";
 import DatePicker from "react-datepicker";
-import { Test, QuestionGroup, Question, Option } from "react-multiple-choice";
 import CompBarGraph from "../components/CompBarGraph";
 import { Card, Image } from "react-bootstrap";
 
@@ -16,7 +15,6 @@ function PersonalInputPage(props) {
   const user = props.user;
   const username = user.name.substring(0, user.name.indexOf(" "));
   const { data: names } = useSWR("/api/cities/all", fetch, {});
-  // const [username, setUsername] = useState(props.user.nickname); for future storing of data per user?
   let [milesDriven, setMilesDriven] = useState("N/A");
   let [meatConsumption, setMeatConsumption] = useState("N/A");
   let [tempApplianceUsage, setTempApplianceUsage] = useState("N/A");
@@ -161,16 +159,6 @@ function PersonalInputPage(props) {
           height: "850px",
         }}
       >
-        {/* <Image
-          src="https://i.pinimg.com/originals/dd/56/f4/dd56f428a0c5fda79f60aba5bda482a2.jpg"
-          width="400"
-          height="700"
-          align="right"
-          style={{
-            marginTop: "100px",
-            marginRight: "25px",
-          }}
-        /> */}
         <div
           style={{
             width: "40%",

@@ -2,13 +2,7 @@ import Layout from "../components/Layout";
 import Carousel from "react-bootstrap/Carousel";
 import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
-import {
-  MdTrendingUp,
-  MdCompareArrows,
-  MdFlag,
-  MdPlaylistAddCheck,
-  MdSearch,
-} from "react-icons/md";
+import { MdCompareArrows, MdPlaylistAddCheck, MdSearch } from "react-icons/md";
 import useSWR from "swr";
 import { fetch } from "../utils/fetch";
 import { optionalAuth } from "../utils/ssr";
