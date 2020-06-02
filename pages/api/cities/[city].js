@@ -83,11 +83,17 @@ handler.get(async (req, res) => {
   );
 
   console.log(popAPI);
+  let pop;
+  if (popAPI.records[0]) {
+    pop = popAPI.records[0].fields.population;
+  } else {
+    pop = undefined;
+  }
 
   res.json({
     name,
     state,
-    population: popAPI.records[0].fields.population,
+    population: pop,
     CO2,
     latitude,
     longitude,
