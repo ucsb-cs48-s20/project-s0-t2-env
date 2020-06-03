@@ -210,6 +210,7 @@ function PersonalInputPage(props) {
             placeholder="0"
             name="milesDriven"
             required
+            data-cy="milesdriven"
           ></input>
           <br></br>
           <label htmlFor="meatConsumption">
@@ -228,6 +229,7 @@ function PersonalInputPage(props) {
             placeholder="0"
             name="meatConsumption"
             required
+            data-cy="meatConsumption"
           ></input>
           <br></br>
           <label htmlFor="tempApplianceUsage">
@@ -249,6 +251,7 @@ function PersonalInputPage(props) {
             placeholder="0"
             name="tempApplianceUsage"
             required
+            data-cy="tempApplianceUsage"
           ></input>
           <br></br>
           <label htmlFor="showerTime">
@@ -268,6 +271,7 @@ function PersonalInputPage(props) {
             placeholder="0"
             name="showerTime"
             required
+            data-cy="showerTime"
           ></input>
           <br></br>
           <label htmlFor="screenTime">
@@ -286,6 +290,7 @@ function PersonalInputPage(props) {
             placeholder="0"
             name="screenTime"
             required
+            data-cy="screenTime"
           ></input>
           <br></br>
           <br></br>
@@ -313,7 +318,11 @@ function PersonalInputPage(props) {
             tempApplianceUsage == "N/A" &&
             showerTime == "N/A" &&
             screenTime == "N/A"
-          ) && <button onClick={resetTotal}>Reset</button>}
+          ) && (
+            <button onClick={resetTotal} data-cy="reset">
+              Reset
+            </button>
+          )}
         </div>
         <div
           style={{
@@ -328,7 +337,7 @@ function PersonalInputPage(props) {
             }}
           >
             {milesDriven != "N/A" && (
-              <Card>
+              <Card data-cy="milesDrivenGraph">
                 <CompBarGraph
                   labels={["Average", username]}
                   data={[29, parseFloat(milesDriven)]}
@@ -338,7 +347,7 @@ function PersonalInputPage(props) {
             )}
             <br></br>
             {meatConsumption != "N/A" && (
-              <Card>
+              <Card data-cy="mealsEatenGraph">
                 <CompBarGraph
                   labels={["Average", username]}
                   data={[1, parseFloat(meatConsumption)]}
@@ -354,7 +363,7 @@ function PersonalInputPage(props) {
             }}
           >
             {tempApplianceUsage != "N/A" && (
-              <Card>
+              <Card data-cy="ACHeaterGraph">
                 <CompBarGraph
                   labels={["Average", username]}
                   data={[4, parseFloat(tempApplianceUsage)]}
@@ -364,7 +373,7 @@ function PersonalInputPage(props) {
             )}
             <br></br>
             {showerTime != "N/A" && (
-              <Card>
+              <Card data-cy="showerGraph">
                 <CompBarGraph
                   labels={["Average", username]}
                   data={[8, parseFloat(showerTime)]}
@@ -374,7 +383,7 @@ function PersonalInputPage(props) {
             )}
             <br></br>
             {screenTime != "N/A" && (
-              <Card>
+              <Card data-cy="screenGraph">
                 <CompBarGraph
                   labels={["Average", username]}
                   data={[3, parseFloat(screenTime)]}
