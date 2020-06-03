@@ -17,36 +17,24 @@ describe("Cities page", () => {
     });
     it("contains the location and population data", () => {
       cy.get("[data-cy=location]").contains("Goleta, CA");
-      cy.get("[data-cy=population]").contains("Population:");
+      cy.get("[data-cy=population]").contains("Population");
     });
     it("contains carbon data", () => {
       cy.get("[data-cy=carbon]").contains("Emits");
     });
     it("contains water data", () => {
-      cy.get("[data-cy=waterquality]").contains("Water pH Level:");
+      cy.get("[data-cy=waterquality]").contains("Water pH Level");
       cy.get("[data-cy=waterquality]")
-        .contains("Total Dissolved Solids:")
+        .contains("Total Dissolved Solids")
         .contains("mg/L");
       cy.get("[data-cy=waterquality]")
-        .contains("Specific Conductance:")
+        .contains("Specific Conductance")
         .contains("μS/cm");
     });
     it("contains air quality data", () => {
       cy.get("[data-cy=airquality]").contains(
-        "Today's Air Quality Index (AQI):"
+        "Today's Air Quality Index (AQI)"
       );
     });
   });
 });
-
-/* it("displays Goleta info", () => {
-    const image = "https://images.dog.ceo/breeds/chow/n02112137_10654.jpg";
-
-    cy.server().route("/api/dog", { image }).as("dog");
-
-    cy.visit("http://localhost:3000/woof");
-
-    cy.wait("@dog");
-
-    cy.get("[data-cy=doggo]").should("have.attr", "src", image);
-}); */
