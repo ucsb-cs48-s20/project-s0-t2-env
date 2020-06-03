@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import CityWaterAir from "../../components/CityWaterAir";
 import CarbonEmissions from "../../components/CarbonEmissions";
 import EmissionsPie from "../../components/EmissionsPie";
+import { numberWithCommas } from "../../utils/numbers";
 import {
   useTheme,
   Card,
@@ -16,7 +17,6 @@ import {
   Divider,
   CircularProgress,
 } from "@material-ui/core";
-import { numberWithCommas } from "../../utils/numbers";
 
 function City() {
   const theme = useTheme();

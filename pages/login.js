@@ -2,8 +2,6 @@ import Layout from "../components/Layout";
 import { requiredAuth } from "../utils/ssr";
 import useSWR from "swr";
 import { fetch } from "../utils/fetch";
-import { useRouter } from "next/router";
-import Button from "react-bootstrap/Button";
 import React, { Component, useState } from "react";
 import DatePicker from "react-datepicker";
 import CompBarGraph from "../components/CompBarGraph";
