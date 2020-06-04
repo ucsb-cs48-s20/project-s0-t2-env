@@ -23,7 +23,7 @@ function CarbonEmissions(props) {
             </Link>
           </Tooltip>
         </Typography>
-        <Typography variant="h5">tons of CO2 per year</Typography>
+        <Typography variant="h5">tons of CO2 per year.</Typography>
       </div>
       <div style={{ margin: "20px" }}>
         <Typography variant="h5">You would need to plant </Typography>
