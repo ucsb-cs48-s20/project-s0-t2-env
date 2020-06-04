@@ -19,3 +19,17 @@ export const AverageCompBarGraph = () => {
   const title = "Hour(s) of Screen Time Per Day";
   return <CompBarGraph labels={labels} data={data} title={title} />;
 };
+
+export const AboveAverageCompBarGraph = () => {
+  const labels = ["Average", "Chris Gaucho"];
+  const data = [3, 6];
+  const title = "Hour(s) of Screen Time Per Day";
+  return <CompBarGraph labels={labels} data={data} title={title} />;
+};
+
+export const BelowAverageCompBarGraph = () => {
+  const labels = ["Average", "Chris Gaucho"];
+  const data = [3, 2];
+  const title = "Hour(s) of Screen Time Per Day";
+  return <CompBarGraph labels={labels} data={data} title={title} />;
+};
