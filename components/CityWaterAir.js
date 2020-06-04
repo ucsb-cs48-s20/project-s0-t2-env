@@ -1,7 +1,7 @@
 import Image from "react-bootstrap/Image";
 import { Typography, Tooltip, Link, CircularProgress } from "@material-ui/core";
 
-export default function City(props) {
+export default function CityWaterAir(props) {
   const data = props.data;
 
   if (!data) {
