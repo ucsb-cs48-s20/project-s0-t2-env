@@ -1,12 +1,7 @@
 import React from "react";
 import CitiesSearch from "../components/CitiesSearch";
-import { select, text, object, array, number } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
+import { array } from "@storybook/addon-knobs";
 import { AppBar, Toolbar } from "@material-ui/core";
-import useSWR from "swr";
-import { useTheme } from "@material-ui/core";
-import { createFilterOptions } from "@material-ui/lab/Autocomplete";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 
 export default {
   title: "CitiesSearch",

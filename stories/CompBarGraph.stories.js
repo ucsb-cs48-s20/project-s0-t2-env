@@ -1,12 +1,6 @@
 import React from "react";
 import CompBarGraph from "../components/CompBarGraph";
 import { array, text } from "@storybook/addon-knobs";
-import { action } from "@storybook/addon-actions";
-import { AppBar, Toolbar } from "@material-ui/core";
-import useSWR from "swr";
-import { useTheme } from "@material-ui/core";
-import { createFilterOptions } from "@material-ui/lab/Autocomplete";
-import Autocomplete from "@material-ui/lab/Autocomplete";
 
 export default {
   title: "CompBarGraph",
