@@ -1,5 +1,6 @@
 import { FaTree } from "react-icons/fa";
 import { useTheme, Typography, Tooltip, Link } from "@material-ui/core";
+
 function CarbonEmissions(props) {
   const CO2 = props.CO2;
   const trees = props.trees;
