@@ -54,7 +54,11 @@ function City() {
       <CardContent>
         <List>
           <Divider />
-          <CarbonEmissions data={data} />
+          <CarbonEmissions
+            data={data}
+            CO2={numberWithCommas(data.CO2)}
+            trees={numberWithCommas(Math.floor(data.CO2 / 0.06))}
+          />
           <Divider />
           <EmissionsPie data={data} />
           <Divider />
