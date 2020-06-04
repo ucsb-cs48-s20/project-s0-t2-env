@@ -1,5 +1,4 @@
-import useSWR from "swr";
-import { fetch } from "../utils/fetch";
+import Spinner from "react-bootstrap/Spinner";
 import { useState, useEffect } from "react";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
@@ -8,20 +7,20 @@ import { createFilterOptions } from "@material-ui/lab/Autocomplete";
 
 export default function CitiesSearch(props) {
   const names = props.names;
-  // const { data: names } = useSWR("/api/cities/all", fetch, {});
   const theme = useTheme();
   const filterOptions = createFilterOptions({
     limit: 5,
   });
 
   const [value, setValue] = useState(null);
-  // useEffect(() => {
-  //   if (value != null) {
-  //     window.location.href = "/cities/" + value;
-  //   }
-  // });
+
   if (!names) {
-    return <div></div>;
+    return (
+      <div style={{ height: 0 }}>
+        Loading Search Bar
+        <Spinner animation="border" variant="secondary" size="sm" />
+      </div>
+    );
   }
   return (
     <div style={{ width: 300 }} data-cy="search">
