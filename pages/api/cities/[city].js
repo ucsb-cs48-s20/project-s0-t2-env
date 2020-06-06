@@ -11,14 +11,12 @@ handler.get(async (req, res) => {
   const city = req.query.city;
   // construct a query object for the database. we want to filter only results where the name = city
   const query = { name: city };
-  console.log(query);
   // look for at most one city in the collection 'cities' using the query. By setting collation strength to 1, we are ignoring case
   // https://mongodb.github.io/node-mongodb-native/2.2/tutorials/collations/#find-and-sort
   const doc = await req.db
     .collection("cities")
     .findOne(query, { collation: { locale: "en_US", strength: 1 } });
   // MongoDB returns a document for us
-  console.log(doc);
   // We can read in these values from the doc
   const {
     name,
@@ -47,8 +45,6 @@ handler.get(async (req, res) => {
       process.env.LONGLAT_KEY
   );
 
-  console.log(response);
-
   const latitude =
     (response.results[0].bounds.northeast.lat +
       response.results[0].bounds.southwest.lat) /
@@ -67,22 +63,11 @@ handler.get(async (req, res) => {
       process.env.AQI_KEY
   );
 
-  console.log(aqiAPI);
-  console.log(
-    "https://api.waqi.info/feed/geo:" +
-      latitude +
-      ";" +
-      longitude +
-      "/?token=" +
-      process.env.AQI_KEY
-  );
-
   const popAPI = await fetch(
     "https://public.opendatasoft.com/api/records/1.0/search/?dataset=worldcitiespop&lang=us&rows=1&sort=population&refine.accentcity=" +
       name
   );
 
-  console.log(popAPI);
   let pop;
   if (popAPI.records[0]) {
     pop = popAPI.records[0].fields.population;

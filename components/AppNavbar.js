@@ -1,14 +1,6 @@
 import NextLink from "next/link";
 import CitiesSearch from "./CitiesSearch";
-import {
-  Button,
-  AppBar,
-  Toolbar,
-  Typography,
-  Avatar,
-  Chip,
-  Link,
-} from "@material-ui/core";
+import { Button, Link } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
