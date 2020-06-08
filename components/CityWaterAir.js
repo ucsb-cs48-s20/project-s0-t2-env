@@ -53,8 +53,8 @@ export default function CityWaterAir(props) {
             <Image
               src="https://www.fondriest.com/environmental-measurements/wp-content/uploads/2014/02/tds_range1.jpg"
               align="center"
-              width="450"
-              height="300"
+              width="550"
+              height="350"
             />
           </p>
           <p>
