@@ -30,3 +30,14 @@ NextJS
 ## Deployment Instructions:
 
 - [Deployment Instructions](./docs/DEPLOY.md)
+
+## Commands:
+| Command                   | Description                                           |
+| ------------------------- | ----------------------------------------------------- |
+| `npm install`             | Install Dependencies                                  |
+| `npm run dev`             | Runs locally in development mode                      |
+| `npm run test`            | Runs entire test suite                                |
+| `npm run test:cypress`    | Runs Cypress integration tests                        |
+| `npm run test:jest`       | Runs Jest Unit testing 
+| `npm run storybook`       | Run React Storybook (made available at localhost:6006 |
+| `npm run build-storybook` | Create static react storybook for GitHub Pages        |
